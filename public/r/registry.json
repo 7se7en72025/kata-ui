@@ -1,0 +1,56 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "kata-ui",
+  "homepage": "https://github.com/razi-ai/kata-ui",
+  "items": [
+    {
+      "name": "side-frame",
+      "type": "registry:ui",
+      "title": "Side Frame",
+      "description": "SVG ruler guides with scroll and cursor tracking, theme-aware via MutationObserver.",
+      "files": [
+        {
+          "path": "registry/ui/side-frame.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navbar",
+      "type": "registry:ui",
+      "title": "Navbar",
+      "description": "Fixed navbar with triangle wipe theme toggle, icon hover animation, and border trace effects.",
+      "registryDependencies": ["side-frame"],
+      "files": [
+        {
+          "path": "registry/ui/navbar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "footer",
+      "type": "registry:ui",
+      "title": "Footer",
+      "description": "Bottom footer with logo, branding text, and license info. Theme-aware.",
+      "files": [
+        {
+          "path": "registry/ui/footer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "globals",
+      "type": "registry:ui",
+      "title": "Global Styles",
+      "description": "CSS variables for light/dark themes, ruler colors, and animation keyframes.",
+      "files": [
+        {
+          "path": "registry/ui/globals.css",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}
