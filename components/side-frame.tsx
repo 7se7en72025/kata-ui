@@ -37,7 +37,8 @@ function Ruler({ side }: { side: "left" | "right" }) {
     const totalTicks = Math.ceil(h / TICK) + 2;
 
     container.style.background = colors.bg;
-    container.style.borderColor = colors.border;
+    container.style.borderRightColor = colors.border;
+    container.style.borderLeftColor = colors.border;
 
     const lines: string[] = [];
     const texts: string[] = [];
@@ -63,7 +64,6 @@ function Ruler({ side }: { side: "left" | "right" }) {
 
     svg.setAttribute("viewBox", `0 0 ${VB_W} ${h}`);
     svg.innerHTML = `
-      <style>line, text { transition: all 0.15s ease-out; }</style>
       <line x1="${isLeft ? 48 : 0}" y1="0" x2="${isLeft ? 48 : 0}" y2="${h}" stroke="${colors.border}" stroke-width="1"/>
       ${lines.join("")}
       ${texts.join("")}
@@ -73,7 +73,11 @@ function Ruler({ side }: { side: "left" | "right" }) {
   useEffect(() => {
     render();
 
-    const observer = new MutationObserver(render);
+    function onThemeChange() {
+      requestAnimationFrame(render);
+    }
+
+    const observer = new MutationObserver(onThemeChange);
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["data-theme"],
@@ -107,7 +111,7 @@ function Ruler({ side }: { side: "left" | "right" }) {
         zIndex: 50,
         overflow: "hidden",
         background: "#0d0d0d",
-        transition: "background 0.15s, border-color 0.15s",
+        transition: "none",
         ...(isLeft
           ? { left: 0, borderRight: "1px solid #252525" }
           : { right: 0, borderLeft: "1px solid #252525" }),

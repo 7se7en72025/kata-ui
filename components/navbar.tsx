@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import Image from "next/image";
 
-function SunIcon() {
+function SunIcon({ style }: { style?: React.CSSProperties }) {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#555" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={style}>
       <circle cx="12" cy="12" r="5" />
       <line x1="12" y1="1" x2="12" y2="3" />
       <line x1="12" y1="21" x2="12" y2="23" />
@@ -19,16 +19,108 @@ function SunIcon() {
   );
 }
 
-function MoonIcon() {
+function MoonIcon({ style }: { style?: React.CSSProperties }) {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#aaa" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={style}>
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
     </svg>
   );
 }
 
+function playClick() {
+  const ctx = new AudioContext();
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+  osc.type = "sine";
+  osc.frequency.setValueAtTime(1200, ctx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(600, ctx.currentTime + 0.04);
+  gain.gain.setValueAtTime(0.2, ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.06);
+  osc.start(ctx.currentTime);
+  osc.stop(ctx.currentTime + 0.06);
+}
+
+function applyColor(el: HTMLElement, type: string, theme: "light" | "dark") {
+  el.style.transition = "none";
+  if (type === "text") el.style.color = theme === "dark" ? "#fff" : "#0d0d0d";
+  else if (type === "toggle") {
+    el.style.borderColor = theme === "dark" ? "#333" : "#d4d4d4";
+    el.style.color = theme === "dark" ? "#aaa" : "#555";
+  } else if (type === "docs") {
+    el.style.background = theme === "dark" ? "#fff" : "#111";
+    el.style.color = theme === "dark" ? "#000" : "#fff";
+  } else if (type === "logo") {
+    const img = el.querySelector("img") as HTMLImageElement;
+    if (img) img.src = theme === "dark" ? "/KATAUILOGOWHITE.svg" : "/KATAUILOGOBLACK.svg";
+  }
+}
+
+function triggerTriangleTransition(
+  originX: number,
+  originY: number,
+  nextTheme: "light" | "dark",
+  elements: { el: HTMLElement; type: string }[],
+  onDone: () => void
+) {
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReduced) {
+    elements.forEach(({ el, type }) => applyColor(el, type, nextTheme));
+    onDone();
+    return;
+  }
+
+  playClick();
+
+  const overlayColor = nextTheme === "light" ? "#ffffff" : "#0d0d0d";
+  const W = window.innerWidth;
+  const H = window.innerHeight;
+  const maxDim = Math.max(W, H) * 3;
+  const duration = 500;
+
+  const startClip = `polygon(${originX}px ${originY}px, ${originX}px ${originY}px, ${originX}px ${originY}px)`;
+  const endClip = `polygon(${originX}px ${originY - maxDim}px, ${originX - maxDim}px ${originY + maxDim}px, ${originX + maxDim}px ${originY + maxDim}px)`;
+
+  const overlay = document.createElement("div");
+  overlay.style.cssText = `
+    position:fixed; inset:0; width:100vw; height:100vh;
+    z-index:99; pointer-events:none;
+    background:${overlayColor};
+    clip-path:${startClip};
+    will-change:clip-path;
+  `;
+  document.body.appendChild(overlay);
+  overlay.getBoundingClientRect();
+
+  const anim = overlay.animate(
+    [{ clipPath: startClip }, { clipPath: endClip }],
+    { duration, easing: "linear", fill: "forwards" }
+  );
+
+  elements.forEach(({ el, type }, i) => {
+    const rect = el.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = cx - originX;
+    const dy = cy - originY;
+    const t = Math.max(0, Math.min(1, Math.max((-2 * dx - dy) / maxDim, (2 * dx - dy) / maxDim, dy / maxDim)));
+    const delay = Math.round(t * duration);
+
+    setTimeout(() => applyColor(el, type, nextTheme), delay);
+  });
+
+  anim.onfinish = () => {
+    document.documentElement.setAttribute("data-theme", nextTheme);
+    localStorage.setItem("theme", nextTheme);
+    overlay.remove();
+    onDone();
+  };
+}
+
 export function Navbar() {
   const [isDark, setIsDark] = useState(true);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const stored = localStorage.getItem("theme");
@@ -38,15 +130,30 @@ export function Navbar() {
     }
   }, []);
 
-  const toggleTheme = useCallback(() => {
-    const next = isDark ? "light" : "dark";
-    setIsDark(!isDark);
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("theme", next);
-  }, [isDark]);
+  const toggleTheme = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      const x = Math.round(window.innerWidth / 2);
+      const y = Math.round(window.innerHeight / 2);
+      const next = isDark ? "light" : "dark";
+
+      const items: { el: HTMLElement; type: string }[] = [];
+      if (navRef.current) {
+        navRef.current.querySelectorAll<HTMLElement>("[data-nav-text]").forEach((el) => items.push({ el, type: "text" }));
+        navRef.current.querySelectorAll<HTMLElement>("[data-nav-toggle]").forEach((el) => items.push({ el, type: "toggle" }));
+        navRef.current.querySelectorAll<HTMLElement>("[data-nav-docs]").forEach((el) => items.push({ el, type: "docs" }));
+        navRef.current.querySelectorAll<HTMLElement>("[data-nav-logo]").forEach((el) => items.push({ el, type: "logo" }));
+      }
+
+      triggerTriangleTransition(x, y, next, items, () => {
+        setIsDark(!isDark);
+      });
+    },
+    [isDark]
+  );
 
   return (
     <nav
+      ref={navRef}
       style={{
         position: "fixed",
         top: 0,
@@ -63,6 +170,7 @@ export function Navbar() {
       }}
     >
       <div
+        data-nav-logo
         style={{
           display: "flex",
           alignItems: "center",
@@ -79,6 +187,7 @@ export function Navbar() {
           style={{ height: 24, width: "auto" }}
         />
         <span
+          data-nav-text
           style={{
             fontFamily: "sans-serif",
             fontSize: 15,
@@ -88,7 +197,7 @@ export function Navbar() {
             color: isDark ? "#fff" : "#0d0d0d",
           }}
         >
-          KatanaUI
+          KataUI
         </span>
       </div>
 
@@ -103,7 +212,9 @@ export function Navbar() {
         }}
       >
         <button
+          data-nav-toggle
           onClick={toggleTheme}
+          className="theme-toggle-btn"
           style={{
             width: 36,
             height: 36,
@@ -114,6 +225,7 @@ export function Navbar() {
             cursor: "pointer",
             background: "transparent",
             border: `1px solid ${isDark ? "#333" : "#d4d4d4"}`,
+            color: isDark ? "#aaa" : "#555",
             transition: "background 0.15s",
           }}
           onMouseEnter={(e) =>
@@ -123,10 +235,14 @@ export function Navbar() {
             (e.currentTarget.style.background = "transparent")
           }
         >
-          {isDark ? <MoonIcon /> : <SunIcon />}
+          <span className="icon-wrap">
+            <span className="icon-a">{isDark ? <MoonIcon /> : <SunIcon />}</span>
+            <span className="icon-b">{isDark ? <SunIcon /> : <MoonIcon />}</span>
+          </span>
         </button>
 
         <button
+          data-nav-docs
           style={{
             background: isDark ? "#fff" : "#111",
             color: isDark ? "#000" : "#fff",
@@ -140,7 +256,6 @@ export function Navbar() {
             cursor: "pointer",
             height: 36,
             whiteSpace: "nowrap",
-            transition: "background 0.15s",
           }}
           onMouseEnter={(e) =>
             (e.currentTarget.style.background = isDark ? "#e8e8e8" : "#2a2a2a")

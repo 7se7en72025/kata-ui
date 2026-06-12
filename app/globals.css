@@ -43,3 +43,36 @@ body {
 * {
   box-sizing: border-box;
 }
+
+.icon-wrap {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
+.icon-wrap svg {
+  position: absolute;
+  inset: 0;
+}
+
+.icon-wrap .icon-a {
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+.icon-wrap .icon-b {
+  transition: transform 0.15s ease 0.03s, opacity 0.15s ease 0.03s;
+  transform: rotate(-120deg) scale(0.4);
+  opacity: 0;
+}
+
+.theme-toggle-btn:hover .icon-a {
+  transform: rotate(120deg) scale(0.4);
+  opacity: 0;
+}
+
+.theme-toggle-btn:hover .icon-b {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
