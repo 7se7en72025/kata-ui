@@ -147,7 +147,7 @@ export function Navbar() {
   }, [hovered]);
 
   const toggleTheme = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
+    (e: React.MouseEvent<HTMLDivElement>) => {
       const x = Math.round(window.innerWidth / 2);
       const y = Math.round(window.innerHeight / 2);
       const next = isDark ? "light" : "dark";
