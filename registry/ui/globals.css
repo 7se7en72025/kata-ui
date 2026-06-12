@@ -125,3 +125,7 @@ body {
   background: currentColor;
   opacity: 0.5;
 }
+
+[data-nav-search] input::placeholder {
+  color: var(--search-placeholder, #666);
+}

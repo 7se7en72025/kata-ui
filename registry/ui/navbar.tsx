@@ -54,6 +54,19 @@ function applyColor(el: HTMLElement, type: string, theme: "light" | "dark") {
   } else if (type === "logo") {
     const img = el.querySelector("img") as HTMLImageElement;
     if (img) img.src = theme === "dark" ? "/KATAUILOGOWHITE.svg" : "/KATAUILOGOBLACK.svg";
+  } else if (type === "search") {
+    el.style.borderColor = theme === "dark" ? "#333" : "#d4d4d4";
+    el.style.background = theme === "dark" ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.03)";
+    el.style.setProperty("--search-placeholder", theme === "dark" ? "#666" : "#999");
+    const icon = el.querySelector<SVGElement>("svg");
+    if (icon) icon.style.stroke = theme === "dark" ? "#666" : "#999";
+    const input = el.querySelector<HTMLInputElement>("input");
+    if (input) input.style.color = theme === "dark" ? "#fff" : "#0d0d0d";
+    const badge = el.querySelector<HTMLElement>("[data-nav-search-badge]");
+    if (badge) {
+      badge.style.color = theme === "dark" ? "#555" : "#aaa";
+      badge.style.borderColor = theme === "dark" ? "#333" : "#d4d4d4";
+    }
   }
 }
 
@@ -158,6 +171,7 @@ export function Navbar() {
         navRef.current.querySelectorAll<HTMLElement>("[data-nav-toggle]").forEach((el) => items.push({ el, type: "toggle" }));
         navRef.current.querySelectorAll<HTMLElement>("[data-nav-docs]").forEach((el) => items.push({ el, type: "docs" }));
         navRef.current.querySelectorAll<HTMLElement>("[data-nav-logo]").forEach((el) => items.push({ el, type: "logo" }));
+        navRef.current.querySelectorAll<HTMLElement>("[data-nav-search]").forEach((el) => items.push({ el, type: "search" }));
       }
 
       triggerTriangleTransition(x, y, next, items, () => {
@@ -228,6 +242,68 @@ export function Navbar() {
           pointerEvents: "auto",
         }}
       >
+        <div
+          data-nav-search
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 8,
+            padding: "6px 12px",
+            borderRadius: 8,
+            border: `1px solid ${isDark ? "#333" : "#d4d4d4"}`,
+            background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.03)",
+            cursor: "text",
+            height: 36,
+            minWidth: 200,
+          }}
+        >
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            style={{ stroke: isDark ? "#666" : "#999", flexShrink: 0 }}
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input
+            data-nav-search-text
+            type="text"
+            placeholder="Search documentation..."
+            style={{
+              border: "none",
+              outline: "none",
+              background: "transparent",
+              fontSize: 13,
+              color: isDark ? "#fff" : "#0d0d0d",
+              fontFamily: "sans-serif",
+              flex: 1,
+              minWidth: 0,
+            }}
+          />
+          <span
+            data-nav-search-badge
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 2,
+              fontSize: 11,
+              fontFamily: "sans-serif",
+              color: isDark ? "#555" : "#aaa",
+              border: `1px solid ${isDark ? "#333" : "#d4d4d4"}`,
+              borderRadius: 4,
+              padding: "2px 5px",
+              lineHeight: 1,
+              flexShrink: 0,
+            }}
+          >
+            <span style={{ fontSize: 10 }}>⌘</span>K
+          </span>
+        </div>
         <div
           data-nav-toggle
           className="theme-toggle-wrap"
