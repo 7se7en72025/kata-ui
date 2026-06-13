@@ -4,7 +4,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Kata UI",
-  description: "Edge ruler frame"
+  description: "Edge ruler frame",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
