@@ -40,6 +40,18 @@ body {
   background: var(--bg);
 }
 
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+}
+
+[data-theme="light"] .hero-grid {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -149,4 +161,41 @@ body {
 
 .animate-aurora-bg {
   animation: aurora-bg 8s ease-in-out infinite;
+}
+
+@keyframes shine-mask {
+  0% { --mask-x: 100%; }
+  100% { --mask-x: -100%; }
+}
+
+@keyframes shine-mask-reverse {
+  0% { --mask-x: 100%; }
+  100% { --mask-x: -100%; }
+}
+
+@keyframes shine-border {
+  0% { background-position: 100% 0; opacity: 0; }
+  50% { opacity: 1; }
+  100% { background-position: 0% 0; opacity: 0; }
+}
+
+.animate-shine-mask {
+  animation: shine-mask 1s linear infinite;
+  animation-delay: 1s;
+}
+
+.animate-shine-mask-reverse {
+  animation: shine-mask-reverse 1s linear infinite;
+  animation-delay: 1s;
+}
+
+.animate-shine-border {
+  animation: shine-border 1s linear infinite;
+  animation-delay: 1s;
+}
+
+@property --mask-x {
+  syntax: "<percentage>";
+  initial-value: 100%;
+  inherits: false;
 }

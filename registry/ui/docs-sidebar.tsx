@@ -39,6 +39,13 @@ const navigation: NavGroup[] = [
     ],
   },
   {
+    title: "Layout",
+    icon: "\u25A2",
+    items: [
+      { label: "Shrine Cards", href: "/docs/layout/shrine-cards" },
+    ],
+  },
+  {
     title: "Backgrounds",
     icon: "\u25CB",
     items: [

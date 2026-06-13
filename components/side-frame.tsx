@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, memo } from "react";
 
 const TICK = 50;
 const VB_W = 48;
@@ -17,11 +17,12 @@ function getThemeColors() {
   };
 }
 
-function Ruler({ side }: { side: "left" | "right" }) {
+const Ruler = memo(function Ruler({ side }: { side: "left" | "right" }) {
   const isLeft = side === "left";
   const svgRef = useRef<SVGSVGElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const mouseY = useRef(-1);
+  const rafId = useRef(0);
 
   const render = useCallback(() => {
     const svg = svgRef.current;
@@ -40,8 +41,11 @@ function Ruler({ side }: { side: "left" | "right" }) {
     container.style.borderRightColor = colors.border;
     container.style.borderLeftColor = colors.border;
 
-    const lines: string[] = [];
-    const texts: string[] = [];
+    const tickX1 = isLeft ? 48 : 0;
+    const tickX2 = isLeft ? 38 : 10;
+    const labelX = isLeft ? 26 : 22;
+
+    let svgContent = `<line x1="${tickX1}" y1="0" x2="${tickX1}" y2="${h}" stroke="${colors.border}" stroke-width="1"/>`;
 
     for (let i = -totalTicks; i <= totalTicks; i++) {
       const val = centerVal + i * TICK;
@@ -49,56 +53,45 @@ function Ruler({ side }: { side: "left" | "right" }) {
       const y = val - scrollY;
       const isActive = val === centerVal;
 
-      const tickX1 = isLeft ? 48 : 0;
-      const tickX2 = isLeft ? 38 : 10;
-
-      lines.push(
-        `<line x1="${tickX1}" y1="${y}" x2="${tickX2}" y2="${y}" stroke="${isActive ? colors.activeTick : colors.tick}" stroke-width="${isActive ? 1.5 : 0.8}"/>`
-      );
-
-      const labelX = isLeft ? 26 : 22;
-      texts.push(
-        `<text x="${labelX}" y="${y}" text-anchor="middle" dominant-baseline="central" fill="${isActive ? colors.activeText : colors.text}" font-family="monospace" font-size="${isActive ? 14 : 11}" opacity="${isActive ? 0.9 : 0.5}" transform="rotate(-90 ${labelX} ${y})">${val}</text>`
-      );
+      svgContent += `<line x1="${tickX1}" y1="${y}" x2="${tickX2}" y2="${y}" stroke="${isActive ? colors.activeTick : colors.tick}" stroke-width="${isActive ? 1.5 : 0.8}"/>`;
+      svgContent += `<text x="${labelX}" y="${y}" text-anchor="middle" dominant-baseline="central" fill="${isActive ? colors.activeText : colors.text}" font-family="monospace" font-size="${isActive ? 14 : 11}" opacity="${isActive ? 0.9 : 0.5}" transform="rotate(-90 ${labelX} ${y})">${val}</text>`;
     }
 
     svg.setAttribute("viewBox", `0 0 ${VB_W} ${h}`);
-    svg.innerHTML = `
-      <line x1="${isLeft ? 48 : 0}" y1="0" x2="${isLeft ? 48 : 0}" y2="${h}" stroke="${colors.border}" stroke-width="1"/>
-      ${lines.join("")}
-      ${texts.join("")}
-    `;
+    svg.innerHTML = svgContent;
   }, [isLeft]);
+
+  const scheduleRender = useCallback(() => {
+    cancelAnimationFrame(rafId.current);
+    rafId.current = requestAnimationFrame(render);
+  }, [render]);
 
   useEffect(() => {
     render();
 
-    function onThemeChange() {
-      requestAnimationFrame(render);
-    }
-
-    const observer = new MutationObserver(onThemeChange);
+    const observer = new MutationObserver(scheduleRender);
     observer.observe(document.documentElement, {
       attributes: true,
       attributeFilter: ["data-theme"],
     });
 
-    function onMouseMove(e: MouseEvent) {
+    const onMouseMove = (e: MouseEvent) => {
       mouseY.current = e.clientY;
-      render();
-    }
+      scheduleRender();
+    };
 
-    window.addEventListener("scroll", render, { passive: true });
-    window.addEventListener("resize", render);
-    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("scroll", scheduleRender, { passive: true });
+    window.addEventListener("resize", scheduleRender);
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
 
     return () => {
+      cancelAnimationFrame(rafId.current);
       observer.disconnect();
-      window.removeEventListener("scroll", render);
-      window.removeEventListener("resize", render);
+      window.removeEventListener("scroll", scheduleRender);
+      window.removeEventListener("resize", scheduleRender);
       window.removeEventListener("mousemove", onMouseMove);
     };
-  }, [render]);
+  }, [render, scheduleRender]);
 
   return (
     <div
@@ -122,23 +115,19 @@ function Ruler({ side }: { side: "left" | "right" }) {
         style={{ position: "absolute", inset: 0, width: 48, height: "100vh" }}
       />
       <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          pointerEvents: "auto",
-        }}
+        style={{ position: "absolute", inset: 0, pointerEvents: "auto" }}
         onMouseMove={(e) => {
           mouseY.current = e.clientY;
-          render();
+          scheduleRender();
         }}
         onMouseLeave={() => {
           mouseY.current = -1;
-          render();
+          scheduleRender();
         }}
       />
     </div>
   );
-}
+});
 
 export function SideFrame() {
   return (
