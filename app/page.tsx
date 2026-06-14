@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { SideFrame } from "@/components/side-frame";
 import { StackedLogos } from "@/components/stacked-logos";
+import { GlitchText } from "@/components/ui/glitch-text";
 
 const Navbar = dynamic(() => import("@/components/navbar").then(m => ({ default: m.Navbar })), { ssr: false });
 const Hero = dynamic(() => import("@/components/hero").then(m => ({ default: m.Hero })), { ssr: false });
@@ -132,6 +133,58 @@ export default function Home() {
               </span>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Glitch Text Showcase */}
+      <section
+        style={{
+          padding: "80px 120px",
+          position: "relative",
+          zIndex: 10,
+        }}
+      >
+        <div
+          style={{
+            maxWidth: 900,
+            margin: "0 auto",
+            background: "#0a0a0a",
+            border: "1px solid #222",
+            borderRadius: 12,
+            padding: "60px 40px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              fontSize: 12,
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              color: "#888",
+              fontFamily: "inherit",
+              marginBottom: 32,
+            }}
+          >
+            Effects Library
+          </p>
+          <GlitchText
+            as="h2"
+            size="clamp(32px, 5vw, 56px)"
+            style={{ marginBottom: 16 }}
+          />
+          <p
+            style={{
+              fontSize: 14,
+              color: "#666",
+              fontFamily: "monospace",
+              letterSpacing: "0.05em",
+            }}
+          >
+            Doctor Glitch + CSS Chromatic Aberration
+          </p>
         </div>
       </section>
 

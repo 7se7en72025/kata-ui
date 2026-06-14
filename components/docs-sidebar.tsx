@@ -35,6 +35,13 @@ const navigation: NavGroup[] = [
       { label: "Terminal Preloader", href: "/docs/preloader/terminal-preloader", isNew: true },
     ],
   },
+  {
+    title: "Effects",
+    icon: "\u26A1",
+    items: [
+      { label: "Glitch Text", href: "/docs/effects/glitch-text", isNew: true },
+    ],
+  },
 ];
 
 export function DocsSidebar() {

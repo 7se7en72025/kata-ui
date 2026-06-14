@@ -90,6 +90,18 @@
           "type": "registry:ui"
         }
       ]
+    },
+    {
+      "name": "glitch-text",
+      "type": "registry:ui",
+      "title": "Glitch Text",
+      "description": "Cyberpunk text effect with constant chromatic aberration, horizontal slice distortion, and CRT scanlines using the Doctor Glitch font.",
+      "files": [
+        {
+          "path": "registry/ui/glitch-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
     }
   ]
 }
