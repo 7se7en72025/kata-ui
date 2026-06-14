@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 interface NavGroup {
   title: string;
   icon?: string;
-  items: { label: string; href: string; isNew?: boolean; comingSoon?: boolean }[];
+  items: { label: string; href: string; isNew?: boolean }[];
 }
 
 const navigation: NavGroup[] = [
@@ -22,34 +22,10 @@ const navigation: NavGroup[] = [
     ],
   },
   {
-    title: "Buttons",
-    icon: "\u25B8",
-    items: [
-      { label: "Animated Button", href: "#", isNew: true, comingSoon: true },
-      { label: "Glow Button", href: "#", isNew: true, comingSoon: true },
-      { label: "Liquid Metal", href: "#", comingSoon: true },
-    ],
-  },
-  {
-    title: "Text & Motion",
-    icon: "T",
-    items: [
-      { label: "Animated Number", href: "#", comingSoon: true },
-      { label: "Flip Text", href: "#", comingSoon: true },
-    ],
-  },
-  {
     title: "Layout",
     icon: "\u25A2",
     items: [
       { label: "Shrine Cards", href: "/docs/layout/shrine-cards" },
-    ],
-  },
-  {
-    title: "Backgrounds",
-    icon: "\u25CB",
-    items: [
-      { label: "Animated Rays", href: "#", comingSoon: true },
     ],
   },
 ];
@@ -143,31 +119,15 @@ export function DocsSidebar() {
                       padding: "6px 16px 6px 36px",
                       fontSize: 13,
                       fontFamily: "inherit",
-                      color: item.comingSoon ? "#444" : active ? "#fff" : "#666",
+                      color: active ? "#fff" : "#666",
                       textDecoration: "none",
-                      background: active && !item.comingSoon ? "rgba(255,255,255,0.06)" : "transparent",
-                      borderLeft: active && !item.comingSoon ? "2px solid #fff" : "2px solid transparent",
+                      background: active ? "rgba(255,255,255,0.06)" : "transparent",
+                      borderLeft: active ? "2px solid #fff" : "2px solid transparent",
                       transition: "all 0.1s ease",
-                      pointerEvents: item.comingSoon ? "none" : "auto",
                     }}
                   >
                     <span>{item.label}</span>
-                    {item.comingSoon && (
-                      <span
-                        style={{
-                          fontSize: 9,
-                          padding: "2px 6px",
-                          borderRadius: 4,
-                          background: "rgba(255,255,255,0.06)",
-                          color: "#555",
-                          fontWeight: 500,
-                          letterSpacing: "0.02em",
-                        }}
-                      >
-                        Coming Soon!!
-                      </span>
-                    )}
-                    {!item.comingSoon && item.isNew && (
+                    {item.isNew && (
                       <span
                         style={{
                           fontSize: 10,
