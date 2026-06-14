@@ -217,7 +217,13 @@ export function TerminalPreloader({
     abort.current = true;
     cancelAnimationFrame(raf.current);
     setS((p) => ({ ...p, phase: "exit" }));
-    setTimeout(() => ocRef.current?.(), EXIT_MS);
+    setTimeout(() => {
+      ocRef.current?.();
+      /* restart animation */
+      prevTypedRef.current = {};
+      prevNumsRef.current = { ev: 0, st: 0, wh: 0 };
+      setS(INIT);
+    }, EXIT_MS);
   }, []);
 
   /* ─── Tick ─── */

@@ -134,6 +134,7 @@ function triggerTriangleTransition(
 
 export function Navbar() {
   const [isDark, setIsDark] = useState(true);
+  const [showComingSoon, setShowComingSoon] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const [hovered, setHovered] = useState(false);
   const borderRef = useRef<SVGSVGElement>(null);
@@ -167,25 +168,11 @@ export function Navbar() {
   }, [hovered]);
 
   const toggleTheme = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      const x = Math.round(window.innerWidth / 2);
-      const y = Math.round(window.innerHeight / 2);
-      const next = isDark ? "light" : "dark";
-
-      const items: { el: HTMLElement; type: string }[] = [];
-      if (navRef.current) {
-        navRef.current.querySelectorAll<HTMLElement>("[data-nav-text]").forEach((el) => items.push({ el, type: "text" }));
-        navRef.current.querySelectorAll<HTMLElement>("[data-nav-toggle]").forEach((el) => items.push({ el, type: "toggle" }));
-        navRef.current.querySelectorAll<HTMLElement>("[data-nav-docs]").forEach((el) => items.push({ el, type: "docs" }));
-        navRef.current.querySelectorAll<HTMLElement>("[data-nav-logo]").forEach((el) => items.push({ el, type: "logo" }));
-        navRef.current.querySelectorAll<HTMLElement>("[data-nav-search]").forEach((el) => items.push({ el, type: "search" }));
-      }
-
-      triggerTriangleTransition(x, y, next, items, () => {
-        setIsDark(!isDark);
-      });
+    (_e: React.MouseEvent<HTMLDivElement>) => {
+      setShowComingSoon(true);
+      setTimeout(() => setShowComingSoon(false), 1800);
     },
-    [isDark]
+    []
   );
 
   return (
@@ -424,6 +411,35 @@ export function Navbar() {
         </button>
       </div>
     </nav>
+    {showComingSoon && (
+      <div
+        style={{
+          position: "fixed",
+          top: 60,
+          left: "50%",
+          transform: "translateX(-50%)",
+          background: "#1a1a1a",
+          color: "#fff",
+          border: "1px solid #333",
+          borderRadius: 8,
+          padding: "8px 20px",
+          fontSize: 13,
+          fontFamily: "inherit",
+          zIndex: 9999,
+          animation: "fadeInOut 1.8s ease forwards",
+        }}
+      >
+        Light theme coming soon
+      </div>
+    )}
+    <style dangerouslySetInnerHTML={{ __html: `
+      @keyframes fadeInOut {
+        0% { opacity: 0; transform: translateX(-50%) translateY(-4px); }
+        15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        80% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+    `}} />
     </>
   );
 }

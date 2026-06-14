@@ -27,44 +27,58 @@ export function GlitchText({
   const id = useMemo(uid, []);
 
   const css = `
-@import url('https://fonts.cdnfonts.com/css/doctor-glitch');
-
-/* Glitch slice keyframes — each step clips a thin horizontal band and shifts it */
-@keyframes ${id}-a {
-  0%   { clip-path: inset(0); transform: translate(0); }
-  3%   { clip-path: inset(12% 0 70% 0); transform: translate(-5px, 0); }
-  5%   { clip-path: inset(55% 0 15% 0); transform: translate(4px, 0); }
-  7%   { clip-path: inset(0); transform: translate(0); }
-  40%  { clip-path: inset(0); transform: translate(0); }
-  42%  { clip-path: inset(75% 0 5% 0); transform: translate(6px, 0); }
-  44%  { clip-path: inset(20% 0 60% 0); transform: translate(-4px, 0); }
-  46%  { clip-path: inset(0); transform: translate(0); }
-  76%  { clip-path: inset(0); transform: translate(0); }
-  78%  { clip-path: inset(35% 0 40% 0); transform: translate(-6px, 0); }
-  80%  { clip-path: inset(65% 0 10% 0); transform: translate(5px, 0); }
-  82%  { clip-path: inset(0); transform: translate(0); }
-  100% { clip-path: inset(0); transform: translate(0); }
+@keyframes ${id} {
+  0%, 100% {
+    transform: translate(0) skewX(0deg);
+    text-shadow: none;
+  }
+  2% {
+    transform: translate(-3px, 0) skewX(-2deg);
+    text-shadow: 3px 0 ${color};
+  }
+  4% {
+    transform: translate(3px, 0) skewX(1deg);
+    text-shadow: -2px 0 ${color};
+  }
+  5% {
+    transform: translate(0) skewX(0deg);
+    text-shadow: none;
+  }
+  41% {
+    transform: translate(0) skewX(0deg);
+    text-shadow: none;
+  }
+  42% {
+    transform: translate(4px, 0) skewX(3deg);
+    text-shadow: -3px 0 ${color};
+  }
+  43% {
+    transform: translate(-2px, 0) skewX(-1deg);
+    text-shadow: 2px 0 ${color};
+  }
+  44% {
+    transform: translate(0) skewX(0deg);
+    text-shadow: none;
+  }
+  77% {
+    transform: translate(0) skewX(0deg);
+    text-shadow: none;
+  }
+  78% {
+    transform: translate(-4px, 0) skewX(-3deg);
+    text-shadow: 3px 0 ${color};
+  }
+  79% {
+    transform: translate(2px, 0) skewX(1deg);
+    text-shadow: -2px 0 ${color};
+  }
+  80% {
+    transform: translate(0) skewX(0deg);
+    text-shadow: none;
+  }
 }
 
-@keyframes ${id}-b {
-  0%   { clip-path: inset(0); transform: translate(0); }
-  4%   { clip-path: inset(65% 0 10% 0); transform: translate(5px, 0); }
-  6%   { clip-path: inset(15% 0 65% 0); transform: translate(-4px, 0); }
-  8%   { clip-path: inset(0); transform: translate(0); }
-  41%  { clip-path: inset(0); transform: translate(0); }
-  43%  { clip-path: inset(30% 0 45% 0); transform: translate(-5px, 0); }
-  45%  { clip-path: inset(80% 0 0% 0); transform: translate(4px, 0); }
-  47%  { clip-path: inset(0); transform: translate(0); }
-  77%  { clip-path: inset(0); transform: translate(0); }
-  79%  { clip-path: inset(10% 0 70% 0); transform: translate(5px, 0); }
-  81%  { clip-path: inset(50% 0 25% 0); transform: translate(-6px, 0); }
-  83%  { clip-path: inset(0); transform: translate(0); }
-  100% { clip-path: inset(0); transform: translate(0); }
-}
-
-/* Base text */
 .${id} {
-  position: relative;
   display: inline-block;
   font-family: 'Doctor Glitch', cursive;
   font-size: ${size};
@@ -74,59 +88,22 @@ export function GlitchText({
   line-height: 1.1;
   text-transform: uppercase;
   white-space: nowrap;
-}
-
-/* Glitch layers — slightly brighter with glow to stand out from base */
-.${id}::before,
-.${id}::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  font-family: 'Doctor Glitch', cursive;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-  line-height: inherit;
-  text-transform: inherit;
-  white-space: nowrap;
-  pointer-events: none;
-  color: ${color};
-  mix-blend-mode: screen;
-  opacity: 0.8;
-}
-
-.${id}::before {
-  text-shadow: 2px 0 ${color};
-  animation: ${id}-a 4s infinite steps(1);
-  z-index: 1;
-}
-
-.${id}::after {
-  text-shadow: -2px 0 ${color};
-  animation: ${id}-b 4s infinite steps(1);
-  animation-delay: 0.1s;
-  z-index: 2;
+  animation: ${id} 3s infinite steps(1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .${id}::before,
-  .${id}::after {
+  .${id} {
     animation: none;
-    clip-path: none;
-    transform: none;
   }
 }
 `;
 
   return (
     <>
+      <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/doctor-glitch" />
       <style dangerouslySetInnerHTML={{ __html: css }} />
       <Tag
         className={`${id} ${className ?? ""}`}
-        data-text={text}
         style={style}
       >
         {text}
