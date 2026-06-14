@@ -2,11 +2,20 @@
 
 import dynamic from "next/dynamic";
 import { SideFrame } from "@/components/side-frame";
+import { StackedLogos } from "@/components/stacked-logos";
 
 const Navbar = dynamic(() => import("@/components/navbar").then(m => ({ default: m.Navbar })), { ssr: false });
 const Hero = dynamic(() => import("@/components/hero").then(m => ({ default: m.Hero })), { ssr: false });
 const Footer = dynamic(() => import("@/components/footer").then(m => ({ default: m.Footer })), { ssr: false });
-const StackedLogos = dynamic(() => import("@/components/stacked-logos").then(m => ({ default: m.StackedLogos })), { ssr: false });
+
+const techLogos = [
+  [
+    <span key="next" style={{ fontSize: 28, fontWeight: 700, color: "#fff", fontFamily: "sans-serif" }}>N</span>,
+    <span key="tailwind" style={{ fontSize: 20, fontWeight: 700, color: "#38bdf8", fontFamily: "monospace" }}>tw</span>,
+    <span key="ts" style={{ fontSize: 20, fontWeight: 700, color: "#3178c6", fontFamily: "monospace" }}>TS</span>,
+    <span key="framer" style={{ fontSize: 24, fontWeight: 700, color: "#facc15", fontFamily: "monospace" }}>f</span>,
+  ],
+];
 
 export default function Home() {
   return (
@@ -37,50 +46,93 @@ export default function Home() {
           Tech Stack
         </h2>
 
-        <StackedLogos
-          logoWidth="220px"
-          logoGroups={[
-            [
-              <svg key="next" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: 40, width: 40 }}>
-                <mask id="mask0" style={{maskType:"alpha"}} maskUnits="userSpaceOnUse" x="0" y="0" width="180" height="180">
-                  <circle cx="90" cy="90" r="90" fill="black"/>
-                </mask>
-                <g mask="url(#mask0)">
-                  <circle cx="90" cy="90" r="90" fill="black"/>
-                  <path d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z" fill="url(#paint0)"/>
-                  <rect x="115" y="54" width="12" height="72" fill="url(#paint1)"/>
-                </g>
-                <defs>
-                  <linearGradient id="paint0" x1="109" y1="116.5" x2="144.5" y2="160.5" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="white"/>
-                    <stop offset="1" stopColor="white" stopOpacity="0"/>
-                  </linearGradient>
-                  <linearGradient id="paint1" x1="121" y1="54" x2="120.799" y2="106.875" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="white"/>
-                    <stop offset="1" stopColor="white" stopOpacity="0"/>
-                  </linearGradient>
-                </defs>
-              </svg>,
-            ],
-            [
-              <svg key="tailwind" viewBox="0 0 54 33" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: 32, width: 52 }}>
-                <path d="M27 0C19.8 0 14.4 3.6 10.8 10.8C14.4 7.2 18 6 21.6 7.2C23.76 7.896 25.416 9.216 27.144 10.944C29.952 13.752 33.144 16.8 39.6 16.8C46.8 16.8 52.2 13.2 55.8 6C52.2 9.6 48.6 10.8 45 9.6C42.84 8.904 41.184 7.584 39.456 5.856C36.648 3.048 33.456 0 27 0ZM16.2 16.8C8.64 16.8 3.24 20.4 -0.36 27.6C3.24 24 6.84 22.8 10.44 24C12.6 24.696 14.256 26.016 15.984 27.744C18.792 30.552 21.984 33.6 28.44 33.6C36 33.6 41.4 30 45 22.8C41.4 26.4 37.8 27.6 34.2 26.4C32.04 25.704 30.384 24.384 28.656 22.656C25.848 19.848 22.656 16.8 16.2 16.8Z" fill="#38bdf8"/>
-              </svg>,
-            ],
-            [
-              <svg key="ts" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: 40, width: 40 }}>
-                <rect width="128" height="128" rx="12" fill="#3178c6"/>
-                <path d="M82.3891 107.317C85.8478 107.317 88.4902 106.384 90.3162 104.518C92.1422 102.652 93.0552 100.03 93.0552 96.6522V96.1622C93.0552 93.1382 92.5362 90.6902 91.4982 88.8182C90.4602 86.9462 89.0492 85.5352 87.2652 84.5862C85.4812 83.6372 83.4532 83.1632 81.1812 83.1632C78.9092 83.1632 76.8662 83.6372 75.0522 84.5862C73.2382 85.5352 71.8102 86.9462 70.7662 88.8182C69.7222 90.6902 69.2002 93.1382 69.2002 96.1622V96.6522C69.2002 100.03 70.1132 102.652 71.9392 104.518C73.7652 106.384 76.4072 107.317 79.8652 107.317H82.3891ZM80.0052 89.7402C81.0072 89.7402 81.8732 89.4862 82.6032 88.9782C83.3332 88.4702 83.8582 87.7402 84.1782 86.7882C84.4982 85.8362 84.6582 84.6962 84.6582 83.3682V82.9762C84.6582 81.6482 84.4982 80.5082 84.1782 79.5562C83.8582 78.6042 83.3332 77.8742 82.6032 77.3662C81.8732 76.8582 81.0072 76.6042 80.0052 76.6042C79.0032 76.6042 78.1372 76.8582 77.4072 77.3662C76.6772 77.8742 76.1522 78.6042 75.8322 79.5562C75.5122 80.5082 75.3522 81.6482 75.3522 82.9762V83.3682C75.3522 84.6962 75.5122 85.8362 75.8322 86.7882C76.1522 87.7402 76.6772 88.4702 77.4072 88.9782C78.1372 89.4862 79.0032 89.7402 80.0052 89.7402ZM46.6452 107H54.8372V58.1642H46.6452V107ZM47.2292 48.0122C48.5572 48.0122 49.6712 47.5922 50.5712 46.7522C51.4712 45.9122 51.9212 44.8382 51.9212 43.5302C51.9212 42.2222 51.4712 41.1482 50.5712 40.3082C49.6712 39.4682 48.5572 39.0482 47.2292 39.0482C45.9012 39.0482 44.7872 39.4682 43.8872 40.3082C42.9872 41.1482 42.5372 42.2222 42.5372 43.5302C42.5372 44.8382 42.9872 45.9122 43.8872 46.7522C44.7872 47.5922 45.9012 48.0122 47.2292 48.0122Z" fill="white"/>
-              </svg>,
-            ],
-            [
-              <svg key="framer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ height: 36, width: 36 }}>
-                <path d="M4 0H20V8H12L4 0Z" fill="#facc15"/>
-                <path d="M4 8H12L20 16H12V24L4 16V8Z" fill="#facc15"/>
-              </svg>,
-            ],
-          ]}
-        />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: 0,
+            maxWidth: 900,
+            margin: "0 auto",
+            border: "1px solid #222",
+            borderRadius: 12,
+            overflow: "hidden",
+          }}
+        >
+          {[
+            { name: "Next.js", icon: "N", color: "#fff", bg: "#000", delay: "0s" },
+            { name: "Tailwind", icon: "tw", color: "#38bdf8", bg: "#0c1a2a", delay: "0.1s" },
+            { name: "TypeScript", icon: "TS", color: "#3178c6", bg: "#0d1a2e", delay: "0.2s" },
+            { name: "Framer", icon: "f", color: "#facc15", bg: "#1a1a00", delay: "0.3s" },
+          ].map((tech, i) => (
+            <div
+              key={tech.name}
+              className="stacked-logos__item"
+              style={{
+                flex: 1,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "36px 20px",
+                borderRight: i < 3 ? "1px solid #222" : "none",
+                background: "#0a0a0a",
+                animationDelay: tech.delay,
+                position: "relative",
+                cursor: "pointer",
+              }}
+            >
+              <div
+                className="stacked-logos__glow"
+                style={{
+                  position: "absolute",
+                  inset: 0,
+                  background: `radial-gradient(circle at 50% 50%, ${tech.color}15, transparent 70%)`,
+                  opacity: 0,
+                  transition: "opacity 0.3s ease",
+                  pointerEvents: "none",
+                }}
+              />
+              <div
+                style={{
+                  width: 56,
+                  height: 56,
+                  borderRadius: 12,
+                  background: tech.bg,
+                  border: "1px solid #333",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  boxShadow: "0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)",
+                  marginBottom: 12,
+                  position: "relative",
+                  zIndex: 1,
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: tech.icon.length > 1 ? 18 : 24,
+                    fontWeight: 700,
+                    color: tech.color,
+                    fontFamily: tech.name === "Next.js" ? "inherit" : "monospace",
+                  }}
+                >
+                  {tech.icon}
+                </span>
+              </div>
+              <span
+                style={{
+                  fontSize: 13,
+                  color: "#888",
+                  fontFamily: "inherit",
+                  position: "relative",
+                  zIndex: 1,
+                }}
+              >
+                {tech.name}
+              </span>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* Open Source CTA */}

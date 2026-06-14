@@ -18,6 +18,7 @@ export const StackedLogos = ({
   logoWidth = "200px",
   className,
 }: StackedLogosProps) => {
+  const itemCount = logoGroups[0]?.length || 0;
   const columns = logoGroups.length;
   const containerRef = React.useRef<HTMLDivElement>(null);
   const gridRef = React.useRef<HTMLDivElement>(null);
@@ -25,14 +26,19 @@ export const StackedLogos = ({
   const handleMouseMove = React.useCallback(
     (e: React.MouseEvent<HTMLDivElement>) => {
       if (!containerRef.current || !gridRef.current) return;
+
       const rect = gridRef.current.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
+
       containerRef.current.style.setProperty("--mouse-x", `${x}px`);
       containerRef.current.style.setProperty("--mouse-y", `${y}px`);
     },
     [],
   );
+
+  const borderWidth = parseInt(logoWidth) || 200;
+  const cellHeight = 128;
 
   return (
     <div
@@ -41,11 +47,11 @@ export const StackedLogos = ({
       style={
         {
           "--duration": duration,
-          "--items": logoGroups[0]?.length || 0,
+          "--items": itemCount,
           "--lists": columns,
           "--stagger": stagger,
           "--logo-width": logoWidth,
-          "--cell-height": "128px",
+          "--cell-height": `${cellHeight}px`,
         } as React.CSSProperties
       }
       onMouseMove={handleMouseMove}
@@ -53,13 +59,15 @@ export const StackedLogos = ({
       <div
         ref={gridRef}
         className="grid relative mx-auto w-fit"
-        style={{ gridTemplateColumns: `repeat(${columns}, ${logoWidth})` }}
+        style={{
+          gridTemplateColumns: `repeat(${columns}, ${logoWidth})`,
+        }}
       >
         <div
           className="stacked-logos__glow pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 z-10"
           style={{
             background:
-              "radial-gradient(500px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(251,191,36,0.08), transparent 70%)",
+              "radial-gradient(500px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(251,191,36,0.1), transparent 70%)",
           }}
         />
 
@@ -67,11 +75,25 @@ export const StackedLogos = ({
           className="stacked-logos__border-glow pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 z-20"
           style={{
             background:
-              "radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(251,191,36,0.8), transparent 40%)",
-            maskImage: `repeating-linear-gradient(to right, transparent, transparent calc(${logoWidth} - 1px), black calc(${logoWidth} - 1px), black ${logoWidth}), linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent calc(100% - 1px), black calc(100% - 1px), black 100%)`,
-            WebkitMaskImage: `repeating-linear-gradient(to right, transparent, transparent calc(${logoWidth} - 1px), black calc(${logoWidth} - 1px), black ${logoWidth}), linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent calc(100% - 1px), black calc(100% - 1px), black 100%)`,
+              "radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(251,191,36,1), transparent 40%)",
+            maskImage: `
+              repeating-linear-gradient(to right, transparent, transparent calc(${logoWidth} - 1px), black calc(${logoWidth} - 1px), black ${logoWidth}),
+              linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent calc(100% - 1px), black calc(100% - 1px), black 100%)
+            `,
+            WebkitMaskImage: `
+              repeating-linear-gradient(to right, transparent, transparent calc(${logoWidth} - 1px), black calc(${logoWidth} - 1px), black ${logoWidth}),
+              linear-gradient(to bottom, black 0, black 1px, transparent 1px, transparent calc(100% - 1px), black calc(100% - 1px), black 100%)
+            `,
             maskComposite: "add",
             WebkitMaskComposite: "source-over",
+          }}
+        />
+
+        <div
+          className="stacked-logos__border-glow pointer-events-none absolute top-0 bottom-0 left-0 w-px opacity-0 transition-opacity duration-300 z-20"
+          style={{
+            background:
+              "radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(251,191,36,1), transparent 40%)",
           }}
         />
 
@@ -79,13 +101,18 @@ export const StackedLogos = ({
           <div
             key={groupIndex}
             className="stacked-logos__cell relative grid"
-            style={{ "--index": groupIndex, gridTemplate: "1fr / 1fr" } as React.CSSProperties}
+            style={
+              {
+                "--index": groupIndex,
+                gridTemplate: "1fr / 1fr",
+              } as React.CSSProperties
+            }
           >
-            <div className="absolute top-0 bottom-0 right-0 w-px bg-zinc-800" />
-            <div className="absolute left-0 right-0 bottom-0 h-px bg-zinc-800" />
-            <div className="absolute left-0 right-0 top-0 h-px bg-zinc-800" />
+            <div className="absolute top-0 bottom-0 right-0 w-px bg-zinc-200 dark:bg-zinc-800" />
+            <div className="absolute left-0 right-0 bottom-0 h-px bg-zinc-200 dark:bg-zinc-800" />
+            <div className="absolute left-0 right-0 top-0 h-px bg-zinc-200 dark:bg-zinc-800" />
             {groupIndex === 0 && (
-              <div className="absolute top-0 bottom-0 left-0 w-px bg-zinc-800" />
+              <div className="absolute top-0 bottom-0 left-0 w-px bg-zinc-200 dark:bg-zinc-800" />
             )}
 
             {logos.map((logo, logoIndex) => (
@@ -95,7 +122,7 @@ export const StackedLogos = ({
                 data-logo
                 style={{ "--i": logoIndex } as React.CSSProperties}
               >
-                <div className="stacked-logos__logo w-full h-8 flex items-center justify-center [&>svg]:h-full [&>svg]:w-auto [&>svg]:fill-zinc-300 [&>img]:h-full [&>img]:w-auto [&>img]:object-contain">
+                <div className="stacked-logos__logo w-full h-8 flex items-center justify-center [&>svg]:h-full [&>svg]:w-auto [&>svg]:fill-zinc-700 dark:[&>svg]:fill-zinc-300 [&>img]:h-full [&>img]:w-auto [&>img]:object-contain [&>img]:grayscale [&>img]:brightness-50 dark:[&>img]:brightness-125">
                   {logo}
                 </div>
               </div>
