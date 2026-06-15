@@ -113,23 +113,47 @@ export default function Home() {
           alignItems: "center",
           paddingTop: 128,
           paddingBottom: 192,
+          overflow: "hidden",
         }}
       >
         <style>{`
           @keyframes cta-pulse {
-            0%, 100% { opacity: 0.15; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 0.25; transform: translate(-50%, -50%) scale(1.1); }
+            0%, 100% { opacity: 0.2; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.35; transform: translate(-50%, -50%) scale(1.15); }
           }
-          @keyframes cta-shimmer {
-            0% { background-position: -200% center; }
-            100% { background-position: 200% center; }
+          @keyframes cta-pulse-2 {
+            0%, 100% { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
+            50% { opacity: 0.2; transform: translate(-50%, -50%) scale(1.2); }
+          }
+          @keyframes cta-float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(3deg); }
+          }
+          @keyframes cta-grid-fade {
+            0%, 100% { opacity: 0.03; }
+            50% { opacity: 0.06; }
           }
           .cta-get-started {
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+          }
+          .cta-get-started::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+          }
+          .cta-get-started:hover::before {
+            left: 100%;
           }
           .cta-get-started:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 0 20px rgba(251,146,60,0.25), 0 4px 12px rgba(0,0,0,0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(251,146,60,0.3), 0 8px 24px rgba(0,0,0,0.4);
           }
           .cta-get-started:active {
             transform: translateY(0);
@@ -138,9 +162,10 @@ export default function Home() {
             transition: all 0.3s ease;
           }
           .cta-github:hover {
-            transform: translateY(-1px);
-            border-color: rgba(255,255,255,0.2);
-            background: rgba(255,255,255,0.06);
+            transform: translateY(-2px);
+            border-color: rgba(255,255,255,0.25);
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
           }
           .cta-github:active {
             transform: translateY(0);
@@ -154,18 +179,90 @@ export default function Home() {
           }
         `}</style>
 
+        {/* Background grid pattern */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+            `,
+            backgroundSize: "64px 64px",
+            animation: "cta-grid-fade 6s ease-in-out infinite",
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* Floating orbs */}
+        <div
+          style={{
+            position: "absolute",
+            width: 320,
+            height: 320,
+            top: "10%",
+            left: "15%",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(251,146,60,0.08) 0%, transparent 70%)",
+            filter: "blur(60px)",
+            pointerEvents: "none",
+            animation: "cta-float 8s ease-in-out infinite",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            width: 240,
+            height: 240,
+            bottom: "20%",
+            right: "20%",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(253,186,116,0.06) 0%, transparent 70%)",
+            filter: "blur(50px)",
+            pointerEvents: "none",
+            animation: "cta-float 10s ease-in-out infinite 2s",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            width: 180,
+            height: 180,
+            top: "40%",
+            right: "10%",
+            borderRadius: "50%",
+            background: "radial-gradient(circle, rgba(249,115,22,0.05) 0%, transparent 70%)",
+            filter: "blur(40px)",
+            pointerEvents: "none",
+            animation: "cta-float 7s ease-in-out infinite 1s",
+          }}
+        />
+
         <div style={{ position: "relative" }}>
           <div
             style={{
               position: "absolute",
               top: "50%",
               left: "50%",
-              width: 500,
-              height: 200,
-              background: "radial-gradient(ellipse, rgba(251,146,60,0.15) 0%, transparent 70%)",
-              filter: "blur(60px)",
+              width: 600,
+              height: 250,
+              background: "radial-gradient(ellipse, rgba(251,146,60,0.12) 0%, transparent 70%)",
+              filter: "blur(80px)",
               pointerEvents: "none",
               animation: "cta-pulse 4s ease-in-out infinite",
+            }}
+          />
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              width: 400,
+              height: 150,
+              background: "radial-gradient(ellipse, rgba(249,115,22,0.08) 0%, transparent 70%)",
+              filter: "blur(40px)",
+              pointerEvents: "none",
+              animation: "cta-pulse-2 5s ease-in-out infinite 1s",
             }}
           />
           <h2
@@ -194,6 +291,7 @@ export default function Home() {
             margin: 0,
             textAlign: "center",
             maxWidth: 480,
+            position: "relative",
           }}
         >
           Ship faster with beautiful, accessible components.
@@ -201,7 +299,7 @@ export default function Home() {
           Open source and free forever.
         </p>
 
-        <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 16 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 16, position: "relative" }}>
           <a
             href="/docs"
             className="cta-get-started"
@@ -209,15 +307,15 @@ export default function Home() {
               display: "inline-flex",
               alignItems: "center",
               gap: 8,
-              padding: "12px 24px",
-              borderRadius: 8,
-              background: "linear-gradient(180deg, #18181b 0%, rgba(9,9,11,0.8) 100%)",
-              color: "#fafafa",
+              padding: "14px 28px",
+              borderRadius: 10,
+              background: "linear-gradient(180deg, #fb923c 0%, #f97316 50%, #ea580c 100%)",
+              color: "#000",
               fontSize: 14,
-              fontWeight: 500,
+              fontWeight: 600,
               fontFamily: "inherit",
               textDecoration: "none",
-              boxShadow: "0px 1px 2px 0px rgba(0,0,0,0.1), 0px 1px 3px 0px rgba(0,0,0,0.1)",
+              boxShadow: "0 0 20px rgba(251,146,60,0.2), 0 4px 12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2)",
             }}
           >
             Get started
@@ -234,15 +332,16 @@ export default function Home() {
               display: "inline-flex",
               alignItems: "center",
               gap: 8,
-              padding: "12px 24px",
-              borderRadius: 8,
-              background: "linear-gradient(0deg, rgba(9,9,11,0.05) 0%, rgba(9,9,11,0.1) 100%)",
+              padding: "14px 28px",
+              borderRadius: 10,
+              background: "rgba(255,255,255,0.04)",
               color: "#fafafa",
               fontSize: 14,
               fontWeight: 500,
               fontFamily: "inherit",
               textDecoration: "none",
-              border: "1px solid rgba(255,255,255,0.1)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.2)",
             }}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -257,7 +356,7 @@ export default function Home() {
                 padding: "2px 8px",
                 borderRadius: 6,
                 background: "rgba(255,255,255,0.06)",
-                border: "1px solid rgba(255,255,255,0.08)",
+                border: "1px solid rgba(255,255,255,0.1)",
                 fontSize: 12,
                 fontWeight: 500,
                 color: "#a1a1aa",

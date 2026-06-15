@@ -3,6 +3,7 @@
 import { useEffect, useState, useCallback, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { CommandMenu } from "./command-menu";
 
 function SunIcon() {
   return (
@@ -135,13 +136,12 @@ function triggerTriangleTransition(
 export function Navbar() {
   const [isDark, setIsDark] = useState(true);
   const [showComingSoon, setShowComingSoon] = useState(false);
+  const [cmdOpen, setCmdOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
   const [hovered, setHovered] = useState(false);
   const borderRef = useRef<SVGSVGElement>(null);
   const dotsRef = useRef<HTMLDivElement>(null);
   const [searchHover, setSearchHover] = useState<{ x: number; y: number } | null>(null);
-  const [searchFocused, setSearchFocused] = useState(false);
-  const [searchHasValue, setSearchHasValue] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
   const isDocs = pathname.startsWith("/docs");
@@ -152,6 +152,17 @@ export function Navbar() {
       setIsDark(stored === "dark");
       document.documentElement.setAttribute("data-theme", stored);
     }
+  }, []);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setCmdOpen(true);
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
   }, []);
 
   useEffect(() => {
@@ -239,6 +250,7 @@ export function Navbar() {
         <div
           ref={searchRef}
           data-nav-search
+          onClick={() => setCmdOpen(true)}
           onMouseMove={(e) => {
             const rect = e.currentTarget.getBoundingClientRect();
             setSearchHover({ x: e.clientX - rect.left, y: e.clientY - rect.top });
@@ -250,17 +262,14 @@ export function Navbar() {
             gap: 8,
             padding: "6px 12px",
             borderRadius: 8,
-            border: `1px solid ${isDark ? ((searchHover || searchFocused || searchHasValue) ? "#555" : "#333") : ((searchHover || searchFocused || searchHasValue) ? "#bbb" : "#d4d4d4")}`,
-            background: (searchHover || searchFocused || searchHasValue)
-              ? searchHover
-                ? `radial-gradient(circle 140px at ${searchHover.x}px ${searchHover.y}px, ${isDark ? "rgba(255,255,255,0.18)" : "rgba(200,200,200,0.25)"}, ${isDark ? "rgba(255,255,255,0.04)" : "rgba(240,240,240,0.08)"})`
-                : isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.04)"
+            border: `1px solid ${isDark ? (searchHover ? "#555" : "#333") : (searchHover ? "#bbb" : "#d4d4d4")}`,
+            background: searchHover
+              ? `radial-gradient(circle 140px at ${searchHover.x}px ${searchHover.y}px, ${isDark ? "rgba(255,255,255,0.18)" : "rgba(200,200,200,0.25)"}, ${isDark ? "rgba(255,255,255,0.04)" : "rgba(240,240,240,0.08)"})`
               : isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.03)",
-            cursor: "text",
+            cursor: "pointer",
             height: 36,
             minWidth: 200,
             transition: "border-color 0.15s ease",
-            "--search-placeholder-hover": isDark ? "#bbb" : "#444",
           } as React.CSSProperties}
         >
           <svg
@@ -268,7 +277,7 @@ export function Navbar() {
             height="14"
             viewBox="0 0 24 24"
             fill="none"
-            style={{ stroke: (searchHover || searchFocused || searchHasValue) ? (isDark ? "#ccc" : "#555") : (isDark ? "#666" : "#999"), transition: "stroke 0.15s ease", flexShrink: 0 }}
+            style={{ stroke: searchHover ? (isDark ? "#ccc" : "#555") : (isDark ? "#666" : "#999"), transition: "stroke 0.15s ease", flexShrink: 0 }}
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -276,25 +285,18 @@ export function Navbar() {
             <circle cx="11" cy="11" r="8" />
             <line x1="21" y1="21" x2="16.65" y2="16.65" />
           </svg>
-          <input
-            data-nav-search-text
-            type="text"
-            placeholder="Search documentation..."
-            onFocus={() => setSearchFocused(true)}
-            onBlur={() => setSearchFocused(false)}
-            onInput={(e) => setSearchHasValue((e.target as HTMLInputElement).value.length > 0)}
+          <span
             style={{
-              border: "none",
-              outline: "none",
-        background: isDark ? "#000000" : "#ffffff",
               fontSize: 13,
-              color: isDark ? "#fff" : "#0d0d0d",
+              color: isDark ? "#666" : "#999",
               fontFamily: "inherit",
               flex: 1,
+              textAlign: "left",
               minWidth: 0,
-              caretColor: isDark ? "#fff" : "#000",
             }}
-          />
+          >
+            Search documentation...
+          </span>
           <span
             data-nav-search-badge
             style={{
@@ -303,14 +305,9 @@ export function Navbar() {
               gap: 2,
               fontSize: 11,
               fontFamily: "inherit",
-              color: (searchHover || searchFocused || searchHasValue) ? (isDark ? "#eee" : "#222") : (isDark ? "#555" : "#aaa"),
-              border: `1px solid ${isDark ? ((searchHover || searchFocused || searchHasValue) ? "#666" : "#333") : ((searchHover || searchFocused || searchHasValue) ? "#999" : "#d4d4d4")}`,
-              background: (searchHover || searchFocused || searchHasValue) ? (isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.06)") : "transparent",
-              boxShadow: (searchHover || searchFocused || searchHasValue)
-                ? isDark
-                  ? "0 0 10px rgba(255,255,255,0.15), inset 0 0 6px rgba(255,255,255,0.05)"
-                  : "0 0 10px rgba(0,0,0,0.1), inset 0 0 6px rgba(0,0,0,0.03)"
-                : "none",
+              color: searchHover ? (isDark ? "#eee" : "#222") : (isDark ? "#555" : "#aaa"),
+              border: `1px solid ${isDark ? (searchHover ? "#666" : "#333") : (searchHover ? "#999" : "#d4d4d4")}`,
+              background: searchHover ? (isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.06)") : "transparent",
               transition: "all 0.2s ease",
               borderRadius: 4,
               padding: "2px 5px",
@@ -476,6 +473,7 @@ export function Navbar() {
         100% { opacity: 0; }
       }
     `}} />
+    <CommandMenu open={cmdOpen} onClose={() => setCmdOpen(false)} />
     </>
   );
 }
