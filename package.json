@@ -16,6 +16,7 @@
     "next": "^14.2.22",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "source-map-support": "^0.5.21",
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
