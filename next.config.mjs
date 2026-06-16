@@ -11,7 +11,6 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ["next/image"],
   },
-  serverExternalPackages: ["shadcn"],
   poweredByHeader: false,
   compress: true,
   async headers() {

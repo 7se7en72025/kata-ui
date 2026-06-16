@@ -9,6 +9,11 @@ const Analytics = dynamic(
   { ssr: false }
 );
 
+const SpeedInsights = dynamic(
+  () => import("@vercel/speed-insights/next").then((m) => ({ default: m.SpeedInsights })),
+  { ssr: false }
+);
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -51,7 +56,7 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/dashboard-mockup.png" fetchPriority="high" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body style={{ fontFamily: "var(--font-sans), system-ui, sans-serif" }} suppressHydrationWarning>{children}<Analytics /></body>
+      <body style={{ fontFamily: "var(--font-sans), system-ui, sans-serif" }} suppressHydrationWarning>{children}<Analytics /><SpeedInsights /></body>
     </html>
   );
 }
