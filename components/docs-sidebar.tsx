@@ -29,13 +29,6 @@ const navigation: NavGroup[] = [
     ],
   },
   {
-    title: "Preloader",
-    icon: "\u25B6",
-    items: [
-      { label: "Terminal Preloader", href: "/docs/preloader/terminal-preloader", isNew: true },
-    ],
-  },
-  {
     title: "Effects",
     icon: "\u26A1",
     items: [

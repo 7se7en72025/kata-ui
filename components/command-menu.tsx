@@ -18,7 +18,6 @@ const items: CommandItem[] = [
   { title: "Installation (CLI)", desc: "Add components with the CLI.", href: "/docs/installation/cli", category: "Docs" },
   { title: "Installation (Utilities)", desc: "Utility functions and helpers.", href: "/docs/installation/utilities", category: "Docs" },
   { title: "Shrine Cards", desc: "Stacked card layout with hover expand.", href: "/docs/layout/shrine-cards", category: "Components" },
-  { title: "Terminal Preloader", desc: "Animated terminal-style loading screen.", href: "/docs/preloader/terminal-preloader", category: "Components" },
   { title: "Glitch Text", desc: "Glitch slice animation effect for text.", href: "/docs/effects/glitch-text", category: "Components" },
   { title: "Home", desc: "Back to the landing page.", href: "/", category: "Navigation" },
 ];

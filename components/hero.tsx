@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
+import { useEffect, useRef } from "react";
 import AnimatedButton from "./animated-button";
 import GlowButton from "./glow-button";
 
@@ -12,9 +13,28 @@ const LiquidMetalBadge = dynamic(
 
 export function Hero() {
   const router = useRouter();
+  const badgeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = badgeRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          import("./liquid-metal");
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
+      ref={badgeRef}
       style={{
         position: "relative",
         width: "100%",

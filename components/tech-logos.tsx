@@ -140,58 +140,6 @@ export function TechLogos() {
         </span>
       </h3>
 
-      <style>{`
-        @keyframes marquee {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .tech-marquee {
-          display: flex;
-          width: max-content;
-          animation: marquee 25s linear infinite;
-          will-change: transform;
-        }
-        .tech-marquee:hover {
-          animation-play-state: paused;
-        }
-        .tech-item {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 10px 28px;
-          margin: 0 10px;
-          border-radius: 9999px;
-          border: 1px solid rgba(255,255,255,0.06);
-          background: rgba(255,255,255,0.02);
-          transition: border-color 0.25s ease, background 0.25s ease;
-          white-space: nowrap;
-        }
-        .tech-item:hover {
-          border-color: rgba(255,255,255,0.15);
-          background: rgba(255,255,255,0.06);
-        }
-        .tech-icon {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 28px;
-          height: 28px;
-        }
-        .tech-name {
-          font-size: 15px;
-          font-weight: 500;
-          color: #e4e4e7;
-          font-family: inherit;
-          letter-spacing: -0.01em;
-        }
-        .tech-version {
-          font-size: 13px;
-          color: #52525b;
-          font-family: inherit;
-          margin-left: 4px;
-        }
-      `}</style>
-
       <div style={{ overflow: "hidden" }}>
         <div className="tech-marquee">
           {[...tools, ...tools].map((tool, i) => (

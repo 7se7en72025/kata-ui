@@ -101,14 +101,6 @@ export function TestimonialsSection() {
         overflow: "hidden",
       }}
     >
-      <style>{`
-        @keyframes testimonial-scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .testimonial-scroll-track:hover { animation-play-state: paused; }
-        .testimonials-section { content-visibility: auto; contain-intrinsic-size: 0 600px; }
-      `}</style>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 36 }}>
         <h2
           style={{

@@ -1,15 +1,17 @@
 import Image from "next/image";
-import { EmberParticles } from "@/components/ember-particles";
-import { TechLogos } from "@/components/tech-logos";
-import { ComponentShowcase } from "@/components/component-showcase";
-import { ImpressionSection } from "@/components/impression-section";
-import { TestimonialsSection } from "@/components/testimonials-section";
-import { FaqSection } from "@/components/faq-section";
+import dynamic from "next/dynamic";
 import { SideFrame } from "@/components/side-frame";
 import { LazySection } from "@/components/lazy-section";
 import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { Footer } from "@/components/footer";
+
+const EmberParticles = dynamic(() => import("@/components/ember-particles").then(m => ({ default: m.EmberParticles })), { ssr: false });
+const TechLogos = dynamic(() => import("@/components/tech-logos").then(m => ({ default: m.TechLogos })), { ssr: false });
+const ComponentShowcase = dynamic(() => import("@/components/component-showcase").then(m => ({ default: m.ComponentShowcase })), { ssr: false });
+const ImpressionSection = dynamic(() => import("@/components/impression-section").then(m => ({ default: m.ImpressionSection })), { ssr: false });
+const TestimonialsSection = dynamic(() => import("@/components/testimonials-section").then(m => ({ default: m.TestimonialsSection })), { ssr: false });
+const FaqSection = dynamic(() => import("@/components/faq-section").then(m => ({ default: m.FaqSection })), { ssr: false });
 
 function DashboardPreview() {
   return (

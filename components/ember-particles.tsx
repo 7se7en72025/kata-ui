@@ -41,27 +41,6 @@ export function EmberParticles() {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes ember-float {
-          0% { opacity: 0; transform: translateY(0) translateX(0) scale(1); }
-          10% { opacity: 1; }
-          90% { opacity: 0.5; }
-          100% { opacity: 0; transform: translateY(-280px) translateX(var(--d)) scale(0.2); }
-        }
-        .ember-cluster {
-          position: absolute; top: 0; width: 140px; height: 100%;
-          pointer-events: none; z-index: 2;
-          will-change: transform;
-        }
-        .ember-cluster--left { left: -20px; }
-        .ember-cluster--right { right: -20px; }
-        .ember-dot {
-          position: absolute; bottom: 0; border-radius: 50%;
-          will-change: transform, opacity;
-          animation: ember-float var(--dur) ease-out infinite;
-          animation-delay: var(--del);
-        }
-      `}} />
       <div className="ember-cluster ember-cluster--left">
         {particles.left.map((p, i) => (
           <div

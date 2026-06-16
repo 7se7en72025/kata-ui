@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 
 const features = [
   {
@@ -240,19 +241,15 @@ export function ImpressionSection() {
                   border: "1px solid rgba(255,255,255,0.1)",
                 }}
               >
-                <img
+                <Image
                   src="/dashboard-mockup.png"
                   alt="Dashboard preview"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 800px"
                   style={{
-                    width: "100.16%",
-                    height: "100.21%",
                     objectFit: "cover",
-                    position: "absolute",
-                    top: "-0.1%",
-                    left: "-0.08%",
+                    objectPosition: "top left",
                   }}
-                  loading="lazy"
-                  decoding="async"
                 />
               </div>
             </div>

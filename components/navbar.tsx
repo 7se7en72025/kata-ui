@@ -191,6 +191,7 @@ export function Navbar() {
     <>
     <nav
       ref={navRef}
+      className={isDocs ? "nav-docs" : "nav-home"}
       style={{
         position: "fixed",
         top: 0,
@@ -201,16 +202,11 @@ export function Navbar() {
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
-        padding: isDocs ? "0 16px" : "0 16px",
+        padding: "0 16px",
         background: isDark ? "#000000" : "#ffffff",
         pointerEvents: "none",
       }}
     >
-      <style>{`
-        @media (min-width: 769px) {
-          nav { padding-left: ${isDocs ? "24px" : "68px"} !important; padding-right: ${isDocs ? "24px" : "68px"} !important; }
-        }
-      `}</style>
       <div
         data-nav-logo
         style={{
@@ -515,14 +511,6 @@ export function Navbar() {
         Light theme coming soon
       </div>
     )}
-    <style dangerouslySetInnerHTML={{ __html: `
-      @keyframes fadeInOut {
-        0% { opacity: 0; transform: translateX(-50%) translateY(-4px); }
-        15% { opacity: 1; transform: translateX(-50%) translateY(0); }
-        80% { opacity: 1; }
-        100% { opacity: 0; }
-      }
-    `}} />
     <CommandMenu open={cmdOpen} onClose={() => setCmdOpen(false)} />
     </>
   );

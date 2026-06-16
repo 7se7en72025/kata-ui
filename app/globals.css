@@ -236,6 +236,97 @@ body {
   animation: glow-pulse 4s ease-in-out infinite;
 }
 
+/* Ember particles */
+@keyframes ember-float {
+  0% { opacity: 0; transform: translateY(0) translateX(0) scale(1); }
+  10% { opacity: 1; }
+  90% { opacity: 0.5; }
+  100% { opacity: 0; transform: translateY(-280px) translateX(var(--d)) scale(0.2); }
+}
+.ember-cluster {
+  position: absolute; top: 0; width: 140px; height: 100%;
+  pointer-events: none; z-index: 2;
+  will-change: transform;
+}
+.ember-cluster--left { left: -20px; }
+.ember-cluster--right { right: -20px; }
+.ember-dot {
+  position: absolute; bottom: 0; border-radius: 50%;
+  will-change: transform, opacity;
+  animation: ember-float var(--dur) ease-out infinite;
+  animation-delay: var(--del);
+}
+
+/* Testimonial scroll */
+@keyframes testimonial-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.testimonial-scroll-track:hover { animation-play-state: paused; }
+
+/* Tech logos marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.tech-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+  will-change: transform;
+}
+.tech-marquee:hover { animation-play-state: paused; }
+.tech-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 28px;
+  margin: 0 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  transition: border-color 0.25s ease, background 0.25s ease;
+  white-space: nowrap;
+}
+.tech-item:hover {
+  border-color: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+}
+.tech-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+}
+.tech-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #e4e4e7;
+  font-family: inherit;
+  letter-spacing: -0.01em;
+}
+.tech-version {
+  font-size: 13px;
+  color: #52525b;
+  font-family: inherit;
+  margin-left: 4px;
+}
+
+/* Navbar toast */
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateX(-50%) translateY(-4px); }
+  15% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Navbar responsive padding */
+@media (min-width: 769px) {
+  nav.nav-home { padding-left: 68px !important; padding-right: 68px !important; }
+  nav.nav-docs { padding-left: 24px !important; padding-right: 24px !important; }
+}
+
 /* Responsive utilities — scale proportions only, never change layout */
 @media (max-width: 768px) {
   /* Hide side rulers only */

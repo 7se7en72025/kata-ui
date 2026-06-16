@@ -7,7 +7,6 @@ const components = [
   { category: "Form", name: "Chakra Input", slug: null },
   { category: "Display", name: "Shrine Cards", slug: "/docs/layout/shrine-cards" },
   { category: "Navigation", name: "Arc Selector", slug: null },
-  { category: "Feedback", name: "Terminal Preloader", slug: "/docs/preloader/terminal-preloader" },
   { category: "Effect", name: "Liquid Metal", slug: null },
   { category: "Motion", name: "Glitch Text", slug: "/docs/effects/glitch-text" },
   { category: "Action", name: "Domain Button", slug: null },
