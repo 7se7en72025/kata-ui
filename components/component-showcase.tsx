@@ -3,13 +3,14 @@
 import React from "react";
 
 const components = [
-  { category: "Interactive", name: "Reiatsu Card", slug: null },
-  { category: "Form", name: "Chakra Input", slug: null },
+  { category: "Hero", name: "Hero", slug: "/docs/components/hero" },
+  { category: "Effect", name: "Glitch Text", slug: "/docs/effects/glitch-text" },
+  { category: "Effect", name: "Liquid Metal", slug: "/docs/components/liquid-metal" },
+  { category: "Action", name: "Glow Button", slug: "/docs/components/glow-button" },
+  { category: "Navigation", name: "Navbar", slug: "/docs/components/navbar" },
   { category: "Display", name: "Shrine Cards", slug: "/docs/layout/shrine-cards" },
-  { category: "Navigation", name: "Arc Selector", slug: null },
-  { category: "Effect", name: "Liquid Metal", slug: null },
-  { category: "Motion", name: "Glitch Text", slug: "/docs/effects/glitch-text" },
-  { category: "Action", name: "Domain Button", slug: null },
+  { category: "Utility", name: "Error Boundary", slug: "/docs/components/error-boundary" },
+  { category: "Layout", name: "FAQ Section", slug: "/docs/components/faq-section" },
 ];
 
 export function ComponentShowcase() {
@@ -54,7 +55,7 @@ export function ComponentShowcase() {
         {components.map((comp, i) => (
           <a
             key={i}
-            href={comp.slug || "#"}
+            href={comp.slug}
             style={{
               display: "flex",
               flexDirection: "column",
@@ -66,7 +67,7 @@ export function ComponentShowcase() {
               background: "rgba(255,255,255,0.02)",
               textDecoration: "none",
               transition: "all 0.25s ease",
-              cursor: comp.slug ? "pointer" : "default",
+              cursor: "pointer",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.borderColor = "rgba(255,255,255,0.12)";

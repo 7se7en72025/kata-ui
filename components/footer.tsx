@@ -33,7 +33,7 @@ export const Footer = memo(function Footer() {
             KataUI
           </span>
           <span className="text-xs" style={{ color: "#888" }}>
-            made with ❤ by 777
+            made with ❤ by 7se7en72025
           </span>
         </div>
       </div>

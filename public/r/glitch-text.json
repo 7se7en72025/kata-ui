@@ -2,7 +2,7 @@
   "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "glitch-text",
   "title": "Glitch Text",
-  "description": "Cyberpunk text effect with constant chromatic aberration, horizontal slice distortion, and CRT scanlines using the Doctor Glitch font.",
+  "description": "Cyberpunk text effect with constant chromatic aberration, horizontal slice distortion, and CRT scanlines.",
   "files": [
     {
       "path": "registry/ui/glitch-text.tsx",
