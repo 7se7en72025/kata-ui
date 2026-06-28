@@ -22,6 +22,19 @@ const navigation: NavGroup[] = [
     ],
   },
   {
+    title: "Components",
+    icon: "\u2726",
+    items: [
+      { label: "Hero", href: "/docs/components/hero" },
+      { label: "Glow Button", href: "/docs/components/glow-button" },
+      { label: "Navbar", href: "/docs/components/navbar" },
+      { label: "Liquid Metal", href: "/docs/components/liquid-metal" },
+      { label: "Error Boundary", href: "/docs/components/error-boundary" },
+      { label: "FAQ Section", href: "/docs/components/faq-section" },
+      { label: "Lazy Section", href: "/docs/components/lazy-section" },
+    ],
+  },
+  {
     title: "Layout",
     icon: "\u25A2",
     items: [{ label: "Shrine Cards", href: "/docs/layout/shrine-cards" }],

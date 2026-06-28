@@ -182,7 +182,7 @@
       "description": "Collapsible FAQ accordion with smooth animations and keyboard navigation.",
       "files": [
         {
-          "path": "components/faq-section.tsx",
+          "path": "registry/ui/faq-section.tsx",
           "type": "registry:ui"
         }
       ]
@@ -194,7 +194,7 @@
       "description": "Syntax-highlighted code block with copy button and tab support.",
       "files": [
         {
-          "path": "components/code-block.tsx",
+          "path": "registry/ui/code-block.tsx",
           "type": "registry:ui"
         }
       ]
@@ -206,7 +206,7 @@
       "description": "React error boundary with retry functionality and custom fallback UI.",
       "files": [
         {
-          "path": "components/error-boundary.tsx",
+          "path": "registry/ui/error-boundary.tsx",
           "type": "registry:ui"
         }
       ]
@@ -218,7 +218,7 @@
       "description": "Animated tech stack marquee with auto-scrolling logos.",
       "files": [
         {
-          "path": "components/tech-logos.tsx",
+          "path": "registry/ui/tech-logos.tsx",
           "type": "registry:ui"
         }
       ]
@@ -230,7 +230,7 @@
       "description": "Lazy-load section with IntersectionObserver for performance optimization.",
       "files": [
         {
-          "path": "components/lazy-section.tsx",
+          "path": "registry/ui/lazy-section.tsx",
           "type": "registry:ui"
         }
       ]
@@ -239,10 +239,10 @@
       "name": "testimonials-section",
       "type": "registry:ui",
       "title": "Testimonials Section",
-      "description": "Social proof section with animated testimonial cards.",
+      "description": "Social proof section with animated scrolling testimonial cards.",
       "files": [
         {
-          "path": "components/testimonials-section.tsx",
+          "path": "registry/ui/testimonials-section.tsx",
           "type": "registry:ui"
         }
       ]
@@ -254,7 +254,7 @@
       "description": "Feature showcase with interactive tabs and smooth transitions.",
       "files": [
         {
-          "path": "components/impression-section.tsx",
+          "path": "registry/ui/impression-section.tsx",
           "type": "registry:ui"
         }
       ]

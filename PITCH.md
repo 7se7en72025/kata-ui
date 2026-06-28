@@ -8,22 +8,29 @@
 
 Most component libraries focus on how things look. Kata UI focuses on how things **feel**. Every component is built around physics-based animations, intention-driven interactions, and weight — the sense that UI elements have mass and momentum.
 
+---
+
 ### The Problem
 
-React developers building modern landing pages and marketing sites face a choice:
+React developers building modern landing pages and marketing sites face a painful tradeoff:
 
-1. **Use a component library** (shadcn/ui, Radix) — great for forms and data, but static and lifeless
+1. **Use a component library** (shadcn/ui, Radix) — excellent for forms and data, but static and lifeless
 2. **Build custom animations** — requires deep expertise in Framer Motion, GSAP, or WebGL
 3. **Use template sites** — locked into someone else's design, not customizable
 
-There's no middle ground. **Kata UI is that middle ground** — copy-paste components with built-in motion that work out of the box.
+**There's no middle ground.** Kata UI is that middle ground — copy-paste components with built-in motion that work out of the box.
+
+---
 
 ### Who Uses It
 
-- **Solo developers** building landing pages who want polish without the animation expertise
-- **Design engineers** prototyping interactive experiences
-- **Startups** shipping marketing sites fast
-- **Open source projects** needing accessible, production-ready components
+- **Solo developers** building landing pages who want polish without animation expertise
+- **Design engineers** prototyping interactive experiences at startups
+- **Marketing teams** shipping high-conversion landing pages fast
+- **Open source projects** needing accessible, production-ready motion components
+- **Bootcamp graduates** who want to ship impressive sites without deep CSS knowledge
+
+---
 
 ### What Makes It Different
 
@@ -31,62 +38,88 @@ There's no middle ground. **Kata UI is that middle ground** — copy-paste compo
 | --------------------- | ------- | --------- | ---------------- |
 | Motion built-in       | Yes     | No        | Yes              |
 | Accessible (axe-core) | Yes     | Partial   | No               |
-| Copy-paste            | Yes     | Yes       | No               |
+| Copy-paste ready      | Yes     | Yes       | No               |
 | shadcn registry       | Yes     | N/A       | No               |
-| Free forever          | Yes     | Yes       | No               |
+| Free forever (MIT)    | Yes     | Yes       | No               |
+| WebGL shaders         | Yes     | No        | No               |
+| E2E tested            | Yes     | No        | No               |
+
+**Key differentiator:** Kata UI is the only React component library that combines **motion-first design**, **accessibility testing**, and **shadcn registry compatibility** in a single package.
+
+---
 
 ### Technical Quality
 
 - **45 unit tests** with Vitest + React Testing Library
-- **Accessibility testing** with axe-core WCAG compliance
-- **E2E tests** across Chromium, Firefox, WebKit
+- **Accessibility testing** with axe-core on every PR (WCAG compliance)
+- **E2E tests** across Chromium, Firefox, and WebKit
 - **TypeScript strict mode** — zero `any` types
 - **Tree-shakable** — import only what you need
-- **CI/CD** — GitHub Actions with test matrix, CodeQL security scanning, Lighthouse audits
+- **CI/CD** — GitHub Actions with test matrix (Ubuntu/Windows x Node 18/20), CodeQL security scanning, Lighthouse performance audits
+- **Docker** — Multi-arch build with Trivy vulnerability scanning
+- **Nightly builds** — Scheduled dependency health checks
+
+---
 
 ### Growth Potential
 
-The component ecosystem is moving toward motion. React 19, Next.js 14+, and the rise of AI-powered UI generation all favor dynamic, animated interfaces. Kata UI is positioned to be the go-to library for this shift.
+The React ecosystem is moving toward motion. React 19, Next.js 14+, and the rise of AI-powered UI generation all favor dynamic, animated interfaces. Kata UI is positioned to be the go-to library for this shift.
 
 **Current trajectory:**
 
-- Deployed on Vercel with live documentation
-- shadcn registry for zero-friction adoption
-- Comprehensive CI/CD pipeline
-- Production-ready components
+- 20+ installable components via shadcn registry
+- Live documentation site on Vercel with preview deployments
+- Comprehensive CI/CD pipeline ensuring quality
+- Production-ready components with TypeScript support
+- Community-ready with CONTRIBUTING.md, Code of Conduct, and issue templates
+
+**Growth roadmap:**
+
+- More motion components (parallax, scroll animations, page transitions)
+- Framer Motion integration layer
+- AI-assisted component generation
+- Figma design kit
+- Community component submissions
+
+---
 
 ### How Vercel Credits Help
 
 The $3,600 in platform credits would be used for:
 
-1. **Hosting** — Keep the documentation site fast and reliable
-2. **Preview deployments** — Every PR gets a live preview for faster iteration
+1. **Hosting** — Keep the documentation site fast and reliable as traffic grows
+2. **Preview deployments** — Every PR gets a live preview for faster iteration and community review
 3. **Analytics** — Track which components are most used to prioritize development
-4. **Speed Insights** — Ensure the site stays performant as it grows
+4. **Speed Insights** — Ensure the site stays performant as the component library grows
+
+---
 
 ### The Bigger Picture
 
 Kata UI contributes to the open source ecosystem by making motion accessible. Instead of every developer reinventing animation patterns, they can install a component and get physics-based interactions for free.
 
-This is exactly what shadcn/ui did for forms. Kata UI does it for motion.
+This is exactly what shadcn/ui did for forms. **Kata UI does it for motion.**
 
 ---
 
 ## Application Checklist
 
-- [x] Open source (MIT license)
-- [x] Hosted on Vercel
-- [x] Code of Conduct
-- [x] Active development
-- [x] Live documentation site
-- [x] shadcn registry (CLI installable)
-- [x] Comprehensive testing
-- [x] CI/CD pipeline
-- [x] TypeScript strict mode
-- [x] Accessibility testing
+- [x] Open source (MIT license) — [LICENSE](LICENSE)
+- [x] Hosted on Vercel — [kata-ui.vercel.app](https://kata-ui.vercel.app)
+- [x] Code of Conduct — [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- [x] Active development — 45+ tests, CI/CD pipeline, regular commits
+- [x] Live documentation site with interactive demos
+- [x] shadcn registry — CLI installable via `npx shadcn@latest add <component>`
+- [x] Comprehensive testing — unit, integration, E2E, accessibility
+- [x] CI/CD pipeline — GitHub Actions with test matrix + security scanning
+- [x] TypeScript strict mode — zero `any` types
+- [x] Accessibility testing — axe-core on every PR
+- [x] Security policy — [SECURITY.md](SECURITY.md)
+- [x] Contributing guide — [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ---
 
 _Applied: August 2026_
 _GitHub: https://github.com/7se7en72025/kata-ui_
 _Demo: https://kata-ui.vercel.app_
+_npm: https://www.npmjs.com/package/kata-ui_

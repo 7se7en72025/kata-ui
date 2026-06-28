@@ -4,7 +4,9 @@
 
 # Kata UI
 
-**Motion-driven React components built with intention and weight.**
+**Motion-driven React components that feel alive.**
+
+Form follows force. Not just what things look like — how they feel.
 
 [![NPM Version](https://img.shields.io/npm/v/kata-ui.svg)](https://www.npmjs.com/package/kata-ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -23,39 +25,44 @@
 
 ## What is Kata UI?
 
-Kata UI is a collection of motion-driven React components designed for modern web applications. Each component is crafted with attention to **accessibility**, **performance**, and **developer experience**.
+Most component libraries focus on how things look. **Kata UI focuses on how things feel.** Every component is built with physics-based animations, intention-driven interactions, and the sense that UI elements have mass and momentum.
 
-> "Form follows force. Not just what things look like, how they feel."
+> **Form follows force.** Not just what things look like, how they feel.
 
 ### Why Kata UI?
 
-- **Motion-First Design** — Smooth, physics-based animations built-in
-- **Accessible** — WCAG compliant, tested with axe-core
-- **Type-Safe** — Full TypeScript support with autocompletion
-- **Copy-Paste Ready** — Self-contained components, no vendor lock-in
-- **Dark Mode** — Built-in theme support
-- **Tree-Shakable** — Import only what you need
-- **20+ Components** — Hero sections, effects, buttons, navigation, utilities
+| Feature               | Description                                            |
+| --------------------- | ------------------------------------------------------ |
+| **Motion-First**      | Physics-based animations built into every component    |
+| **Accessible**        | WCAG compliant, tested with axe-core on every PR       |
+| **Type-Safe**         | TypeScript strict mode with full autocompletion        |
+| **Copy-Paste**        | Self-contained components, zero vendor lock-in         |
+| **Dark Mode**         | Built-in theme support with CSS variables              |
+| **Tree-Shakable**     | Import only what you need                              |
+| **20+ Components**    | Hero sections, effects, buttons, navigation, utilities |
+| **shadcn Compatible** | Install via CLI: `npx shadcn@latest add hero`          |
 
 ### Live Demo
 
 **[kata-ui.vercel.app](https://kata-ui.vercel.app)** — See all components in action with live code examples.
 
+---
+
 ## Quick Start
 
-### Installation (shadcn/ui compatible)
+### Install via shadcn/ui CLI
 
 ```bash
 npx shadcn@latest add https://kata-ui.vercel.app/r/hero
 ```
 
-### Manual Installation
+### Install via npm
 
 ```bash
 npm install kata-ui
 ```
 
-### Clone & Run
+### Clone & Run Locally
 
 ```bash
 git clone https://github.com/7se7en72025/kata-ui.git
@@ -66,52 +73,52 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
-## Documentation
-
-Visit **[kata-ui.vercel.app](https://kata-ui.vercel.app)** for:
-
-- Live interactive demos
-- Installation guides
-- API reference
-- Customization tips
+---
 
 ## Components
 
+All 20+ components are installable via the [shadcn/ui registry](https://kata-ui.vercel.app). Each component is copy-paste ready, accessible, and motion-driven.
+
 ### Hero & Landing
 
-| Component             | Description                               | Install                                      |
-| --------------------- | ----------------------------------------- | -------------------------------------------- |
-| `Hero`                | Landing page hero with liquid metal badge | `npx shadcn@latest add hero`                 |
-| `ImpressionSection`   | Feature showcase with animations          | `npx shadcn@latest add impression-section`   |
-| `TestimonialsSection` | Social proof carousel                     | `npx shadcn@latest add testimonials-section` |
-| `FaqSection`          | Collapsible FAQ accordion                 | `npx shadcn@latest add faq-section`          |
+| Component             | Description                                                        | Install                                      |
+| --------------------- | ------------------------------------------------------------------ | -------------------------------------------- |
+| `Hero`                | Landing hero with liquid metal badge, gradient text, animated rays | `npx shadcn@latest add hero`                 |
+| `ImpressionSection`   | Feature showcase with interactive tabs and dashboard mockup        | `npx shadcn@latest add impression-section`   |
+| `TestimonialsSection` | Social proof with auto-scrolling testimonial cards                 | `npx shadcn@latest add testimonials-section` |
+| `FaqSection`          | Collapsible FAQ accordion with smooth animations                   | `npx shadcn@latest add faq-section`          |
+| `ShrineCards`         | Shrine-style card layout with hover effects                        | `npx shadcn@latest add shrine-cards`         |
 
 ### Effects & Animation
 
-| Component        | Description                   | Install                                 |
-| ---------------- | ----------------------------- | --------------------------------------- |
-| `GlitchText`     | Cyberpunk glitch text effect  | `npx shadcn@latest add glitch-text`     |
-| `LiquidMetal`    | 3D liquid metal shader        | `npx shadcn@latest add liquid-metal`    |
-| `GlowButton`     | Button with glow hover effect | `npx shadcn@latest add glow-button`     |
-| `AnimatedButton` | Button with press animation   | `npx shadcn@latest add animated-button` |
-| `AnimatedRays`   | Rotating ray background       | `npx shadcn@latest add animated-rays`   |
+| Component        | Description                                                | Install                                 |
+| ---------------- | ---------------------------------------------------------- | --------------------------------------- |
+| `GlitchText`     | Cyberpunk glitch with chromatic aberration + CRT scanlines | `npx shadcn@latest add glitch-text`     |
+| `LiquidMetal`    | 3D liquid metal shader with chrome border effect           | `npx shadcn@latest add liquid-metal`    |
+| `GlowButton`     | Button with animated glow hover and press feedback         | `npx shadcn@latest add glow-button`     |
+| `AnimatedButton` | Button with physics-based press animation                  | `npx shadcn@latest add animated-button` |
+| `AnimatedRays`   | Rotating ray background for hero sections                  | `npx shadcn@latest add animated-rays`   |
 
 ### Layout & Navigation
 
-| Component     | Description                           | Install                              |
-| ------------- | ------------------------------------- | ------------------------------------ |
-| `Navbar`      | Fixed navbar with theme toggle        | `npx shadcn@latest add navbar`       |
-| `Footer`      | Bottom footer with branding           | `npx shadcn@latest add footer`       |
-| `SideFrame`   | SVG ruler guides with cursor tracking | `npx shadcn@latest add side-frame`   |
-| `LazySection` | Lazy-load with IntersectionObserver   | `npx shadcn@latest add lazy-section` |
+| Component     | Description                                                    | Install                              |
+| ------------- | -------------------------------------------------------------- | ------------------------------------ |
+| `Navbar`      | Fixed navbar with theme toggle, search spotlight, border trace | `npx shadcn@latest add navbar`       |
+| `Footer`      | Branded footer with theme-aware styling                        | `npx shadcn@latest add footer`       |
+| `SideFrame`   | SVG ruler guides with scroll/cursor tracking                   | `npx shadcn@latest add side-frame`   |
+| `LazySection` | Lazy-load with IntersectionObserver (400px root margin)        | `npx shadcn@latest add lazy-section` |
+| `DocsSidebar` | Documentation sidebar with active state tracking               | `npx shadcn@latest add docs-sidebar` |
 
 ### Utility
 
-| Component       | Description                        | Install                                |
-| --------------- | ---------------------------------- | -------------------------------------- |
-| `CodeBlock`     | Syntax-highlighted code block      | `npx shadcn@latest add code-block`     |
-| `ErrorBoundary` | React error boundary with recovery | `npx shadcn@latest add error-boundary` |
-| `TechLogos`     | Animated tech stack marquee        | `npx shadcn@latest add tech-logos`     |
+| Component       | Description                                       | Install                                |
+| --------------- | ------------------------------------------------- | -------------------------------------- |
+| `CodeBlock`     | Syntax-highlighted code with copy button + tabs   | `npx shadcn@latest add code-block`     |
+| `ErrorBoundary` | React error boundary with retry + custom fallback | `npx shadcn@latest add error-boundary` |
+| `TechLogos`     | Animated tech stack marquee with auto-scrolling   | `npx shadcn@latest add tech-logos`     |
+| `StackedLogos`  | Logo carousel with hover effects                  | `npx shadcn@latest add stacked-logos`  |
+
+---
 
 ## Tech Stack
 
@@ -125,32 +132,42 @@ Visit **[kata-ui.vercel.app](https://kata-ui.vercel.app)** for:
 
 </div>
 
+---
+
 ## Scripts
 
-| Command                 | Description               |
-| ----------------------- | ------------------------- |
-| `npm run dev`           | Start development server  |
-| `npm run build`         | Build for production      |
-| `npm run test`          | Run unit tests (45 tests) |
-| `npm run test:e2e`      | Run Playwright E2E tests  |
-| `npm run lint`          | Run ESLint                |
-| `npm run typecheck`     | TypeScript type check     |
-| `npm run format`        | Format with Prettier      |
-| `npm run test:coverage` | Run tests with coverage   |
+| Command                  | Description                |
+| ------------------------ | -------------------------- |
+| `npm run dev`            | Start development server   |
+| `npm run build`          | Build for production       |
+| `npm run test`           | Run 45 unit tests (Vitest) |
+| `npm run test:e2e`       | Run Playwright E2E tests   |
+| `npm run lint`           | Run ESLint                 |
+| `npm run typecheck`      | TypeScript type check      |
+| `npm run format`         | Format with Prettier       |
+| `npm run test:coverage`  | Run tests with coverage    |
+| `npm run registry:build` | Build shadcn registry      |
+
+---
 
 ## Testing
 
 - **45 unit tests** — Vitest + React Testing Library
-- **Accessibility** — axe-core WCAG compliance
-- **E2E tests** — Playwright (Chromium, Firefox, WebKit)
+- **Accessibility** — axe-core WCAG compliance on every PR
+- **E2E tests** — Playwright across Chromium, Firefox, WebKit
 - **Performance** — Lighthouse CI audits
+- **Coverage** — 50% threshold enforced
 
 ## CI/CD
 
-- **CI** — Lint, typecheck, test matrix (Ubuntu/Windows × Node 18/20), build, CodeQL
+- **CI** — Lint + typecheck, test matrix (Ubuntu/Windows x Node 18/20), build, CodeQL security scanning
 - **CD** — Auto-deploy staging on push, production on tag
-- **Preview** — PR previews on every pull request
-- **Docker** — Multi-arch build + Trivy scanning
+- **Preview** — PR preview deployments on every pull request
+- **Docker** — Multi-arch build + Trivy vulnerability scanning
+- **Nightly** — Scheduled builds for dependency health
+- **npm** — Auto-publish on version tag
+
+---
 
 ## Contributing
 
@@ -160,21 +177,22 @@ We welcome contributions! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 # Fork & clone
 git clone https://github.com/YOUR_USERNAME/kata-ui.git
 cd kata-ui
-
-# Install dependencies
 npm install
-
-# Create branch
 git checkout -b feature/amazing-feature
-
 # Make changes, then...
-npm run lint
-npm run test
+npm run lint && npm run test
 git commit -m "feat: add amazing feature"
 git push origin feature/amazing-feature
-
 # Open PR
 ```
+
+---
+
+## Community
+
+- **GitHub** — [github.com/7se7en72025/kata-ui](https://github.com/7se7en72025/kata-ui)
+- **Issues** — [Report bugs](https://github.com/7se7en72025/kata-ui/issues)
+- **Discussions** — [Join the conversation](https://github.com/7se7en72025/kata-ui/discussions)
 
 ## Code of Conduct
 
@@ -188,13 +206,6 @@ Report vulnerabilities via [SECURITY.md](SECURITY.md).
 
 [MIT](LICENSE) — Free for personal and commercial use.
 
-## Acknowledgments
-
-- [Next.js](https://nextjs.org) — The React framework
-- [Tailwind CSS](https://tailwindcss.com) — Utility-first CSS
-- [shadcn/ui](https://ui.shadcn.com) — Component registry format
-- [Vercel](https://vercel.com) — Deployment platform
-
 ---
 
 <div align="center">
@@ -202,8 +213,6 @@ Report vulnerabilities via [SECURITY.md](SECURITY.md).
 **Built with passion. Powered by Vercel.**
 
 [![Vercel OSS](https://vercel.com/oss/oss-badge.svg)](https://vercel.com/open-source-program)
-
----
 
 ### Why Vercel OSS?
 
