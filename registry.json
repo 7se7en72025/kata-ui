@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "kata-ui",
-  "homepage": "https://github.com/razi-ai/kata-ui",
+  "homepage": "https://kata-ui.vercel.app",
   "items": [
     {
       "name": "utils",
@@ -11,6 +11,18 @@
       "files": [
         {
           "path": "registry/ui/utils.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "globals",
+      "type": "registry:ui",
+      "title": "Global Styles",
+      "description": "CSS variables for light/dark themes, ruler colors, and animation keyframes.",
+      "files": [
+        {
+          "path": "registry/ui/globals.css",
           "type": "registry:ui"
         }
       ]
@@ -38,6 +50,54 @@
       "files": [
         {
           "path": "registry/ui/hero.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "glitch-text",
+      "type": "registry:ui",
+      "title": "Glitch Text",
+      "description": "Cyberpunk text effect with constant chromatic aberration, horizontal slice distortion, and CRT scanlines.",
+      "files": [
+        {
+          "path": "registry/ui/glitch-text.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "glow-button",
+      "type": "registry:ui",
+      "title": "Glow Button",
+      "description": "Button with animated glow hover effect and press animation.",
+      "files": [
+        {
+          "path": "registry/ui/glow-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "animated-button",
+      "type": "registry:ui",
+      "title": "Animated Button",
+      "description": "Button with press animation and hover effects.",
+      "files": [
+        {
+          "path": "registry/ui/animated-button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "animated-rays",
+      "type": "registry:ui",
+      "title": "Animated Rays",
+      "description": "Rotating ray background effect for hero sections.",
+      "files": [
+        {
+          "path": "registry/ui/animated-rays.tsx",
           "type": "registry:ui"
         }
       ]
@@ -80,25 +140,121 @@
       ]
     },
     {
-      "name": "globals",
+      "name": "docs-sidebar",
       "type": "registry:ui",
-      "title": "Global Styles",
-      "description": "CSS variables for light/dark themes, ruler colors, and animation keyframes.",
+      "title": "Docs Sidebar",
+      "description": "Documentation sidebar with navigation and active state tracking.",
       "files": [
         {
-          "path": "registry/ui/globals.css",
+          "path": "registry/ui/docs-sidebar.tsx",
           "type": "registry:ui"
         }
       ]
     },
     {
-      "name": "glitch-text",
+      "name": "stacked-logos",
       "type": "registry:ui",
-      "title": "Glitch Text",
-      "description": "Cyberpunk text effect with constant chromatic aberration, horizontal slice distortion, and CRT scanlines using the Doctor Glitch font.",
+      "title": "Stacked Logos",
+      "description": "Stacked logo carousel with hover effects.",
       "files": [
         {
-          "path": "registry/ui/glitch-text.tsx",
+          "path": "registry/ui/stacked-logos.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "shrine-cards",
+      "type": "registry:ui",
+      "title": "Shrine Cards",
+      "description": "Layout component with shrine-style card arrangement.",
+      "files": [
+        {
+          "path": "registry/ui/shrine-cards.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "faq-section",
+      "type": "registry:ui",
+      "title": "FAQ Section",
+      "description": "Collapsible FAQ accordion with smooth animations and keyboard navigation.",
+      "files": [
+        {
+          "path": "components/faq-section.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "code-block",
+      "type": "registry:ui",
+      "title": "Code Block",
+      "description": "Syntax-highlighted code block with copy button and tab support.",
+      "files": [
+        {
+          "path": "components/code-block.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "error-boundary",
+      "type": "registry:ui",
+      "title": "Error Boundary",
+      "description": "React error boundary with retry functionality and custom fallback UI.",
+      "files": [
+        {
+          "path": "components/error-boundary.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tech-logos",
+      "type": "registry:ui",
+      "title": "Tech Logos",
+      "description": "Animated tech stack marquee with auto-scrolling logos.",
+      "files": [
+        {
+          "path": "components/tech-logos.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "lazy-section",
+      "type": "registry:ui",
+      "title": "Lazy Section",
+      "description": "Lazy-load section with IntersectionObserver for performance optimization.",
+      "files": [
+        {
+          "path": "components/lazy-section.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "testimonials-section",
+      "type": "registry:ui",
+      "title": "Testimonials Section",
+      "description": "Social proof section with animated testimonial cards.",
+      "files": [
+        {
+          "path": "components/testimonials-section.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "impression-section",
+      "type": "registry:ui",
+      "title": "Impression Section",
+      "description": "Feature showcase with interactive tabs and smooth transitions.",
+      "files": [
+        {
+          "path": "components/impression-section.tsx",
           "type": "registry:ui"
         }
       ]

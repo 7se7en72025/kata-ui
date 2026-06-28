@@ -14,8 +14,24 @@ function FloatingIconsIllustration() {
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
           <circle cx="12" cy="12" r="2.1" fill="#09090b" />
           <ellipse cx="12" cy="12" rx="10.5" ry="4.1" stroke="#09090b" strokeWidth="1.5" />
-          <ellipse cx="12" cy="12" rx="10.5" ry="4.1" stroke="#09090b" strokeWidth="1.5" transform="rotate(60 12 12)" />
-          <ellipse cx="12" cy="12" rx="10.5" ry="4.1" stroke="#09090b" strokeWidth="1.5" transform="rotate(120 12 12)" />
+          <ellipse
+            cx="12"
+            cy="12"
+            rx="10.5"
+            ry="4.1"
+            stroke="#09090b"
+            strokeWidth="1.5"
+            transform="rotate(60 12 12)"
+          />
+          <ellipse
+            cx="12"
+            cy="12"
+            rx="10.5"
+            ry="4.1"
+            stroke="#09090b"
+            strokeWidth="1.5"
+            transform="rotate(120 12 12)"
+          />
         </svg>
       ),
     },
@@ -76,8 +92,20 @@ function FloatingIconsIllustration() {
       offsetY: 46,
       icon: (
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-          <path d="M22.5 6.75L6.75 22.5" stroke="#09090b" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
-          <path d="M17.25 22.5L1.5 6.75" stroke="#09090b" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+          <path
+            d="M22.5 6.75L6.75 22.5"
+            stroke="#09090b"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
+          />
+          <path
+            d="M17.25 22.5L1.5 6.75"
+            stroke="#09090b"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
+          />
         </svg>
       ),
     },
@@ -102,7 +130,8 @@ function FloatingIconsIllustration() {
           top: "50%",
           transform: "translate(-50%, -50%)",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(253,186,116,0.35) 0%, rgba(251,146,60,0.15) 40%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(253,186,116,0.35) 0%, rgba(251,146,60,0.15) 40%, transparent 70%)",
           filter: "blur(40px)",
         }}
       />
@@ -122,7 +151,8 @@ function FloatingIconsIllustration() {
             alignItems: "center",
             justifyContent: "center",
             transform: "translate(-50%, -50%)",
-            filter: "drop-shadow(0 0 4px rgba(253,186,116,0.5)) drop-shadow(0 0 16px rgba(253,186,116,0.5)) drop-shadow(0 0 24px rgba(253,186,116,0.5))",
+            filter:
+              "drop-shadow(0 0 4px rgba(253,186,116,0.5)) drop-shadow(0 0 16px rgba(253,186,116,0.5)) drop-shadow(0 0 24px rgba(253,186,116,0.5))",
             border: "4px solid rgba(255,255,255,0.2)",
           }}
         >
@@ -135,9 +165,27 @@ function FloatingIconsIllustration() {
 
 function ChatIllustration() {
   const messages = [
-    { text: "We need to update this heading before launch", align: "left" as const, name: "Sofia G.", color: "#FDBA74", borderColor: "#FB923C" },
-    { text: "Let me quickly jump into Sanity and fix it", align: "right" as const, name: "Erik D.", color: "#18181b", borderColor: "#09090b" },
-    { text: "Done!", align: "right" as const, name: "Erik D.", color: "#18181b", borderColor: "#09090b" },
+    {
+      text: "We need to update this heading before launch",
+      align: "left" as const,
+      name: "Sofia G.",
+      color: "#FDBA74",
+      borderColor: "#FB923C",
+    },
+    {
+      text: "Let me quickly jump into Sanity and fix it",
+      align: "right" as const,
+      name: "Erik D.",
+      color: "#18181b",
+      borderColor: "#09090b",
+    },
+    {
+      text: "Done!",
+      align: "right" as const,
+      name: "Erik D.",
+      color: "#18181b",
+      borderColor: "#09090b",
+    },
   ];
 
   return (
@@ -162,11 +210,22 @@ function ChatIllustration() {
           top: "50%",
           transform: "translate(-50%, -50%)",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(253,186,116,0.35) 0%, rgba(251,146,60,0.15) 40%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(253,186,116,0.35) 0%, rgba(251,146,60,0.15) 40%, transparent 70%)",
           filter: "blur(40px)",
         }}
       />
-      <div style={{ position: "relative", width: "100%", maxWidth: 400, zIndex: 2, display: "flex", flexDirection: "column", gap: 8 }}>
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          maxWidth: 400,
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: 8,
+        }}
+      >
         {/* Message 1 - left */}
         <div style={{ display: "flex", alignItems: "center", gap: 8, alignSelf: "flex-start" }}>
           <div
@@ -178,14 +237,30 @@ function ChatIllustration() {
               maxWidth: 289,
             }}
           >
-            <p style={{ fontSize: 12, color: "#888", fontFamily: "inherit", margin: 0, lineHeight: "16px" }}>
+            <p
+              style={{
+                fontSize: 12,
+                color: "#888",
+                fontFamily: "inherit",
+                margin: 0,
+                lineHeight: "16px",
+              }}
+            >
               {messages[0].text}
             </p>
           </div>
           {/* Avatar */}
           <div style={{ display: "flex", alignItems: "center", gap: 4, position: "relative" }}>
             <svg width="16" height="22" viewBox="0 0 16.658 22.0689" fill="none">
-              <ellipse cx="8.329" cy="11.034" rx="8.329" ry="11.034" fill={messages[0].color} stroke={messages[0].borderColor} strokeWidth="1.2" />
+              <ellipse
+                cx="8.329"
+                cy="11.034"
+                rx="8.329"
+                ry="11.034"
+                fill={messages[0].color}
+                stroke={messages[0].borderColor}
+                strokeWidth="1.2"
+              />
             </svg>
             <div
               style={{
@@ -199,7 +274,11 @@ function ChatIllustration() {
                 boxShadow: "0 0 4px rgba(253,186,116,0.5), 0 0 32px rgba(253,186,116,0.5)",
               }}
             >
-              <span style={{ fontSize: 12, fontWeight: 500, color: "#09090b", fontFamily: "inherit" }}>{messages[0].name}</span>
+              <span
+                style={{ fontSize: 12, fontWeight: 500, color: "#09090b", fontFamily: "inherit" }}
+              >
+                {messages[0].name}
+              </span>
             </div>
           </div>
         </div>
@@ -215,7 +294,15 @@ function ChatIllustration() {
               maxWidth: 256,
             }}
           >
-            <p style={{ fontSize: 12, color: "#888", fontFamily: "inherit", margin: 0, lineHeight: "16px" }}>
+            <p
+              style={{
+                fontSize: 12,
+                color: "#888",
+                fontFamily: "inherit",
+                margin: 0,
+                lineHeight: "16px",
+              }}
+            >
               {messages[1].text}
             </p>
           </div>
@@ -231,14 +318,30 @@ function ChatIllustration() {
               border: "1px solid rgba(9,9,11,0.2)",
             }}
           >
-            <p style={{ fontSize: 12, color: "#888", fontFamily: "inherit", margin: 0, lineHeight: "16px" }}>
+            <p
+              style={{
+                fontSize: 12,
+                color: "#888",
+                fontFamily: "inherit",
+                margin: 0,
+                lineHeight: "16px",
+              }}
+            >
               {messages[2].text}
             </p>
           </div>
           {/* Avatar */}
           <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
             <svg width="16" height="22" viewBox="0 0 16.658 22.0689" fill="none">
-              <ellipse cx="8.329" cy="11.034" rx="8.329" ry="11.034" fill="#18181b" stroke="#09090b" strokeWidth="1.2" />
+              <ellipse
+                cx="8.329"
+                cy="11.034"
+                rx="8.329"
+                ry="11.034"
+                fill="#18181b"
+                stroke="#09090b"
+                strokeWidth="1.2"
+              />
             </svg>
             <div
               style={{
@@ -248,7 +351,11 @@ function ChatIllustration() {
                 border: "1.2px solid #09090b",
               }}
             >
-              <span style={{ fontSize: 12, fontWeight: 500, color: "#fafafa", fontFamily: "inherit" }}>{messages[1].name}</span>
+              <span
+                style={{ fontSize: 12, fontWeight: 500, color: "#fafafa", fontFamily: "inherit" }}
+              >
+                {messages[1].name}
+              </span>
             </div>
           </div>
         </div>
@@ -357,7 +464,8 @@ export function TechStackTiles() {
                 margin: 0,
               }}
             >
-              All the data is separate from components so you can edit it in seconds or make it dynamic.
+              All the data is separate from components so you can edit it in seconds or make it
+              dynamic.
               <br />
               Easily connect to a CMS of your choice.
             </p>

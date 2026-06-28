@@ -14,18 +14,17 @@ const tocItems = [
   { label: "Props", href: "#props" },
 ];
 
-export default function DocsLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function DocsLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = useCallback(() => setSidebarOpen((p) => !p), []);
   const closeSidebar = useCallback(() => setSidebarOpen(false), []);
 
   return (
-    <main className="theme-bg docs-layout" style={{ height: "100vh", display: "flex", flexDirection: "column" }}>
+    <main
+      className="theme-bg docs-layout"
+      style={{ height: "100vh", display: "flex", flexDirection: "column" }}
+    >
       <Navbar />
 
       {/* Mobile sidebar toggle */}
@@ -49,38 +48,46 @@ export default function DocsLayout({
           padding: 0,
         }}
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        >
           {sidebarOpen ? (
             <>
-              <line x1="18" y1="6" x2="6" y2="18"/>
-              <line x1="6" y1="6" x2="18" y2="18"/>
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
             </>
           ) : (
             <>
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <line x1="3" y1="12" x2="21" y2="12"/>
-              <line x1="3" y1="18" x2="21" y2="18"/>
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="18" x2="21" y2="18" />
             </>
           )}
         </svg>
       </button>
 
       {/* Mobile sidebar backdrop */}
-      {sidebarOpen && (
-        <div className="docs-sidebar-backdrop" onClick={closeSidebar} />
-      )}
+      {sidebarOpen && <div className="docs-sidebar-backdrop" onClick={closeSidebar} />}
 
       {/* Mobile sidebar overlay */}
       <div className={`docs-sidebar-overlay ${sidebarOpen ? "" : "hidden"}`}>
         <DocsSidebar onNavigate={closeSidebar} />
       </div>
 
-      <div style={{ flex: 1, paddingTop: 52, display: "flex", flexDirection: "column", minHeight: 0 }}>
-        <ResizablePanels
-          defaultLeftWidth={240}
-          left={<DocsSidebar />}
-        >
-          <div className="docs-content-area" style={{ padding: "32px 40px", maxWidth: 900, marginRight: 220 }}>
+      <div
+        style={{ flex: 1, paddingTop: 52, display: "flex", flexDirection: "column", minHeight: 0 }}
+      >
+        <ResizablePanels defaultLeftWidth={240} left={<DocsSidebar />}>
+          <div
+            className="docs-content-area"
+            style={{ padding: "32px 40px", maxWidth: 900, marginRight: 220 }}
+          >
             {children}
           </div>
         </ResizablePanels>

@@ -5,7 +5,16 @@ import Image from "next/image";
 
 function SunIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="12" cy="12" r="5" />
       <line x1="12" y1="1" x2="12" y2="3" />
       <line x1="12" y1="21" x2="12" y2="23" />
@@ -21,7 +30,16 @@ function SunIcon() {
 
 function MoonIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
     </svg>
   );
@@ -75,7 +93,7 @@ function triggerTriangleTransition(
   originY: number,
   nextTheme: "light" | "dark",
   elements: { el: HTMLElement; type: string }[],
-  onDone: () => void
+  onDone: () => void,
 ) {
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (prefersReduced) {
@@ -106,10 +124,11 @@ function triggerTriangleTransition(
   document.body.appendChild(overlay);
   overlay.getBoundingClientRect();
 
-  const anim = overlay.animate(
-    [{ clipPath: startClip }, { clipPath: endClip }],
-    { duration, easing: "linear", fill: "forwards" }
-  );
+  const anim = overlay.animate([{ clipPath: startClip }, { clipPath: endClip }], {
+    duration,
+    easing: "linear",
+    fill: "forwards",
+  });
 
   elements.forEach(({ el, type }, i) => {
     const rect = el.getBoundingClientRect();
@@ -117,7 +136,10 @@ function triggerTriangleTransition(
     const cy = rect.top + rect.height / 2;
     const dx = cx - originX;
     const dy = cy - originY;
-    const t = Math.max(0, Math.min(1, Math.max((-2 * dx - dy) / maxDim, (2 * dx - dy) / maxDim, dy / maxDim)));
+    const t = Math.max(
+      0,
+      Math.min(1, Math.max((-2 * dx - dy) / maxDim, (2 * dx - dy) / maxDim, dy / maxDim)),
+    );
     const delay = Math.round(t * duration);
 
     setTimeout(() => applyColor(el, type, nextTheme), delay);
@@ -171,256 +193,307 @@ export function Navbar() {
 
       const items: { el: HTMLElement; type: string }[] = [];
       if (navRef.current) {
-        navRef.current.querySelectorAll<HTMLElement>("[data-nav-text]").forEach((el) => items.push({ el, type: "text" }));
-        navRef.current.querySelectorAll<HTMLElement>("[data-nav-toggle]").forEach((el) => items.push({ el, type: "toggle" }));
-        navRef.current.querySelectorAll<HTMLElement>("[data-nav-docs]").forEach((el) => items.push({ el, type: "docs" }));
-        navRef.current.querySelectorAll<HTMLElement>("[data-nav-logo]").forEach((el) => items.push({ el, type: "logo" }));
-        navRef.current.querySelectorAll<HTMLElement>("[data-nav-search]").forEach((el) => items.push({ el, type: "search" }));
+        navRef.current
+          .querySelectorAll<HTMLElement>("[data-nav-text]")
+          .forEach((el) => items.push({ el, type: "text" }));
+        navRef.current
+          .querySelectorAll<HTMLElement>("[data-nav-toggle]")
+          .forEach((el) => items.push({ el, type: "toggle" }));
+        navRef.current
+          .querySelectorAll<HTMLElement>("[data-nav-docs]")
+          .forEach((el) => items.push({ el, type: "docs" }));
+        navRef.current
+          .querySelectorAll<HTMLElement>("[data-nav-logo]")
+          .forEach((el) => items.push({ el, type: "logo" }));
+        navRef.current
+          .querySelectorAll<HTMLElement>("[data-nav-search]")
+          .forEach((el) => items.push({ el, type: "search" }));
       }
 
       triggerTriangleTransition(x, y, next, items, () => {
         setIsDark(!isDark);
       });
     },
-    [isDark]
+    [isDark],
   );
 
   return (
     <>
-    <nav
-      ref={navRef}
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 48,
-        right: 48,
-        height: 52,
-        zIndex: 100,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "0 68px",
-        background: isDark ? "#000000" : "#ffffff",
-        pointerEvents: "none",
-      }}
-    >
-      <div
-        data-nav-logo
+      <nav
+        ref={navRef}
         style={{
+          position: "fixed",
+          top: 0,
+          left: 48,
+          right: 48,
+          height: 52,
+          zIndex: 100,
           display: "flex",
           alignItems: "center",
-          gap: 8,
-          pointerEvents: "auto",
-          flexShrink: 0,
-        }}
-      >
-        <Image
-          src={isDark ? "/KATAUILOGOWHITE.svg" : "/KATAUILOGOBLACK.svg"}
-          alt="Kata UI"
-          width={28}
-          height={18}
-          style={{ height: 24, width: "auto" }}
-        />
-        <span
-          data-nav-text
-          style={{
-            fontFamily: "inherit",
-            fontSize: 15,
-            fontWeight: 500,
-            letterSpacing: "-0.01em",
-            lineHeight: 1,
-            color: isDark ? "#fff" : "#0d0d0d",
-          }}
-        >
-          KataUI
-        </span>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 10,
-          flex: 1,
-          justifyContent: "flex-end",
-          pointerEvents: "auto",
+          justifyContent: "space-between",
+          padding: "0 68px",
+          background: isDark ? "#000000" : "#ffffff",
+          pointerEvents: "none",
         }}
       >
         <div
-          ref={searchRef}
-          data-nav-search
-          onMouseMove={(e) => {
-            const rect = e.currentTarget.getBoundingClientRect();
-            setSearchHover({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-          }}
-          onMouseLeave={() => setSearchHover(null)}
+          data-nav-logo
           style={{
             display: "flex",
             alignItems: "center",
             gap: 8,
-            padding: "6px 12px",
-            borderRadius: 8,
-            border: `1px solid ${isDark ? ((searchHover || searchFocused || searchHasValue) ? "#555" : "#333") : ((searchHover || searchFocused || searchHasValue) ? "#bbb" : "#d4d4d4")}`,
-            background: (searchHover || searchFocused || searchHasValue)
-              ? searchHover
-                ? `radial-gradient(circle 140px at ${searchHover.x}px ${searchHover.y}px, ${isDark ? "rgba(255,255,255,0.18)" : "rgba(200,200,200,0.25)"}, ${isDark ? "rgba(255,255,255,0.04)" : "rgba(240,240,240,0.08)"})`
-                : isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.04)"
-              : isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.03)",
-            cursor: "text",
-            height: 36,
-            minWidth: 200,
-            transition: "border-color 0.15s ease",
-            "--search-placeholder-hover": isDark ? "#bbb" : "#444",
-          } as React.CSSProperties}
+            pointerEvents: "auto",
+            flexShrink: 0,
+          }}
         >
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            style={{ stroke: (searchHover || searchFocused || searchHasValue) ? (isDark ? "#ccc" : "#555") : (isDark ? "#666" : "#999"), transition: "stroke 0.15s ease", flexShrink: 0 }}
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
-          <input
-            data-nav-search-text
-            type="text"
-            placeholder="Search documentation..."
-            onFocus={() => setSearchFocused(true)}
-            onBlur={() => setSearchFocused(false)}
-            onInput={(e) => setSearchHasValue((e.target as HTMLInputElement).value.length > 0)}
-            style={{
-              border: "none",
-              outline: "none",
-        background: isDark ? "#000000" : "#ffffff",
-              fontSize: 13,
-              color: isDark ? "#fff" : "#0d0d0d",
-              fontFamily: "inherit",
-              flex: 1,
-              minWidth: 0,
-              caretColor: isDark ? "#fff" : "#000",
-            }}
+          <Image
+            src={isDark ? "/KATAUILOGOWHITE.svg" : "/KATAUILOGOBLACK.svg"}
+            alt="Kata UI"
+            width={28}
+            height={18}
+            style={{ height: 24, width: "auto" }}
           />
           <span
-            data-nav-search-badge
+            data-nav-text
             style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 2,
-              fontSize: 11,
               fontFamily: "inherit",
-              color: (searchHover || searchFocused || searchHasValue) ? (isDark ? "#eee" : "#222") : (isDark ? "#555" : "#aaa"),
-              border: `1px solid ${isDark ? ((searchHover || searchFocused || searchHasValue) ? "#666" : "#333") : ((searchHover || searchFocused || searchHasValue) ? "#999" : "#d4d4d4")}`,
-              background: (searchHover || searchFocused || searchHasValue) ? (isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.06)") : "transparent",
-              boxShadow: (searchHover || searchFocused || searchHasValue)
-                ? isDark
-                  ? "0 0 10px rgba(255,255,255,0.15), inset 0 0 6px rgba(255,255,255,0.05)"
-                  : "0 0 10px rgba(0,0,0,0.1), inset 0 0 6px rgba(0,0,0,0.03)"
-                : "none",
-              transition: "all 0.2s ease",
-              borderRadius: 4,
-              padding: "2px 5px",
+              fontSize: 15,
+              fontWeight: 500,
+              letterSpacing: "-0.01em",
               lineHeight: 1,
-              flexShrink: 0,
+              color: isDark ? "#fff" : "#0d0d0d",
             }}
           >
-            <span style={{ fontSize: 10 }}>⌘</span>K
+            KataUI
           </span>
         </div>
+
         <div
-          data-nav-toggle
-          className="theme-toggle-wrap"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          onClick={toggleTheme}
           style={{
-            width: 36,
-            height: 36,
-            borderRadius: 8,
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            position: "relative",
-            color: isDark ? "#aaa" : "#555",
+            gap: 10,
+            flex: 1,
+            justifyContent: "flex-end",
+            pointerEvents: "auto",
           }}
         >
-          <svg
-            ref={borderRef}
-            className="toggle-border-svg"
-            width="36"
-            height="36"
-            viewBox="0 0 36 36"
-            style={{ position: "absolute", inset: 0, pointerEvents: "none" }}
-          >
-            <rect
-              x="0.5"
-              y="0.5"
-              width="35"
-              height="35"
-              rx="7.5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-              opacity="0.3"
-              strokeDasharray="140"
-              strokeDashoffset="140"
-            />
-          </svg>
-
           <div
-            ref={dotsRef}
-            className={`orbit-dots ${hovered ? "active" : ""}`}
+            ref={searchRef}
+            data-nav-search
+            onMouseMove={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              setSearchHover({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+            }}
+            onMouseLeave={() => setSearchHover(null)}
+            style={
+              {
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "6px 12px",
+                borderRadius: 8,
+                border: `1px solid ${isDark ? (searchHover || searchFocused || searchHasValue ? "#555" : "#333") : searchHover || searchFocused || searchHasValue ? "#bbb" : "#d4d4d4"}`,
+                background:
+                  searchHover || searchFocused || searchHasValue
+                    ? searchHover
+                      ? `radial-gradient(circle 140px at ${searchHover.x}px ${searchHover.y}px, ${isDark ? "rgba(255,255,255,0.18)" : "rgba(200,200,200,0.25)"}, ${isDark ? "rgba(255,255,255,0.04)" : "rgba(240,240,240,0.08)"})`
+                      : isDark
+                        ? "rgba(255,255,255,0.06)"
+                        : "rgba(0,0,0,0.04)"
+                    : isDark
+                      ? "rgba(255,255,255,0.04)"
+                      : "rgba(0,0,0,0.03)",
+                cursor: "text",
+                height: 36,
+                minWidth: 200,
+                transition: "border-color 0.15s ease",
+                "--search-placeholder-hover": isDark ? "#bbb" : "#444",
+              } as React.CSSProperties
+            }
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              style={{
+                stroke:
+                  searchHover || searchFocused || searchHasValue
+                    ? isDark
+                      ? "#ccc"
+                      : "#555"
+                    : isDark
+                      ? "#666"
+                      : "#999",
+                transition: "stroke 0.15s ease",
+                flexShrink: 0,
+              }}
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input
+              data-nav-search-text
+              type="text"
+              placeholder="Search documentation..."
+              onFocus={() => setSearchFocused(true)}
+              onBlur={() => setSearchFocused(false)}
+              onInput={(e) => setSearchHasValue((e.target as HTMLInputElement).value.length > 0)}
+              style={{
+                border: "none",
+                outline: "none",
+                background: isDark ? "#000000" : "#ffffff",
+                fontSize: 13,
+                color: isDark ? "#fff" : "#0d0d0d",
+                fontFamily: "inherit",
+                flex: 1,
+                minWidth: 0,
+                caretColor: isDark ? "#fff" : "#000",
+              }}
+            />
+            <span
+              data-nav-search-badge
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                fontSize: 11,
+                fontFamily: "inherit",
+                color:
+                  searchHover || searchFocused || searchHasValue
+                    ? isDark
+                      ? "#eee"
+                      : "#222"
+                    : isDark
+                      ? "#555"
+                      : "#aaa",
+                border: `1px solid ${isDark ? (searchHover || searchFocused || searchHasValue ? "#666" : "#333") : searchHover || searchFocused || searchHasValue ? "#999" : "#d4d4d4"}`,
+                background:
+                  searchHover || searchFocused || searchHasValue
+                    ? isDark
+                      ? "rgba(255,255,255,0.1)"
+                      : "rgba(0,0,0,0.06)"
+                    : "transparent",
+                boxShadow:
+                  searchHover || searchFocused || searchHasValue
+                    ? isDark
+                      ? "0 0 10px rgba(255,255,255,0.15), inset 0 0 6px rgba(255,255,255,0.05)"
+                      : "0 0 10px rgba(0,0,0,0.1), inset 0 0 6px rgba(0,0,0,0.03)"
+                    : "none",
+                transition: "all 0.2s ease",
+                borderRadius: 4,
+                padding: "2px 5px",
+                lineHeight: 1,
+                flexShrink: 0,
+              }}
+            >
+              <span style={{ fontSize: 10 }}>⌘</span>K
+            </span>
+          </div>
+          <div
+            data-nav-toggle
+            className="theme-toggle-wrap"
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            onClick={toggleTheme}
             style={{
-              position: "absolute",
               width: 36,
               height: 36,
-              pointerEvents: "none",
+              borderRadius: 8,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              position: "relative",
+              color: isDark ? "#aaa" : "#555",
             }}
           >
-            <span className="orbit-dot" style={{ top: -1, left: "50%", transform: "translateX(-50%)" }} />
-            <span className="orbit-dot" style={{ top: "50%", right: -1, transform: "translateY(-50%)" }} />
-            <span className="orbit-dot" style={{ bottom: -1, left: "50%", transform: "translateX(-50%)" }} />
-            <span className="orbit-dot" style={{ top: "50%", left: -1, transform: "translateY(-50%)" }} />
+            <svg
+              ref={borderRef}
+              className="toggle-border-svg"
+              width="36"
+              height="36"
+              viewBox="0 0 36 36"
+              style={{ position: "absolute", inset: 0, pointerEvents: "none" }}
+            >
+              <rect
+                x="0.5"
+                y="0.5"
+                width="35"
+                height="35"
+                rx="7.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                opacity="0.3"
+                strokeDasharray="140"
+                strokeDashoffset="140"
+              />
+            </svg>
+
+            <div
+              ref={dotsRef}
+              className={`orbit-dots ${hovered ? "active" : ""}`}
+              style={{
+                position: "absolute",
+                width: 36,
+                height: 36,
+                pointerEvents: "none",
+              }}
+            >
+              <span
+                className="orbit-dot"
+                style={{ top: -1, left: "50%", transform: "translateX(-50%)" }}
+              />
+              <span
+                className="orbit-dot"
+                style={{ top: "50%", right: -1, transform: "translateY(-50%)" }}
+              />
+              <span
+                className="orbit-dot"
+                style={{ bottom: -1, left: "50%", transform: "translateX(-50%)" }}
+              />
+              <span
+                className="orbit-dot"
+                style={{ top: "50%", left: -1, transform: "translateY(-50%)" }}
+              />
+            </div>
+
+            <span className="toggle-icon toggle-wrap">
+              <span className="icon-a">{isDark ? <MoonIcon /> : <SunIcon />}</span>
+              <span className="icon-b">{isDark ? <SunIcon /> : <MoonIcon />}</span>
+            </span>
           </div>
 
-          <span className="toggle-icon toggle-wrap">
-            <span className="icon-a">{isDark ? <MoonIcon /> : <SunIcon />}</span>
-            <span className="icon-b">{isDark ? <SunIcon /> : <MoonIcon />}</span>
-          </span>
+          <button
+            data-nav-docs
+            style={{
+              background: isDark ? "#fff" : "#111",
+              color: isDark ? "#000" : "#fff",
+              border: "none",
+              borderRadius: 8,
+              padding: "8px 18px",
+              fontSize: 14,
+              fontWeight: 500,
+              fontFamily: "inherit",
+              letterSpacing: 0,
+              cursor: "pointer",
+              height: 36,
+              whiteSpace: "nowrap",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.background = isDark ? "#e8e8e8" : "#2a2a2a")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.background = isDark ? "#fff" : "#111")}
+          >
+            View Docs
+          </button>
         </div>
-
-        <button
-          data-nav-docs
-          style={{
-            background: isDark ? "#fff" : "#111",
-            color: isDark ? "#000" : "#fff",
-            border: "none",
-            borderRadius: 8,
-            padding: "8px 18px",
-            fontSize: 14,
-            fontWeight: 500,
-            fontFamily: "inherit",
-            letterSpacing: 0,
-            cursor: "pointer",
-            height: 36,
-            whiteSpace: "nowrap",
-          }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.background = isDark ? "#e8e8e8" : "#2a2a2a")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.background = isDark ? "#fff" : "#111")
-          }
-        >
-          View Docs
-        </button>
-      </div>
-    </nav>
+      </nav>
     </>
   );
 }

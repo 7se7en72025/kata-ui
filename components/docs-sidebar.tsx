@@ -24,27 +24,22 @@ const navigation: NavGroup[] = [
   {
     title: "Layout",
     icon: "\u25A2",
-    items: [
-      { label: "Shrine Cards", href: "/docs/layout/shrine-cards" },
-    ],
+    items: [{ label: "Shrine Cards", href: "/docs/layout/shrine-cards" }],
   },
   {
     title: "Effects",
     icon: "\u26A1",
-    items: [
-      { label: "Glitch Text", href: "/docs/effects/glitch-text", isNew: true },
-    ],
+    items: [{ label: "Glitch Text", href: "/docs/effects/glitch-text", isNew: true }],
   },
 ];
 
 export function DocsSidebar({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
   const [openGroups, setOpenGroups] = useState<Record<string, boolean>>(
-    Object.fromEntries(navigation.map((g) => [g.title, true]))
+    Object.fromEntries(navigation.map((g) => [g.title, true])),
   );
 
-  const toggle = (title: string) =>
-    setOpenGroups((prev) => ({ ...prev, [title]: !prev[title] }));
+  const toggle = (title: string) => setOpenGroups((prev) => ({ ...prev, [title]: !prev[title] }));
 
   return (
     <nav
@@ -70,7 +65,16 @@ export function DocsSidebar({ onNavigate }: { onNavigate?: () => void }) {
             gap: 8,
           }}
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <polyline points="15 18 9 12 15 6" />
           </svg>
           Back to Home

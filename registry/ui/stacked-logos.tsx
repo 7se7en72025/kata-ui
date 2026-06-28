@@ -23,19 +23,16 @@ export const StackedLogos = ({
   const containerRef = React.useRef<HTMLDivElement>(null);
   const gridRef = React.useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = React.useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (!containerRef.current || !gridRef.current) return;
+  const handleMouseMove = React.useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current || !gridRef.current) return;
 
-      const rect = gridRef.current.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+    const rect = gridRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-      containerRef.current.style.setProperty("--mouse-x", `${x}px`);
-      containerRef.current.style.setProperty("--mouse-y", `${y}px`);
-    },
-    [],
-  );
+    containerRef.current.style.setProperty("--mouse-x", `${x}px`);
+    containerRef.current.style.setProperty("--mouse-y", `${y}px`);
+  }, []);
 
   const borderWidth = parseInt(logoWidth) || 200;
   const cellHeight = 128;

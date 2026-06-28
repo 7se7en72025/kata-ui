@@ -57,7 +57,9 @@ export default function InstallTailwindPage() {
         Create your project
       </h2>
 
-      <CodeBlock code={`npx create-next-app@latest my-project --typescript --eslint --app\ncd my-project`} />
+      <CodeBlock
+        code={`npx create-next-app@latest my-project --typescript --eslint --app\ncd my-project`}
+      />
 
       <h2
         style={{
@@ -192,7 +194,31 @@ export default config;`}
           lineHeight: 1.7,
         }}
       >
-        Tailwind v4 is CSS-first. Theme values can live in <code style={{ color: "#bbb", background: "#1a1a1a", padding: "2px 6px", borderRadius: 4, fontSize: 13 }}>@theme inline</code>, custom variants can live in CSS, and the PostCSS plugin is now <code style={{ color: "#bbb", background: "#1a1a1a", padding: "2px 6px", borderRadius: 4, fontSize: 13 }}>@tailwindcss/postcss</code>.
+        Tailwind v4 is CSS-first. Theme values can live in{" "}
+        <code
+          style={{
+            color: "#bbb",
+            background: "#1a1a1a",
+            padding: "2px 6px",
+            borderRadius: 4,
+            fontSize: 13,
+          }}
+        >
+          @theme inline
+        </code>
+        , custom variants can live in CSS, and the PostCSS plugin is now{" "}
+        <code
+          style={{
+            color: "#bbb",
+            background: "#1a1a1a",
+            padding: "2px 6px",
+            borderRadius: 4,
+            fontSize: 13,
+          }}
+        >
+          @tailwindcss/postcss
+        </code>
+        .
       </p>
     </div>
   );

@@ -53,7 +53,7 @@ export default function InstallNextjsPage() {
           lineHeight: 1.6,
         }}
       >
-        On installation, you'll see the following prompts:
+        On installation, you&apos;ll see the following prompts:
       </p>
 
       <CodeBlock
@@ -122,7 +122,19 @@ Would you like to customize the import alias (@/* by default)? No / Yes`}
           lineHeight: 1.7,
         }}
       >
-        Use the App Router, TypeScript, Tailwind CSS, and the default <code style={{ color: "#bbb", background: "#1a1a1a", padding: "2px 6px", borderRadius: 4, fontSize: 13 }}>@/*</code> import alias. That matches how Kata UI examples and registry components are written.
+        Use the App Router, TypeScript, Tailwind CSS, and the default{" "}
+        <code
+          style={{
+            color: "#bbb",
+            background: "#1a1a1a",
+            padding: "2px 6px",
+            borderRadius: 4,
+            fontSize: 13,
+          }}
+        >
+          @/*
+        </code>{" "}
+        import alias. That matches how Kata UI examples and registry components are written.
       </p>
     </div>
   );

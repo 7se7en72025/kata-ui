@@ -1,7 +1,46 @@
 {
   "name": "kata-ui",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "description": "Motion-driven React components built with intention and weight. Beautiful, accessible, and copy-paste ready.",
+  "private": false,
+  "license": "MIT",
+  "author": "7se7en72025 (https://github.com/7se7en72025)",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/7se7en72025/kata-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/7se7en72025/kata-ui/issues"
+  },
+  "homepage": "https://kata-ui.vercel.app",
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "shadcn",
+    "nextjs",
+    "tailwindcss",
+    "accessible",
+    "motion",
+    "animation",
+    "open-source",
+    "liquid-metal",
+    "glitch-text",
+    "hero-section",
+    "design-system"
+  ],
+  "files": [
+    "registry/",
+    "lib/",
+    "components/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -14,7 +53,10 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "registry:build": "shadcn build"
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "registry:build": "shadcn build",
+    "prepare": "husky"
   },
   "dependencies": {
     "@paper-design/shaders-react": "^0.0.76",
@@ -27,18 +69,32 @@
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
+    "@axe-core/react": "^4.12.1",
+    "@commitlint/cli": "^21.1.0",
+    "@commitlint/config-conventional": "^21.1.0",
+    "@playwright/test": "^1.61.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest-axe": "^3.5.9",
     "@types/node": "^22.15.30",
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "^2.1.0",
     "autoprefixer": "^10.4.21",
+    "axe-core": "^4.12.1",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.35",
+    "husky": "^9.1.7",
+    "jest-axe": "^10.0.0",
+    "jsdom": "^25.0.0",
+    "lint-staged": "^17.0.8",
     "postcss": "^8.5.6",
     "prettier": "^3.3.3",
     "shadcn": "^4.11.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.8.3",
-    "vitest": "^2.1.0",
-    "@vitest/coverage-v8": "^2.1.0",
-    "jsdom": "^25.0.0"
+    "vitest": "^2.1.0"
   }
 }

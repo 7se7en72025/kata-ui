@@ -6,12 +6,31 @@ import { Navbar } from "@/components/navbar";
 import { Hero } from "@/components/hero";
 import { Footer } from "@/components/footer";
 
-const EmberParticles = dynamic(() => import("@/components/ember-particles").then(m => ({ default: m.EmberParticles })), { ssr: false });
-const TechLogos = dynamic(() => import("@/components/tech-logos").then(m => ({ default: m.TechLogos })), { ssr: false });
-const ComponentShowcase = dynamic(() => import("@/components/component-showcase").then(m => ({ default: m.ComponentShowcase })), { ssr: false });
-const ImpressionSection = dynamic(() => import("@/components/impression-section").then(m => ({ default: m.ImpressionSection })), { ssr: false });
-const TestimonialsSection = dynamic(() => import("@/components/testimonials-section").then(m => ({ default: m.TestimonialsSection })), { ssr: false });
-const FaqSection = dynamic(() => import("@/components/faq-section").then(m => ({ default: m.FaqSection })), { ssr: false });
+const EmberParticles = dynamic(
+  () => import("@/components/ember-particles").then((m) => ({ default: m.EmberParticles })),
+  { ssr: false },
+);
+const TechLogos = dynamic(
+  () => import("@/components/tech-logos").then((m) => ({ default: m.TechLogos })),
+  { ssr: false },
+);
+const ComponentShowcase = dynamic(
+  () => import("@/components/component-showcase").then((m) => ({ default: m.ComponentShowcase })),
+  { ssr: false },
+);
+const ImpressionSection = dynamic(
+  () => import("@/components/impression-section").then((m) => ({ default: m.ImpressionSection })),
+  { ssr: false },
+);
+const TestimonialsSection = dynamic(
+  () =>
+    import("@/components/testimonials-section").then((m) => ({ default: m.TestimonialsSection })),
+  { ssr: false },
+);
+const FaqSection = dynamic(
+  () => import("@/components/faq-section").then((m) => ({ default: m.FaqSection })),
+  { ssr: false },
+);
 
 function DashboardPreview() {
   return (
@@ -74,7 +93,16 @@ export default function Home() {
       <SideFrame />
 
       {/* Hero */}
-      <div className="hero-section" style={{ position: "relative", minHeight: "85vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div
+        className="hero-section"
+        style={{
+          position: "relative",
+          minHeight: "85vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <EmberParticles />
         <Hero />
       </div>
@@ -242,7 +270,16 @@ export default function Home() {
           Open source and free forever.
         </p>
 
-        <div className="cta-buttons" style={{ display: "flex", alignItems: "center", gap: 16, marginTop: 16, position: "relative" }}>
+        <div
+          className="cta-buttons"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 16,
+            marginTop: 16,
+            position: "relative",
+          }}
+        >
           <a
             href="/docs"
             className="cta-get-started"
@@ -258,12 +295,19 @@ export default function Home() {
               fontWeight: 600,
               fontFamily: "inherit",
               textDecoration: "none",
-              boxShadow: "0 0 20px rgba(251,146,60,0.2), 0 4px 12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2)",
+              boxShadow:
+                "0 0 20px rgba(251,146,60,0.2), 0 4px 12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2)",
             }}
           >
             Get started
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path
+                d="M3 8H13M13 8L9 4M13 8L9 12"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </a>
           <a
@@ -288,7 +332,7 @@ export default function Home() {
             }}
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
             </svg>
             Star on GitHub
           </a>
@@ -321,18 +365,40 @@ export default function Home() {
           viewBox="0 0 800 400"
         >
           <defs>
-            <filter id="cta-glow-1" x="-50%" y="-50%" width="200%" height="200%" colorInterpolationFilters="sRGB">
+            <filter
+              id="cta-glow-1"
+              x="-50%"
+              y="-50%"
+              width="200%"
+              height="200%"
+              colorInterpolationFilters="sRGB"
+            >
               <feFlood floodOpacity="0" result="bg" />
               <feBlend in="SourceGraphic" in2="bg" mode="normal" />
               <feGaussianBlur stdDeviation="80" />
             </filter>
-            <filter id="cta-glow-2" x="-50%" y="-50%" width="200%" height="200%" colorInterpolationFilters="sRGB">
+            <filter
+              id="cta-glow-2"
+              x="-50%"
+              y="-50%"
+              width="200%"
+              height="200%"
+              colorInterpolationFilters="sRGB"
+            >
               <feFlood floodOpacity="0" result="bg" />
               <feBlend in="SourceGraphic" in2="bg" mode="normal" />
               <feGaussianBlur stdDeviation="30" />
             </filter>
           </defs>
-          <ellipse cx="400" cy="350" fill="#FDBA74" fillOpacity="0.4" rx="350" ry="120" filter="url(#cta-glow-1)" />
+          <ellipse
+            cx="400"
+            cy="350"
+            fill="#FDBA74"
+            fillOpacity="0.4"
+            rx="350"
+            ry="120"
+            filter="url(#cta-glow-1)"
+          />
           <ellipse cx="400" cy="370" fill="#FB923C" rx="300" ry="60" filter="url(#cta-glow-2)" />
         </svg>
       </div>

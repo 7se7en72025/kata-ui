@@ -25,7 +25,8 @@ function GlobeIllustration() {
           top: "50%",
           transform: "translate(-50%, -50%)",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(253,186,116,0.35) 0%, rgba(251,146,60,0.15) 40%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(253,186,116,0.35) 0%, rgba(251,146,60,0.15) 40%, transparent 70%)",
           filter: "blur(40px)",
         }}
       />
@@ -42,21 +43,9 @@ function GlobeIllustration() {
           stroke="rgba(251,146,60,0.3)"
           strokeWidth="1"
         />
-        <ellipse
-          cx="176.5"
-          cy="176.5"
-          rx="176.5"
-          ry="176.5"
-          fill="url(#globeGrad)"
-        />
+        <ellipse cx="176.5" cy="176.5" rx="176.5" ry="176.5" fill="url(#globeGrad)" />
         <defs>
-          <linearGradient
-            id="globeGrad"
-            x1="176.5"
-            y1="353"
-            x2="176.5"
-            y2="0"
-          >
+          <linearGradient id="globeGrad" x1="176.5" y1="353" x2="176.5" y2="0">
             <stop stopColor="#FB923C" stopOpacity="0.8" />
             <stop offset="1" stopColor="#FDBA74" stopOpacity="0" />
           </linearGradient>
@@ -86,13 +75,7 @@ function GlobeIllustration() {
           filter="drop-shadow(0 4px 12px rgba(253,186,116,0.24))"
         />
         <defs>
-          <linearGradient
-            id="ringGrad1"
-            x1="193.1"
-            y1="70.96"
-            x2="58.76"
-            y2="132.48"
-          >
+          <linearGradient id="ringGrad1" x1="193.1" y1="70.96" x2="58.76" y2="132.48">
             <stop stopColor="#09090b" />
             <stop offset="1" stopColor="#FB923C" stopOpacity="0" />
           </linearGradient>
@@ -121,13 +104,7 @@ function GlobeIllustration() {
           filter="drop-shadow(0 4px 12px rgba(253,186,116,0.24))"
         />
         <defs>
-          <linearGradient
-            id="ringGrad2"
-            x1="177.12"
-            y1="133.71"
-            x2="40.72"
-            y2="121.95"
-          >
+          <linearGradient id="ringGrad2" x1="177.12" y1="133.71" x2="40.72" y2="121.95">
             <stop stopColor="#09090b" stopOpacity="0.7" />
             <stop offset="0.395" stopColor="#FB923C" stopOpacity="0.1" />
             <stop offset="1" stopColor="#FB923C" stopOpacity="0" />
@@ -161,7 +138,8 @@ function RippleIllustration() {
           top: "50%",
           transform: "translate(-50%, -50%)",
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(253,186,116,0.35) 0%, rgba(251,146,60,0.15) 40%, transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(253,186,116,0.35) 0%, rgba(251,146,60,0.15) 40%, transparent 70%)",
           filter: "blur(40px)",
         }}
       />
@@ -217,8 +195,24 @@ function RippleIllustration() {
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <circle cx="12" cy="12" r="2.1" fill="#09090b" />
             <ellipse cx="12" cy="12" rx="10.5" ry="4.1" stroke="#09090b" strokeWidth="1.5" />
-            <ellipse cx="12" cy="12" rx="10.5" ry="4.1" stroke="#09090b" strokeWidth="1.5" transform="rotate(60 12 12)" />
-            <ellipse cx="12" cy="12" rx="10.5" ry="4.1" stroke="#09090b" strokeWidth="1.5" transform="rotate(120 12 12)" />
+            <ellipse
+              cx="12"
+              cy="12"
+              rx="10.5"
+              ry="4.1"
+              stroke="#09090b"
+              strokeWidth="1.5"
+              transform="rotate(60 12 12)"
+            />
+            <ellipse
+              cx="12"
+              cy="12"
+              rx="10.5"
+              ry="4.1"
+              stroke="#09090b"
+              strokeWidth="1.5"
+              transform="rotate(120 12 12)"
+            />
           </svg>
         </div>
       </div>
@@ -324,7 +318,8 @@ export function FeatureTiles() {
                 margin: 0,
               }}
             >
-              This is not a component library. It&apos;s a collection of re-usable components that you can copy and paste into your apps.
+              This is not a component library. It&apos;s a collection of re-usable components that
+              you can copy and paste into your apps.
             </p>
           </div>
           <RippleIllustration />

@@ -8,10 +8,7 @@ interface AnimatedRaysProps {
   children?: React.ReactNode;
 }
 
-export function AnimatedRays({
-  className = "",
-  children,
-}: AnimatedRaysProps) {
+export function AnimatedRays({ className = "", children }: AnimatedRaysProps) {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [mounted, setMounted] = useState(false);
 
@@ -62,11 +59,8 @@ export function AnimatedRays({
           backgroundSize: "300%, 200%",
           backgroundPosition: "50% 50%, 50% 50%",
           filter:
-            theme === "dark"
-              ? "blur(6px) opacity(70%) saturate(150%)"
-              : "blur(6px) invert(100%)",
-          maskImage:
-            "linear-gradient(to bottom, transparent 0%, transparent 52px, black 52px)",
+            theme === "dark" ? "blur(6px) opacity(70%) saturate(150%)" : "blur(6px) invert(100%)",
+          maskImage: "linear-gradient(to bottom, transparent 0%, transparent 52px, black 52px)",
           WebkitMaskImage:
             "linear-gradient(to bottom, transparent 0%, transparent 52px, black 52px)",
           maskComposite: "intersect",

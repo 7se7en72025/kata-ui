@@ -37,27 +37,42 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: "npm"
       - run: npm ci
-      - run: npm run build
       - name: Install Vercel CLI
         run: npm install -g vercel
       - name: Deploy rollback
+        id: deploy
         run: |
           if [ "${{ inputs.environment }}" == "production" ]; then
             vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
             vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
-            vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
+            URL=$(vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }})
           else
             vercel pull --yes --environment=staging --token=${{ secrets.VERCEL_TOKEN }}
             vercel build --token=${{ secrets.VERCEL_TOKEN }}
-            vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
+            URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
           fi
+          echo "url=$URL" >> $GITHUB_OUTPUT
+      - name: Health check
+        run: |
+          sleep 10
+          for i in 1 2 3 4 5; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "${{ steps.deploy.outputs.url }}" || echo "000")
+            if [ "$STATUS" == "200" ]; then
+              echo "Rollback health check passed"
+              exit 0
+            fi
+            echo "Attempt $i: status $STATUS, retrying..."
+            sleep 5
+          done
+          echo "Rollback health check failed"
+          exit 1
       - name: Notify
         if: always()
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
           if [ "${{ job.status }}" == "success" ]; then
-            MSG="Rollback to ${{ inputs.version }} on ${{ inputs.environment }} succeeded.\nReason: ${{ inputs.reason }}"
+            MSG="Rollback to ${{ inputs.version }} on ${{ inputs.environment }} succeeded.\nURL: ${{ steps.deploy.outputs.url }}\nReason: ${{ inputs.reason }}"
           else
             MSG="Rollback to ${{ inputs.version }} on ${{ inputs.environment }} FAILED.\nReason: ${{ inputs.reason }}"
           fi
@@ -72,10 +87,22 @@ jobs:
         with:
           script: |
             const status = '${{ job.status }}' === 'success' ? 'succeeded' : 'FAILED';
+            const emoji = status === 'succeeded' ? '✅' : '❌';
             await github.rest.issues.create({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              title: `Rollback ${status}: ${{ inputs.environment }} to ${{ inputs.version }}`,
-              body: `## Rollback Details\n- **Environment:** ${{ inputs.environment }}\n- **Version:** ${{ inputs.version }}\n- **Reason:** ${{ inputs.reason }}\n- **Status:** ${status}\n- **Triggered by:** @${{ github.actor }}`,
+              title: `${emoji} Rollback ${status}: ${{ inputs.environment }} to ${{ inputs.version }}`,
+              body: [
+                '## Rollback Details',
+                '',
+                '| Field | Value |',
+                '|---|---|',
+                `| Environment | \`${{ inputs.environment }}\` |`,
+                `| Version | \`${{ inputs.version }}\` |`,
+                `| Reason | ${{ inputs.reason }} |`,
+                `| Status | ${status} |`,
+                `| Triggered by | @${{ github.actor }} |`,
+                `| URL | ${{ steps.deploy.outputs.url }} |`,
+              ].join('\n'),
               labels: ['rollback', 'incident']
             });

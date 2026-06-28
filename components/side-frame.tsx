@@ -111,10 +111,7 @@ const Ruler = memo(function Ruler({ side }: { side: "left" | "right" }) {
           : { right: 0, borderLeft: "1px solid #252525" }),
       }}
     >
-      <svg
-        ref={svgRef}
-        style={{ position: "absolute", inset: 0, width: 48, height: "100vh" }}
-      />
+      <svg ref={svgRef} style={{ position: "absolute", inset: 0, width: 48, height: "100vh" }} />
       <div
         style={{ position: "absolute", inset: 0, pointerEvents: "auto" }}
         onMouseMove={(e) => {

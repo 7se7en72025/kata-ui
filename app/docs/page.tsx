@@ -11,13 +11,11 @@ export default function DocsPage() {
   return (
     <div>
       <div style={{ marginBottom: 4 }}>
-        <span style={{ fontSize: 13, color: "#666", fontFamily: "inherit" }}>
-          Components
+        <span style={{ fontSize: 13, color: "#666", fontFamily: "inherit" }}>Components</span>
+        <span style={{ fontSize: 13, color: "#444", margin: "0 8px", fontFamily: "inherit" }}>
+          /
         </span>
-        <span style={{ fontSize: 13, color: "#444", margin: "0 8px", fontFamily: "inherit" }}>/</span>
-        <span style={{ fontSize: 13, color: "#888", fontFamily: "inherit" }}>
-          Liquid Metal
-        </span>
+        <span style={{ fontSize: 13, color: "#888", fontFamily: "inherit" }}>Liquid Metal</span>
       </div>
 
       <h1
@@ -161,7 +159,7 @@ export default function DocsPage() {
             }}
           >
             <pre style={{ margin: 0, whiteSpace: "pre-wrap" }}>
-{`import { LiquidMetal } from "@/components/liquid-metal";
+              {`import { LiquidMetal } from "@/components/liquid-metal";
 
 <LiquidMetal
   colorBack="#1a1a1a"
@@ -198,9 +196,9 @@ export default function DocsPage() {
             lineHeight: 1.7,
           }}
         >
-          The LiquidMetal component creates a metallic fluid shader effect using WebGL.
-          It responds to mouse movement and can be customized with various props for
-          color, speed, and distortion.
+          The LiquidMetal component creates a metallic fluid shader effect using WebGL. It responds
+          to mouse movement and can be customized with various props for color, speed, and
+          distortion.
         </p>
       </section>
 
@@ -272,9 +270,36 @@ export default function App() {
           >
             <thead>
               <tr style={{ background: "#111" }}>
-                <th style={{ padding: "10px 16px", textAlign: "left", color: "#888", fontWeight: 500 }}>Prop</th>
-                <th style={{ padding: "10px 16px", textAlign: "left", color: "#888", fontWeight: 500 }}>Type</th>
-                <th style={{ padding: "10px 16px", textAlign: "left", color: "#888", fontWeight: 500 }}>Default</th>
+                <th
+                  style={{
+                    padding: "10px 16px",
+                    textAlign: "left",
+                    color: "#888",
+                    fontWeight: 500,
+                  }}
+                >
+                  Prop
+                </th>
+                <th
+                  style={{
+                    padding: "10px 16px",
+                    textAlign: "left",
+                    color: "#888",
+                    fontWeight: 500,
+                  }}
+                >
+                  Type
+                </th>
+                <th
+                  style={{
+                    padding: "10px 16px",
+                    textAlign: "left",
+                    color: "#888",
+                    fontWeight: 500,
+                  }}
+                >
+                  Default
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -286,9 +311,13 @@ export default function App() {
                 ["distortion", "number", "0.1"],
               ].map(([prop, type, def], i) => (
                 <tr key={prop} style={{ borderTop: i > 0 ? "1px solid #222" : "none" }}>
-                  <td style={{ padding: "10px 16px", color: "#ccc", fontFamily: "monospace" }}>{prop}</td>
+                  <td style={{ padding: "10px 16px", color: "#ccc", fontFamily: "monospace" }}>
+                    {prop}
+                  </td>
                   <td style={{ padding: "10px 16px", color: "#888" }}>{type}</td>
-                  <td style={{ padding: "10px 16px", color: "#666", fontFamily: "monospace" }}>{def}</td>
+                  <td style={{ padding: "10px 16px", color: "#666", fontFamily: "monospace" }}>
+                    {def}
+                  </td>
                 </tr>
               ))}
             </tbody>

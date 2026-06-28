@@ -24,7 +24,8 @@
   --ruler-active-text: #aaaaaa;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -67,13 +68,17 @@ body {
 }
 
 .toggle-icon .icon-a {
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+  transition:
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease;
   transform: rotate(0deg) scale(1);
   opacity: 1;
 }
 
 .toggle-icon .icon-b {
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+  transition:
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.4s ease;
   transform: rotate(-180deg) scale(0);
   opacity: 0;
 }
@@ -89,13 +94,21 @@ body {
 }
 
 @keyframes trace-border {
-  from { stroke-dashoffset: 140; }
-  to { stroke-dashoffset: 0; }
+  from {
+    stroke-dashoffset: 140;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 @keyframes trace-border-reverse {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: 140; }
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 140;
+  }
 }
 
 .orbit-dots {
@@ -113,8 +126,12 @@ body {
 }
 
 @keyframes orbit-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .orbit-dot {

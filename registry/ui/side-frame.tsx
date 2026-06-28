@@ -53,12 +53,12 @@ function Ruler({ side }: { side: "left" | "right" }) {
       const tickX2 = isLeft ? 38 : 10;
 
       lines.push(
-        `<line x1="${tickX1}" y1="${y}" x2="${tickX2}" y2="${y}" stroke="${isActive ? colors.activeTick : colors.tick}" stroke-width="${isActive ? 1.5 : 0.8}"/>`
+        `<line x1="${tickX1}" y1="${y}" x2="${tickX2}" y2="${y}" stroke="${isActive ? colors.activeTick : colors.tick}" stroke-width="${isActive ? 1.5 : 0.8}"/>`,
       );
 
       const labelX = isLeft ? 26 : 22;
       texts.push(
-        `<text x="${labelX}" y="${y}" text-anchor="middle" dominant-baseline="central" fill="${isActive ? colors.activeText : colors.text}" font-family="monospace" font-size="${isActive ? 14 : 11}" opacity="${isActive ? 0.9 : 0.5}" transform="rotate(-90 ${labelX} ${y})">${val}</text>`
+        `<text x="${labelX}" y="${y}" text-anchor="middle" dominant-baseline="central" fill="${isActive ? colors.activeText : colors.text}" font-family="monospace" font-size="${isActive ? 14 : 11}" opacity="${isActive ? 0.9 : 0.5}" transform="rotate(-90 ${labelX} ${y})">${val}</text>`,
       );
     }
 
@@ -117,10 +117,7 @@ function Ruler({ side }: { side: "left" | "right" }) {
           : { right: 0, borderLeft: "1px solid #252525" }),
       }}
     >
-      <svg
-        ref={svgRef}
-        style={{ position: "absolute", inset: 0, width: 48, height: "100vh" }}
-      />
+      <svg ref={svgRef} style={{ position: "absolute", inset: 0, width: 48, height: "100vh" }} />
       <div
         style={{
           position: "absolute",

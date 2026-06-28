@@ -7,7 +7,16 @@ import { CommandMenu } from "./command-menu";
 
 function SunIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="12" cy="12" r="5" />
       <line x1="12" y1="1" x2="12" y2="3" />
       <line x1="12" y1="21" x2="12" y2="23" />
@@ -23,7 +32,16 @@ function SunIcon() {
 
 function MoonIcon() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
     </svg>
   );
@@ -77,7 +95,7 @@ function triggerTriangleTransition(
   originY: number,
   nextTheme: "light" | "dark",
   elements: { el: HTMLElement; type: string }[],
-  onDone: () => void
+  onDone: () => void,
 ) {
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (prefersReduced) {
@@ -108,10 +126,11 @@ function triggerTriangleTransition(
   document.body.appendChild(overlay);
   overlay.getBoundingClientRect();
 
-  const anim = overlay.animate(
-    [{ clipPath: startClip }, { clipPath: endClip }],
-    { duration, easing: "linear", fill: "forwards" }
-  );
+  const anim = overlay.animate([{ clipPath: startClip }, { clipPath: endClip }], {
+    duration,
+    easing: "linear",
+    fill: "forwards",
+  });
 
   elements.forEach(({ el, type }, i) => {
     const rect = el.getBoundingClientRect();
@@ -119,7 +138,10 @@ function triggerTriangleTransition(
     const cy = rect.top + rect.height / 2;
     const dx = cx - originX;
     const dy = cy - originY;
-    const t = Math.max(0, Math.min(1, Math.max((-2 * dx - dy) / maxDim, (2 * dx - dy) / maxDim, dy / maxDim)));
+    const t = Math.max(
+      0,
+      Math.min(1, Math.max((-2 * dx - dy) / maxDim, (2 * dx - dy) / maxDim, dy / maxDim)),
+    );
     const delay = Math.round(t * duration);
 
     setTimeout(() => applyColor(el, type, nextTheme), delay);
@@ -179,339 +201,389 @@ export function Navbar() {
     }
   }, [hovered]);
 
-  const toggleTheme = useCallback(
-    (_e: React.MouseEvent<HTMLDivElement>) => {
-      setShowComingSoon(true);
-      setTimeout(() => setShowComingSoon(false), 1800);
-    },
-    []
-  );
+  const toggleTheme = useCallback((_e: React.MouseEvent<HTMLDivElement>) => {
+    setShowComingSoon(true);
+    setTimeout(() => setShowComingSoon(false), 1800);
+  }, []);
 
   return (
     <>
-    <nav
-      ref={navRef}
-      className={isDocs ? "nav-docs" : "nav-home"}
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        height: 52,
-        zIndex: 100,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "0 16px",
-        background: isDark ? "#000000" : "#ffffff",
-        pointerEvents: "none",
-      }}
-    >
-      <div
-        data-nav-logo
+      <nav
+        ref={navRef}
+        className={isDocs ? "nav-docs" : "nav-home"}
         style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 52,
+          zIndex: 100,
           display: "flex",
           alignItems: "center",
-          gap: 8,
-          pointerEvents: "auto",
-          flexShrink: 0,
-        }}
-      >
-        <Image
-          src={isDark ? "/KATAUILOGOWHITE.svg" : "/KATAUILOGOBLACK.svg"}
-          alt="Kata UI"
-          width={28}
-          height={18}
-          style={{ height: 24, width: "auto" }}
-        />
-        <span
-          data-nav-text
-          style={{
-            fontFamily: "inherit",
-            fontSize: 15,
-            fontWeight: 500,
-            letterSpacing: "-0.01em",
-            lineHeight: 1,
-            color: isDark ? "#fff" : "#0d0d0d",
-          }}
-        >
-          KataUI
-        </span>
-      </div>
-
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 10,
-          flex: 1,
-          justifyContent: "flex-end",
-          pointerEvents: "auto",
+          justifyContent: "space-between",
+          padding: "0 16px",
+          background: isDark ? "#000000" : "#ffffff",
+          pointerEvents: "none",
         }}
       >
         <div
-          ref={searchRef}
-          data-nav-search
-          className="navbar-search"
-          onClick={() => setCmdOpen(true)}
-          onMouseMove={(e) => {
-            const rect = e.currentTarget.getBoundingClientRect();
-            setSearchHover({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-          }}
-          onMouseLeave={() => setSearchHover(null)}
+          data-nav-logo
           style={{
             display: "flex",
             alignItems: "center",
             gap: 8,
-            padding: "6px 12px",
-            borderRadius: 8,
-            border: `1px solid ${isDark ? (searchHover ? "#555" : "#333") : (searchHover ? "#bbb" : "#d4d4d4")}`,
-            background: searchHover
-              ? `radial-gradient(circle 140px at ${searchHover.x}px ${searchHover.y}px, ${isDark ? "rgba(255,255,255,0.18)" : "rgba(200,200,200,0.25)"}, ${isDark ? "rgba(255,255,255,0.04)" : "rgba(240,240,240,0.08)"})`
-              : isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.03)",
-            cursor: "pointer",
-            height: 36,
-            minWidth: 200,
-            transition: "border-color 0.15s ease",
-          } as React.CSSProperties}
+            pointerEvents: "auto",
+            flexShrink: 0,
+          }}
         >
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            style={{ stroke: searchHover ? (isDark ? "#ccc" : "#555") : (isDark ? "#666" : "#999"), transition: "stroke 0.15s ease", flexShrink: 0 }}
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <line x1="21" y1="21" x2="16.65" y2="16.65" />
-          </svg>
+          <Image
+            src={isDark ? "/KATAUILOGOWHITE.svg" : "/KATAUILOGOBLACK.svg"}
+            alt="Kata UI"
+            width={28}
+            height={18}
+            style={{ height: 24, width: "auto" }}
+          />
           <span
+            data-nav-text
             style={{
-              fontSize: 13,
-              color: isDark ? "#666" : "#999",
               fontFamily: "inherit",
-              flex: 1,
-              textAlign: "left",
-              minWidth: 0,
-            }}
-          >
-            Search documentation...
-          </span>
-          <span
-            data-nav-search-badge
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 2,
-              fontSize: 11,
-              fontFamily: "inherit",
-              color: searchHover ? (isDark ? "#eee" : "#222") : (isDark ? "#555" : "#aaa"),
-              border: `1px solid ${isDark ? (searchHover ? "#666" : "#333") : (searchHover ? "#999" : "#d4d4d4")}`,
-              background: searchHover ? (isDark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.06)") : "transparent",
-              transition: "all 0.2s ease",
-              borderRadius: 4,
-              padding: "2px 5px",
+              fontSize: 15,
+              fontWeight: 500,
+              letterSpacing: "-0.01em",
               lineHeight: 1,
-              flexShrink: 0,
+              color: isDark ? "#fff" : "#0d0d0d",
             }}
           >
-            <span style={{ fontSize: 10 }}>⌘</span>K
+            KataUI
           </span>
         </div>
-        <a
-          href="https://github.com/7se7en72025/kata-ui"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="navbar-star"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            padding: "7px 12px",
-            borderRadius: 8,
-            border: `1px solid ${isDark ? "#333" : "#d4d4d4"}`,
-            background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.03)",
-            color: isDark ? "#ccc" : "#333",
-            fontSize: 13,
-            fontWeight: 500,
-            fontFamily: "inherit",
-            textDecoration: "none",
-            transition: "all 0.15s ease",
-            height: 36,
-            whiteSpace: "nowrap",
-            cursor: "pointer",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = isDark ? "#555" : "#aaa";
-            e.currentTarget.style.background = isDark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.06)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = isDark ? "#333" : "#d4d4d4";
-            e.currentTarget.style.background = isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.03)";
-          }}
-        >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-          </svg>
-          Star
-        </a>
+
         <div
-          data-nav-toggle
-          className="theme-toggle-wrap"
-          onMouseEnter={() => setHovered(true)}
-          onMouseLeave={() => setHovered(false)}
-          onClick={toggleTheme}
           style={{
-            width: 36,
-            height: 36,
-            borderRadius: 8,
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            position: "relative",
-            color: isDark ? "#aaa" : "#555",
+            gap: 10,
+            flex: 1,
+            justifyContent: "flex-end",
+            pointerEvents: "auto",
           }}
         >
-          <svg
-            ref={borderRef}
-            className="toggle-border-svg"
-            width="36"
-            height="36"
-            viewBox="0 0 36 36"
-            style={{ position: "absolute", inset: 0, pointerEvents: "none" }}
-          >
-            <rect
-              x="0.5"
-              y="0.5"
-              width="35"
-              height="35"
-              rx="7.5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-              opacity="0.3"
-              strokeDasharray="140"
-              strokeDashoffset="140"
-            />
-          </svg>
-
           <div
-            ref={dotsRef}
-            className={`orbit-dots ${hovered ? "active" : ""}`}
+            ref={searchRef}
+            data-nav-search
+            className="navbar-search"
+            onClick={() => setCmdOpen(true)}
+            onMouseMove={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              setSearchHover({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+            }}
+            onMouseLeave={() => setSearchHover(null)}
+            style={
+              {
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "6px 12px",
+                borderRadius: 8,
+                border: `1px solid ${isDark ? (searchHover ? "#555" : "#333") : searchHover ? "#bbb" : "#d4d4d4"}`,
+                background: searchHover
+                  ? `radial-gradient(circle 140px at ${searchHover.x}px ${searchHover.y}px, ${isDark ? "rgba(255,255,255,0.18)" : "rgba(200,200,200,0.25)"}, ${isDark ? "rgba(255,255,255,0.04)" : "rgba(240,240,240,0.08)"})`
+                  : isDark
+                    ? "rgba(255,255,255,0.04)"
+                    : "rgba(0,0,0,0.03)",
+                cursor: "pointer",
+                height: 36,
+                minWidth: 200,
+                transition: "border-color 0.15s ease",
+              } as React.CSSProperties
+            }
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              style={{
+                stroke: searchHover ? (isDark ? "#ccc" : "#555") : isDark ? "#666" : "#999",
+                transition: "stroke 0.15s ease",
+                flexShrink: 0,
+              }}
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <span
+              style={{
+                fontSize: 13,
+                color: isDark ? "#666" : "#999",
+                fontFamily: "inherit",
+                flex: 1,
+                textAlign: "left",
+                minWidth: 0,
+              }}
+            >
+              Search documentation...
+            </span>
+            <span
+              data-nav-search-badge
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                fontSize: 11,
+                fontFamily: "inherit",
+                color: searchHover ? (isDark ? "#eee" : "#222") : isDark ? "#555" : "#aaa",
+                border: `1px solid ${isDark ? (searchHover ? "#666" : "#333") : searchHover ? "#999" : "#d4d4d4"}`,
+                background: searchHover
+                  ? isDark
+                    ? "rgba(255,255,255,0.1)"
+                    : "rgba(0,0,0,0.06)"
+                  : "transparent",
+                transition: "all 0.2s ease",
+                borderRadius: 4,
+                padding: "2px 5px",
+                lineHeight: 1,
+                flexShrink: 0,
+              }}
+            >
+              <span style={{ fontSize: 10 }}>⌘</span>K
+            </span>
+          </div>
+          <a
+            href="https://github.com/7se7en72025/kata-ui"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="navbar-star"
             style={{
-              position: "absolute",
-              width: 36,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              padding: "7px 12px",
+              borderRadius: 8,
+              border: `1px solid ${isDark ? "#333" : "#d4d4d4"}`,
+              background: isDark ? "rgba(255,255,255,0.04)" : "rgba(0,0,0,0.03)",
+              color: isDark ? "#ccc" : "#333",
+              fontSize: 13,
+              fontWeight: 500,
+              fontFamily: "inherit",
+              textDecoration: "none",
+              transition: "all 0.15s ease",
               height: 36,
-              pointerEvents: "none",
+              whiteSpace: "nowrap",
+              cursor: "pointer",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = isDark ? "#555" : "#aaa";
+              e.currentTarget.style.background = isDark
+                ? "rgba(255,255,255,0.08)"
+                : "rgba(0,0,0,0.06)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = isDark ? "#333" : "#d4d4d4";
+              e.currentTarget.style.background = isDark
+                ? "rgba(255,255,255,0.04)"
+                : "rgba(0,0,0,0.03)";
             }}
           >
-            <span className="orbit-dot" style={{ top: -1, left: "50%", transform: "translateX(-50%)" }} />
-            <span className="orbit-dot" style={{ top: "50%", right: -1, transform: "translateY(-50%)" }} />
-            <span className="orbit-dot" style={{ bottom: -1, left: "50%", transform: "translateX(-50%)" }} />
-            <span className="orbit-dot" style={{ top: "50%", left: -1, transform: "translateY(-50%)" }} />
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
+            Star
+          </a>
+          <div
+            data-nav-toggle
+            className="theme-toggle-wrap"
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            onClick={toggleTheme}
+            style={{
+              width: 36,
+              height: 36,
+              borderRadius: 8,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              position: "relative",
+              color: isDark ? "#aaa" : "#555",
+            }}
+          >
+            <svg
+              ref={borderRef}
+              className="toggle-border-svg"
+              width="36"
+              height="36"
+              viewBox="0 0 36 36"
+              style={{ position: "absolute", inset: 0, pointerEvents: "none" }}
+            >
+              <rect
+                x="0.5"
+                y="0.5"
+                width="35"
+                height="35"
+                rx="7.5"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1"
+                opacity="0.3"
+                strokeDasharray="140"
+                strokeDashoffset="140"
+              />
+            </svg>
+
+            <div
+              ref={dotsRef}
+              className={`orbit-dots ${hovered ? "active" : ""}`}
+              style={{
+                position: "absolute",
+                width: 36,
+                height: 36,
+                pointerEvents: "none",
+              }}
+            >
+              <span
+                className="orbit-dot"
+                style={{ top: -1, left: "50%", transform: "translateX(-50%)" }}
+              />
+              <span
+                className="orbit-dot"
+                style={{ top: "50%", right: -1, transform: "translateY(-50%)" }}
+              />
+              <span
+                className="orbit-dot"
+                style={{ bottom: -1, left: "50%", transform: "translateX(-50%)" }}
+              />
+              <span
+                className="orbit-dot"
+                style={{ top: "50%", left: -1, transform: "translateY(-50%)" }}
+              />
+            </div>
+
+            <span className="toggle-icon toggle-wrap">
+              <span className="icon-a">{isDark ? <MoonIcon /> : <SunIcon />}</span>
+              <span className="icon-b">{isDark ? <SunIcon /> : <MoonIcon />}</span>
+            </span>
           </div>
 
-          <span className="toggle-icon toggle-wrap">
-            <span className="icon-a">{isDark ? <MoonIcon /> : <SunIcon />}</span>
-            <span className="icon-b">{isDark ? <SunIcon /> : <MoonIcon />}</span>
-          </span>
+          <button
+            data-nav-docs
+            className="navbar-docs-btn"
+            style={{
+              background: isDark ? "#fff" : "#111",
+              color: isDark ? "#000" : "#fff",
+              border: "none",
+              borderRadius: 8,
+              padding: "8px 18px",
+              fontSize: 14,
+              fontWeight: 500,
+              fontFamily: "inherit",
+              letterSpacing: 0,
+              cursor: "pointer",
+              height: 36,
+              whiteSpace: "nowrap",
+            }}
+            onMouseEnter={(e) =>
+              (e.currentTarget.style.background = isDark ? "#e8e8e8" : "#2a2a2a")
+            }
+            onMouseLeave={(e) => (e.currentTarget.style.background = isDark ? "#fff" : "#111")}
+          >
+            View Docs
+          </button>
+
+          {/* Mobile hamburger */}
+          <button
+            className="navbar-mobile-toggle"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            style={{
+              display: "none",
+              width: 36,
+              height: 36,
+              borderRadius: 8,
+              border: `1px solid ${isDark ? "#333" : "#d4d4d4"}`,
+              background: "transparent",
+              color: isDark ? "#ccc" : "#333",
+              cursor: "pointer",
+              alignItems: "center",
+              justifyContent: "center",
+              padding: 0,
+            }}
+          >
+            {mobileMenuOpen ? (
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            ) : (
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            )}
+          </button>
         </div>
+      </nav>
 
-        <button
-          data-nav-docs
-          className="navbar-docs-btn"
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="navbar-mobile-menu">
+          <a href="/docs" onClick={() => setMobileMenuOpen(false)}>
+            Docs
+          </a>
+          <a
+            href="https://github.com/7se7en72025/kata-ui"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            GitHub
+          </a>
+          <a href="/docs" onClick={() => setMobileMenuOpen(false)}>
+            View Docs
+          </a>
+        </div>
+      )}
+      {showComingSoon && (
+        <div
           style={{
-            background: isDark ? "#fff" : "#111",
-            color: isDark ? "#000" : "#fff",
-            border: "none",
+            position: "fixed",
+            top: 60,
+            left: "50%",
+            transform: "translateX(-50%)",
+            background: "#1a1a1a",
+            color: "#fff",
+            border: "1px solid #333",
             borderRadius: 8,
-            padding: "8px 18px",
-            fontSize: 14,
-            fontWeight: 500,
+            padding: "8px 20px",
+            fontSize: 13,
             fontFamily: "inherit",
-            letterSpacing: 0,
-            cursor: "pointer",
-            height: 36,
-            whiteSpace: "nowrap",
-          }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.background = isDark ? "#e8e8e8" : "#2a2a2a")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.background = isDark ? "#fff" : "#111")
-          }
-        >
-          View Docs
-        </button>
-
-        {/* Mobile hamburger */}
-        <button
-          className="navbar-mobile-toggle"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          style={{
-            display: "none",
-            width: 36,
-            height: 36,
-            borderRadius: 8,
-            border: `1px solid ${isDark ? "#333" : "#d4d4d4"}`,
-            background: "transparent",
-            color: isDark ? "#ccc" : "#333",
-            cursor: "pointer",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: 0,
+            zIndex: 9999,
+            animation: "fadeInOut 1.8s ease forwards",
           }}
         >
-          {mobileMenuOpen ? (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <line x1="18" y1="6" x2="6" y2="18"/>
-              <line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-          ) : (
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-              <line x1="3" y1="6" x2="21" y2="6"/>
-              <line x1="3" y1="12" x2="21" y2="12"/>
-              <line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
-          )}
-        </button>
-      </div>
-    </nav>
-
-    {/* Mobile menu */}
-    {mobileMenuOpen && (
-      <div className="navbar-mobile-menu">
-        <a href="/docs" onClick={() => setMobileMenuOpen(false)}>Docs</a>
-        <a href="https://github.com/7se7en72025/kata-ui" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)}>GitHub</a>
-        <a href="/docs" onClick={() => setMobileMenuOpen(false)}>View Docs</a>
-      </div>
-    )}
-    {showComingSoon && (
-      <div
-        style={{
-          position: "fixed",
-          top: 60,
-          left: "50%",
-          transform: "translateX(-50%)",
-          background: "#1a1a1a",
-          color: "#fff",
-          border: "1px solid #333",
-          borderRadius: 8,
-          padding: "8px 20px",
-          fontSize: 13,
-          fontFamily: "inherit",
-          zIndex: 9999,
-          animation: "fadeInOut 1.8s ease forwards",
-        }}
-      >
-        Light theme coming soon
-      </div>
-    )}
-    <CommandMenu open={cmdOpen} onClose={() => setCmdOpen(false)} />
+          Light theme coming soon
+        </div>
+      )}
+      <CommandMenu open={cmdOpen} onClose={() => setCmdOpen(false)} />
     </>
   );
 }

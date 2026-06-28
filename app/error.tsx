@@ -1,12 +1,13 @@
 "use client";
 
-export default function Error({
-  error,
-  reset,
-}: {
+import React from "react";
+
+interface ErrorProps {
   error: Error & { digest?: string };
   reset: () => void;
-}) {
+}
+
+export default function Error({ error, reset }: ErrorProps) {
   return (
     <div
       style={{
@@ -15,23 +16,27 @@ export default function Error({
         alignItems: "center",
         justifyContent: "center",
         minHeight: "100vh",
-        background: "var(--bg)",
-        color: "var(--fg)",
-        fontFamily: "inherit",
+        padding: "32px",
+        textAlign: "center",
+        background: "#0a0a0a",
+        color: "#fafafa",
       }}
     >
-      <h2 style={{ fontSize: 20, marginBottom: 16 }}>Something went wrong</h2>
+      <h2 style={{ fontSize: 32, fontWeight: 700, marginBottom: 12 }}>Something went wrong</h2>
+      <p style={{ color: "#71717a", marginBottom: 24, maxWidth: 500 }}>
+        {error.message || "An unexpected error occurred. Please try again."}
+      </p>
       <button
-        onClick={() => reset()}
+        onClick={reset}
         style={{
-          background: "var(--fg)",
-          color: "var(--bg)",
-          border: "none",
+          padding: "12px 24px",
           borderRadius: 8,
-          padding: "8px 18px",
-          fontSize: 14,
-          fontWeight: 500,
+          background: "linear-gradient(180deg, #fb923c 0%, #f97316 100%)",
+          color: "#000",
+          border: "none",
           cursor: "pointer",
+          fontSize: 14,
+          fontWeight: 600,
         }}
       >
         Try again

@@ -13,11 +13,19 @@ export default defineConfig({
     environment: "jsdom",
     globals: true,
     setupFiles: [],
+    include: ["__tests__/**/*.{test,spec}.{ts,tsx}"],
+    exclude: ["node_modules/", ".next/", "e2e/**"],
     coverage: {
       provider: "v8",
-      reporter: ["text", "json", "html"],
+      reporter: ["text", "json", "html", "lcov"],
       include: ["components/**/*.{ts,tsx}", "lib/**/*.{ts,tsx}", "registry/**/*.{ts,tsx}"],
       exclude: ["node_modules/", ".next/"],
+      thresholds: {
+        statements: 50,
+        branches: 50,
+        functions: 50,
+        lines: 50,
+      },
     },
   },
 });

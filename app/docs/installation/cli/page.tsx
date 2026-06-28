@@ -51,7 +51,19 @@ export default function CliPage() {
           lineHeight: 1.7,
         }}
       >
-        Use the <code style={{ color: "#bbb", background: "#1a1a1a", padding: "2px 6px", borderRadius: 4, fontSize: 13 }}>init</code> command to initialize a new shadcn project before adding registry components.
+        Use the{" "}
+        <code
+          style={{
+            color: "#bbb",
+            background: "#1a1a1a",
+            padding: "2px 6px",
+            borderRadius: 4,
+            fontSize: 13,
+          }}
+        >
+          init
+        </code>{" "}
+        command to initialize a new shadcn project before adding registry components.
       </p>
 
       <CodeBlock code="npx shadcn@latest init" tabs={["npm", "pnpm", "yarn", "bun"]} />
@@ -84,7 +96,19 @@ Do you want to use CSS variables for colors? yes`}
           lineHeight: 1.7,
         }}
       >
-        Use the <code style={{ color: "#bbb", background: "#1a1a1a", padding: "2px 6px", borderRadius: 4, fontSize: 13 }}>add</code> command with the Kata UI registry URL from any component page.
+        Use the{" "}
+        <code
+          style={{
+            color: "#bbb",
+            background: "#1a1a1a",
+            padding: "2px 6px",
+            borderRadius: 4,
+            fontSize: 13,
+          }}
+        >
+          add
+        </code>{" "}
+        command with the Kata UI registry URL from any component page.
       </p>
 
       <CodeBlock
@@ -130,7 +154,31 @@ Options:
           lineHeight: 1.7,
         }}
       >
-        In a monorepo, pass the workspace path with <code style={{ color: "#bbb", background: "#1a1a1a", padding: "2px 6px", borderRadius: 4, fontSize: 13 }}>-c</code> or <code style={{ color: "#bbb", background: "#1a1a1a", padding: "2px 6px", borderRadius: 4, fontSize: 13 }}>--cwd</code>.
+        In a monorepo, pass the workspace path with{" "}
+        <code
+          style={{
+            color: "#bbb",
+            background: "#1a1a1a",
+            padding: "2px 6px",
+            borderRadius: 4,
+            fontSize: 13,
+          }}
+        >
+          -c
+        </code>{" "}
+        or{" "}
+        <code
+          style={{
+            color: "#bbb",
+            background: "#1a1a1a",
+            padding: "2px 6px",
+            borderRadius: 4,
+            fontSize: 13,
+          }}
+        >
+          --cwd
+        </code>
+        .
       </p>
 
       <CodeBlock
@@ -160,7 +208,19 @@ Options:
           lineHeight: 1.7,
         }}
       >
-        If you prefer short component names, add a registry alias to <code style={{ color: "#bbb", background: "#1a1a1a", padding: "2px 6px", borderRadius: 4, fontSize: 13 }}>components.json</code>.
+        If you prefer short component names, add a registry alias to{" "}
+        <code
+          style={{
+            color: "#bbb",
+            background: "#1a1a1a",
+            padding: "2px 6px",
+            borderRadius: 4,
+            fontSize: 13,
+          }}
+        >
+          components.json
+        </code>
+        .
       </p>
 
       <CodeBlock

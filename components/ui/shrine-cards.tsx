@@ -37,7 +37,7 @@ export const ShrineCards = memo(function ShrineCards({
       setActiveIndex(index);
       onCardHover?.(cards[index]?.id ?? null);
     },
-    [cards, onCardHover]
+    [cards, onCardHover],
   );
 
   const handleMouseLeave = React.useCallback(() => {
@@ -50,7 +50,7 @@ export const ShrineCards = memo(function ShrineCards({
       setActiveIndex((prev) => (prev === index ? -1 : index));
       onCardHover?.(cards[index]?.id ?? null);
     },
-    [cards, onCardHover]
+    [cards, onCardHover],
   );
 
   return (
@@ -58,7 +58,7 @@ export const ShrineCards = memo(function ShrineCards({
       className={cn(
         "flex items-center justify-center w-full",
         isMobile ? "flex-col gap-3" : "flex-row",
-        className
+        className,
       )}
       style={{ maxWidth: isMobile ? 400 : 1100, margin: "0 auto", gap: isMobile ? 12 : 4 }}
       onMouseLeave={handleMouseLeave}
@@ -72,7 +72,7 @@ export const ShrineCards = memo(function ShrineCards({
             key={card.id}
             className={cn(
               "shrink-0 cursor-pointer relative overflow-hidden",
-              !isMobile && "transition-[width] duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
+              !isMobile && "transition-[width] duration-[500ms] ease-[cubic-bezier(0.4,0,0.2,1)]",
             )}
             style={{
               width: isMobile ? "100%" : isActive ? expandedWidth : collapsedWidth,
@@ -146,7 +146,16 @@ export const ShrineCards = memo(function ShrineCards({
                   transition: "opacity 0.2s ease",
                 }}
               >
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <line x1="7" y1="17" x2="17" y2="7" />
                   <polyline points="7,7 17,7 17,17" />
                 </svg>

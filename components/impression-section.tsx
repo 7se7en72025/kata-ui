@@ -114,21 +114,77 @@ export function ImpressionSection() {
                 <svg viewBox="0 0 16 16" fill="none" style={{ width: "100%", height: "100%" }}>
                   {f.active ? (
                     <>
-                      <rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.5" />
-                      <rect x="9" y="2" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.5" />
-                      <rect x="2" y="9" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.5" />
-                      <rect x="9" y="9" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.5" />
+                      <rect
+                        x="2"
+                        y="2"
+                        width="5"
+                        height="5"
+                        rx="1"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      />
+                      <rect
+                        x="9"
+                        y="2"
+                        width="5"
+                        height="5"
+                        rx="1"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      />
+                      <rect
+                        x="2"
+                        y="9"
+                        width="5"
+                        height="5"
+                        rx="1"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      />
+                      <rect
+                        x="9"
+                        y="9"
+                        width="5"
+                        height="5"
+                        rx="1"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      />
                     </>
                   ) : f.title === "Add your content" ? (
                     <>
-                      <rect x="3" y="3" width="10" height="10" rx="1" stroke="currentColor" strokeWidth="1.5" />
-                      <path d="M6 7L8 5L10 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      <rect
+                        x="3"
+                        y="3"
+                        width="10"
+                        height="10"
+                        rx="1"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                      />
+                      <path
+                        d="M6 7L8 5L10 7"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
                     </>
                   ) : (
                     <>
                       <circle cx="8" cy="8" r="5" stroke="currentColor" strokeWidth="1.5" />
-                      <path d="M8 6V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-                      <path d="M6 8H10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                      <path
+                        d="M8 6V10"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        d="M6 8H10"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                      />
                     </>
                   )}
                 </svg>
@@ -200,20 +256,49 @@ export function ImpressionSection() {
                   <clipPath id="impression-clip">
                     <rect width="1260" height="1069" fill="white" />
                   </clipPath>
-                  <filter id="impression-glow1" x="-31" y="-14" width="1134" height="913" colorInterpolationFilters="sRGB">
+                  <filter
+                    id="impression-glow1"
+                    x="-31"
+                    y="-14"
+                    width="1134"
+                    height="913"
+                    colorInterpolationFilters="sRGB"
+                  >
                     <feFlood floodOpacity="0" result="bg1" />
                     <feBlend in="SourceGraphic" in2="bg1" mode="normal" result="shape1" />
                     <feGaussianBlur result="blur1" stdDeviation="156" />
                   </filter>
-                  <filter id="impression-glow2" x="311" y="239" width="638" height="276" colorInterpolationFilters="sRGB">
+                  <filter
+                    id="impression-glow2"
+                    x="311"
+                    y="239"
+                    width="638"
+                    height="276"
+                    colorInterpolationFilters="sRGB"
+                  >
                     <feFlood floodOpacity="0" result="bg2" />
                     <feBlend in="SourceGraphic" in2="bg2" mode="normal" result="shape2" />
                     <feGaussianBlur result="blur2" stdDeviation="32" />
                   </filter>
                 </defs>
                 <g clipPath="url(#impression-clip)">
-                  <ellipse cx="630" cy="442.5" fill="#FDBA74" fillOpacity="0.6" rx="255" ry="144.5" filter="url(#impression-glow1)" />
-                  <ellipse cx="630" cy="377" fill="#FB923C" rx="255" ry="74" filter="url(#impression-glow2)" />
+                  <ellipse
+                    cx="630"
+                    cy="442.5"
+                    fill="#FDBA74"
+                    fillOpacity="0.6"
+                    rx="255"
+                    ry="144.5"
+                    filter="url(#impression-glow1)"
+                  />
+                  <ellipse
+                    cx="630"
+                    cy="377"
+                    fill="#FB923C"
+                    rx="255"
+                    ry="74"
+                    filter="url(#impression-glow2)"
+                  />
                 </g>
               </svg>
             </div>
@@ -228,7 +313,8 @@ export function ImpressionSection() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "stretch",
-                boxShadow: "0px 25px 50px -12px rgba(0,0,0,0.5), 0px 0px 40px rgba(251,146,60,0.15)",
+                boxShadow:
+                  "0px 25px 50px -12px rgba(0,0,0,0.5), 0px 0px 40px rgba(251,146,60,0.15)",
               }}
             >
               <div

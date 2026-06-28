@@ -4,24 +4,77 @@ import React, { memo } from "react";
 
 const testimonials = [
   [
-    { name: "Zara Qadir", handle: "@zaraprints", text: ["Playing around with ", "@kataui", " suddenly made me feeling inspired to launch that side project."] },
-    { name: "Fabrizio Fernandez", handle: "@fab3304", text: ["Testing out ", "@kataui", "'s responsive design. That's the template we've all been waiting for."] },
-    { name: "Felix Beaumont", handle: "@felixbs", text: ["Digging into ", "@kataui", ". Those shadows are giving me serious design envy."] },
-    { name: "Olivia Blackwood", handle: "@olivia1992", text: ["", "@kataui", " is not messing around with its component library game."] },
+    {
+      name: "Zara Qadir",
+      handle: "@zaraprints",
+      text: [
+        "Playing around with ",
+        "@kataui",
+        " suddenly made me feeling inspired to launch that side project.",
+      ],
+    },
+    {
+      name: "Fabrizio Fernandez",
+      handle: "@fab3304",
+      text: [
+        "Testing out ",
+        "@kataui",
+        "'s responsive design. That's the template we've all been waiting for.",
+      ],
+    },
+    {
+      name: "Felix Beaumont",
+      handle: "@felixbs",
+      text: ["Digging into ", "@kataui", ". Those shadows are giving me serious design envy."],
+    },
+    {
+      name: "Olivia Blackwood",
+      handle: "@olivia1992",
+      text: ["", "@kataui", " is not messing around with its component library game."],
+    },
   ],
   [
-    { name: "Esme Rothschild", handle: "@EsmeRothArt", text: ["", "@kataui", " is siiiiick. That globe graphic though. Making me feel like I'm building websites for a sci-fi movie."] },
-    { name: "Darius Flynn", handle: "@flynnn", text: ["Exploring ", "@kataui", "'s sleek UI. It's like a dark mode enthusiast's playground."] },
-    { name: "Kai Nakamura", handle: "@KaiNakWaves", text: ["Just made my first website with ", "@kataui", ". Its flexibility is speaking my language."] },
+    {
+      name: "Esme Rothschild",
+      handle: "@EsmeRothArt",
+      text: [
+        "",
+        "@kataui",
+        " is siiiiick. That globe graphic though. Making me feel like I'm building websites for a sci-fi movie.",
+      ],
+    },
+    {
+      name: "Darius Flynn",
+      handle: "@flynnn",
+      text: [
+        "Exploring ",
+        "@kataui",
+        "'s sleek UI. It's like a dark mode enthusiast's playground.",
+      ],
+    },
+    {
+      name: "Kai Nakamura",
+      handle: "@KaiNakWaves",
+      text: [
+        "Just made my first website with ",
+        "@kataui",
+        ". Its flexibility is speaking my language.",
+      ],
+    },
   ],
 ];
 
-const TestimonialCard = memo(function TestimonialCard({ testimonial }: { testimonial: typeof testimonials[0][0] }) {
+const TestimonialCard = memo(function TestimonialCard({
+  testimonial,
+}: {
+  testimonial: (typeof testimonials)[0][0];
+}) {
   return (
     <div
       className="testimonial-card"
       style={{
-        background: "linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%)",
+        background:
+          "linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%)",
         borderRadius: 12,
         border: "1px solid rgba(255,255,255,0.1)",
         padding: 24,
@@ -37,8 +90,12 @@ const TestimonialCard = memo(function TestimonialCard({ testimonial }: { testimo
       <div style={{ display: "flex", gap: 12, alignItems: "center", width: "100%" }}>
         <div
           style={{
-            width: 48, height: 48, borderRadius: 9999, overflow: "hidden",
-            flexShrink: 0, position: "relative",
+            width: 48,
+            height: 48,
+            borderRadius: 9999,
+            overflow: "hidden",
+            flexShrink: 0,
+            position: "relative",
             background: `linear-gradient(135deg, hsl(${testimonial.name.length * 40}, 50%, 40%) 0%, hsl(${testimonial.name.length * 60}, 40%, 25%) 100%)`,
           }}
         />
@@ -51,20 +108,30 @@ const TestimonialCard = memo(function TestimonialCard({ testimonial }: { testimo
           </div>
         </div>
       </div>
-      <p style={{ margin: 0, fontSize: 16, lineHeight: "24px", color: "#71717a", fontFamily: "inherit" }}>
+      <p
+        style={{
+          margin: 0,
+          fontSize: 16,
+          lineHeight: "24px",
+          color: "#71717a",
+          fontFamily: "inherit",
+        }}
+      >
         {testimonial.text.map((part, i) =>
           part.startsWith("@") ? (
-            <span key={i} style={{ color: "#fb923c" }}>{part}</span>
+            <span key={i} style={{ color: "#fb923c" }}>
+              {part}
+            </span>
           ) : (
             <span key={i}>{part}</span>
-          )
+          ),
         )}
       </p>
     </div>
   );
 });
 
-function ScrollingRow({ row, reverse }: { row: typeof testimonials[0]; reverse?: boolean }) {
+function ScrollingRow({ row, reverse }: { row: (typeof testimonials)[0]; reverse?: boolean }) {
   const doubled = [...row, ...row];
 
   return (

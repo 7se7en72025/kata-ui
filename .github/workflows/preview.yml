@@ -17,6 +17,8 @@ jobs:
     name: Deploy Preview
     runs-on: ubuntu-latest
     if: github.event.action != 'closed'
+    outputs:
+      url: ${{ steps.deploy.outputs.url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -24,7 +26,6 @@ jobs:
           node-version: 20
           cache: "npm"
       - run: npm ci
-      - run: npm run build
       - name: Install Vercel CLI
         run: npm install -g vercel
       - name: Pull Vercel Environment
@@ -36,16 +37,37 @@ jobs:
         run: |
           URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} --environment=preview)
           echo "url=$URL" >> $GITHUB_OUTPUT
-      - name: Comment PR with preview URL
+      - name: Find or create PR comment
         uses: actions/github-script@v7
         with:
           script: |
-            github.rest.issues.createComment({
-              issue_number: context.issue.number,
+            const body = `🚀 **Preview deployed!**\n\n| | |\n|---|---|\n| **URL** | ${{ steps.deploy.outputs.url }} |\n| **Commit** | \`${context.sha.substring(0, 7)}\` |\n| **Branch** | \`${context.head.ref}\` |\n\n> Review the changes live before merging.`;
+
+            const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `🚀 **Preview deployed!**\n\nURL: ${{ steps.deploy.outputs.url }}`
-            })
+              issue_number: context.issue.number,
+            });
+
+            const existing = comments.find(c =>
+              c.user.type === 'Bot' && c.body.includes('Preview deployed!')
+            );
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
 
   cleanup-preview:
     name: Cleanup Preview

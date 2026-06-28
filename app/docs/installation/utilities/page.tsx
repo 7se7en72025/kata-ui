@@ -89,7 +89,19 @@ export function cn(...inputs: ClassValue[]) {
           lineHeight: 1.7,
         }}
       >
-        Use <code style={{ color: "#bbb", background: "#1a1a1a", padding: "2px 6px", borderRadius: 4, fontSize: 13 }}>cn</code> anywhere you need conditional classes that should still merge Tailwind conflicts cleanly.
+        Use{" "}
+        <code
+          style={{
+            color: "#bbb",
+            background: "#1a1a1a",
+            padding: "2px 6px",
+            borderRadius: 4,
+            fontSize: 13,
+          }}
+        >
+          cn
+        </code>{" "}
+        anywhere you need conditional classes that should still merge Tailwind conflicts cleanly.
       </p>
 
       <CodeBlock
@@ -131,7 +143,20 @@ export function Example({ active }: { active: boolean }) {
           lineHeight: 1.7,
         }}
       >
-        Many animated components use <code style={{ color: "#bbb", background: "#1a1a1a", padding: "2px 6px", borderRadius: 4, fontSize: 13 }}>framer-motion</code>. Components that need a different dependency list still show the exact package command on their own component page.
+        Many animated components use{" "}
+        <code
+          style={{
+            color: "#bbb",
+            background: "#1a1a1a",
+            padding: "2px 6px",
+            borderRadius: 4,
+            fontSize: 13,
+          }}
+        >
+          framer-motion
+        </code>
+        . Components that need a different dependency list still show the exact package command on
+        their own component page.
       </p>
     </div>
   );

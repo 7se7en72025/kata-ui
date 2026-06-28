@@ -46,16 +46,18 @@ export function EmberParticles() {
           <div
             key={i}
             className="ember-dot"
-            style={{
-              left: `${50 + p.x * 0.5}%`,
-              width: p.size,
-              height: p.size,
-              background: p.color,
-              boxShadow: `0 0 ${p.size * 2}px ${p.color}`,
-              "--d": `${p.drift}px`,
-              "--del": `${p.delay}s`,
-              "--dur": `${p.duration}s`,
-            } as React.CSSProperties}
+            style={
+              {
+                left: `${50 + p.x * 0.5}%`,
+                width: p.size,
+                height: p.size,
+                background: p.color,
+                boxShadow: `0 0 ${p.size * 2}px ${p.color}`,
+                "--d": `${p.drift}px`,
+                "--del": `${p.delay}s`,
+                "--dur": `${p.duration}s`,
+              } as React.CSSProperties
+            }
           />
         ))}
       </div>
@@ -64,16 +66,18 @@ export function EmberParticles() {
           <div
             key={i}
             className="ember-dot"
-            style={{
-              left: `${50 + p.x * 0.5}%`,
-              width: p.size,
-              height: p.size,
-              background: p.color,
-              boxShadow: `0 0 ${p.size * 2}px ${p.color}`,
-              "--d": `${p.drift}px`,
-              "--del": `${p.delay}s`,
-              "--dur": `${p.duration}s`,
-            } as React.CSSProperties}
+            style={
+              {
+                left: `${50 + p.x * 0.5}%`,
+                width: p.size,
+                height: p.size,
+                background: p.color,
+                boxShadow: `0 0 ${p.size * 2}px ${p.color}`,
+                "--d": `${p.drift}px`,
+                "--del": `${p.delay}s`,
+                "--dur": `${p.duration}s`,
+              } as React.CSSProperties
+            }
           />
         ))}
       </div>

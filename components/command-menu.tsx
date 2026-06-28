@@ -12,13 +12,49 @@ interface CommandItem {
 }
 
 const items: CommandItem[] = [
-  { title: "Introduction", desc: "Start here and browse the component index.", href: "/docs", category: "Docs", badge: "⌘ I" },
-  { title: "Installation (Next.js)", desc: "Install Kata UI in a Next.js app.", href: "/docs/installation/nextjs", category: "Docs" },
-  { title: "Installation (Tailwind)", desc: "Configure Tailwind CSS for Kata UI.", href: "/docs/installation/tailwind", category: "Docs" },
-  { title: "Installation (CLI)", desc: "Add components with the CLI.", href: "/docs/installation/cli", category: "Docs" },
-  { title: "Installation (Utilities)", desc: "Utility functions and helpers.", href: "/docs/installation/utilities", category: "Docs" },
-  { title: "Shrine Cards", desc: "Stacked card layout with hover expand.", href: "/docs/layout/shrine-cards", category: "Components" },
-  { title: "Glitch Text", desc: "Glitch slice animation effect for text.", href: "/docs/effects/glitch-text", category: "Components" },
+  {
+    title: "Introduction",
+    desc: "Start here and browse the component index.",
+    href: "/docs",
+    category: "Docs",
+    badge: "⌘ I",
+  },
+  {
+    title: "Installation (Next.js)",
+    desc: "Install Kata UI in a Next.js app.",
+    href: "/docs/installation/nextjs",
+    category: "Docs",
+  },
+  {
+    title: "Installation (Tailwind)",
+    desc: "Configure Tailwind CSS for Kata UI.",
+    href: "/docs/installation/tailwind",
+    category: "Docs",
+  },
+  {
+    title: "Installation (CLI)",
+    desc: "Add components with the CLI.",
+    href: "/docs/installation/cli",
+    category: "Docs",
+  },
+  {
+    title: "Installation (Utilities)",
+    desc: "Utility functions and helpers.",
+    href: "/docs/installation/utilities",
+    category: "Docs",
+  },
+  {
+    title: "Shrine Cards",
+    desc: "Stacked card layout with hover expand.",
+    href: "/docs/layout/shrine-cards",
+    category: "Components",
+  },
+  {
+    title: "Glitch Text",
+    desc: "Glitch slice animation effect for text.",
+    href: "/docs/effects/glitch-text",
+    category: "Components",
+  },
   { title: "Home", desc: "Back to the landing page.", href: "/", category: "Navigation" },
 ];
 
@@ -32,7 +68,10 @@ export function CommandMenu({ open, onClose }: { open: boolean; onClose: () => v
     if (!query) return items;
     const q = query.toLowerCase();
     return items.filter(
-      (i) => i.title.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q) || i.category.toLowerCase().includes(q)
+      (i) =>
+        i.title.toLowerCase().includes(q) ||
+        i.desc.toLowerCase().includes(q) ||
+        i.category.toLowerCase().includes(q),
     );
   }, [query]);
 
@@ -58,7 +97,7 @@ export function CommandMenu({ open, onClose }: { open: boolean; onClose: () => v
       onClose();
       router.push(href);
     },
-    [onClose, router]
+    [onClose, router],
   );
 
   useEffect(() => {
@@ -156,7 +195,16 @@ export function CommandMenu({ open, onClose }: { open: boolean; onClose: () => v
               background: "rgba(255,255,255,0.04)",
             }}
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#71717a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#71717a"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <circle cx="11" cy="11" r="8" />
               <line x1="21" y1="21" x2="16.65" y2="16.65" />
             </svg>
@@ -165,7 +213,10 @@ export function CommandMenu({ open, onClose }: { open: boolean; onClose: () => v
               type="text"
               placeholder="Search docs and components..."
               value={query}
-              onChange={(e) => { setQuery(e.target.value); setSelected(0); }}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setSelected(0);
+              }}
               style={{
                 border: "none",
                 outline: "none",
@@ -188,7 +239,9 @@ export function CommandMenu({ open, onClose }: { open: boolean; onClose: () => v
           }}
         >
           {filtered.length === 0 && (
-            <div style={{ padding: "32px 16px", textAlign: "center", color: "#52525b", fontSize: 14 }}>
+            <div
+              style={{ padding: "32px 16px", textAlign: "center", color: "#52525b", fontSize: 14 }}
+            >
               No results found.
             </div>
           )}
@@ -231,10 +284,24 @@ export function CommandMenu({ open, onClose }: { open: boolean; onClose: () => v
                     }}
                   >
                     <div>
-                      <div style={{ fontSize: 14, fontWeight: 500, color: "#fafafa", fontFamily: "inherit" }}>
+                      <div
+                        style={{
+                          fontSize: 14,
+                          fontWeight: 500,
+                          color: "#fafafa",
+                          fontFamily: "inherit",
+                        }}
+                      >
                         {item.title}
                       </div>
-                      <div style={{ fontSize: 13, color: "#71717a", fontFamily: "inherit", marginTop: 2 }}>
+                      <div
+                        style={{
+                          fontSize: 13,
+                          color: "#71717a",
+                          fontFamily: "inherit",
+                          marginTop: 2,
+                        }}
+                      >
                         {item.desc}
                       </div>
                     </div>

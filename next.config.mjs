@@ -1,5 +1,6 @@
 const nextConfig = {
   output: "standalone",
+  reactStrictMode: true,
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "picsum.photos" },
@@ -10,8 +11,9 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
   experimental: {
-    optimizePackageImports: ["next/image"],
+    optimizePackageImports: ["next/image", "lucide-react", "@heroicons/react"],
   },
+  bundleAnalyzerModule: "@next/bundle-analyzer",
   poweredByHeader: false,
   compress: true,
   async headers() {

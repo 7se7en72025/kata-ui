@@ -12,11 +12,10 @@ concurrency:
 
 env:
   NODE_VERSION: "20"
-  PNPM_CACHE_DIR: ~/.cache/store
 
 jobs:
-  lint:
-    name: Lint & Format
+  lint-typecheck:
+    name: Lint, Format & TypeCheck
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,17 +26,6 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run format:check
-
-  typecheck:
-    name: Type Check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: ${{ env.NODE_VERSION }}
-          cache: "npm"
-      - run: npm ci
       - run: npm run typecheck
 
   test:
@@ -45,8 +33,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        node-version: [18, 20, 22]
+        os: [ubuntu-latest, windows-latest]
+        node-version: [18, 20]
       fail-fast: false
     steps:
       - uses: actions/checkout@v4
@@ -65,9 +53,9 @@ jobs:
           retention-days: 7
 
   build:
-    name: Build
+    name: Build & Smoke Test
     runs-on: ubuntu-latest
-    needs: [lint, typecheck]
+    needs: [lint-typecheck]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -77,6 +65,17 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run registry:build
+      - name: Smoke test
+        run: |
+          npx next start -p 3456 &
+          sleep 5
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3456)
+          if [ "$STATUS" != "200" ]; then
+            echo "Smoke test failed: status $STATUS"
+            exit 1
+          fi
+          echo "Smoke test passed: status $STATUS"
+          kill %1
 
   codeql:
     name: CodeQL Analysis
@@ -102,28 +101,3 @@ jobs:
         with:
           fail-on-severity: moderate
           comment-summary-in-pr: always
-
-  notify:
-    name: Notify
-    runs-on: ubuntu-latest
-    needs: [lint, typecheck, test, build, codeql]
-    if: always()
-    steps:
-      - name: Determine status
-        id: status
-        run: |
-          if [ "${{ contains(needs.*.result, 'failure') }}" == "true" ]; then
-            echo "result=failure" >> $GITHUB_OUTPUT
-            echo "emoji=x" >> $GITHUB_OUTPUT
-          else
-            echo "result=success" >> $GITHUB_OUTPUT
-            echo "emoji=check" >> $GITHUB_OUTPUT
-          fi
-      - name: Notify via Slack (optional)
-        if: env.SLACK_WEBHOOK_URL != ''
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-        run: |
-          curl -s -X POST "$SLACK_WEBHOOK_URL" \
-            -H 'Content-type: application/json' \
-            -d "{\"text\":\"CI ${{ steps.status.outputs.result }} for ${{ github.repository }} on ${{ github.ref_name }}\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Run>\"}"

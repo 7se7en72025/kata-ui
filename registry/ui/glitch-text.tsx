@@ -102,10 +102,7 @@ export function GlitchText({
     <>
       <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/doctor-glitch" />
       <style dangerouslySetInnerHTML={{ __html: css }} />
-      <Tag
-        className={`${id} ${className ?? ""}`}
-        style={style}
-      >
+      <Tag className={`${id} ${className ?? ""}`} style={style}>
         {text}
       </Tag>
     </>

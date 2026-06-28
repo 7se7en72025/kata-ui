@@ -136,13 +136,31 @@ export default function GlitchTextDocs() {
               }}
             >
               {tab === "preview" ? (
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
                   <line x1="8" y1="21" x2="16" y2="21" />
                   <line x1="12" y1="17" x2="12" y2="21" />
                 </svg>
               ) : (
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <polyline points="16 18 22 12 16 6" />
                   <polyline points="8 6 2 12 8 18" />
                 </svg>
@@ -169,7 +187,17 @@ export default function GlitchTextDocs() {
             color: "#888",
           }}
         >
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#666"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{ flexShrink: 0 }}
+          >
             <polyline points="4 17 10 11 4 5" />
             <line x1="12" y1="19" x2="20" y2="19" />
           </svg>
@@ -191,11 +219,29 @@ export default function GlitchTextDocs() {
             }}
           >
             {copied ? (
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#4ade80"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <polyline points="20 6 9 17 4 12" />
               </svg>
             ) : (
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
               </svg>
@@ -213,7 +259,16 @@ export default function GlitchTextDocs() {
               flexShrink: 0,
             }}
           >
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <polyline points="15 3 21 3 21 9" />
               <polyline points="9 21 3 21 3 15" />
               <line x1="21" y1="3" x2="14" y2="10" />
@@ -288,17 +343,18 @@ export default function GlitchTextDocs() {
                 </span>
                 <span
                   style={{
-                    color: line.includes("import") || line.includes("from")
-                      ? "#C792EA"
-                      : line.includes("export") || line.includes("function")
-                        ? "#82AAFF"
-                        : line.includes("<") || line.includes("/>")
-                          ? "#F07178"
-                          : line.includes("true") || line.includes("false")
-                            ? "#F78C6C"
-                            : line.includes("const") || line.includes("let")
-                              ? "#C792EA"
-                              : "#C3CEE3",
+                    color:
+                      line.includes("import") || line.includes("from")
+                        ? "#C792EA"
+                        : line.includes("export") || line.includes("function")
+                          ? "#82AAFF"
+                          : line.includes("<") || line.includes("/>")
+                            ? "#F07178"
+                            : line.includes("true") || line.includes("false")
+                              ? "#F78C6C"
+                              : line.includes("const") || line.includes("let")
+                                ? "#C792EA"
+                                : "#C3CEE3",
                     paddingLeft: 8,
                   }}
                 >
@@ -398,7 +454,8 @@ export default function GlitchTextDocs() {
                     fontFamily: "inherit",
                     fontWeight: 500,
                     border: "none",
-                    borderBottom: activePkg === pkg.name ? "2px solid #fff" : "2px solid transparent",
+                    borderBottom:
+                      activePkg === pkg.name ? "2px solid #fff" : "2px solid transparent",
                     cursor: "pointer",
                     background: "transparent",
                     color: activePkg === pkg.name ? "#fff" : "#888",
@@ -438,11 +495,29 @@ export default function GlitchTextDocs() {
                 }}
               >
                 {copied ? (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#4ade80"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 ) : (
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
                   </svg>
@@ -458,10 +533,20 @@ export default function GlitchTextDocs() {
                 fontSize: 13,
               }}
             >
-              <span style={{ color: "#888" }}>{activePkg === "npm" ? "npx " : activePkg === "pnpm" ? "pnpm dlx " : activePkg === "bun" ? "bunx " : "yarn dlx "}</span>
+              <span style={{ color: "#888" }}>
+                {activePkg === "npm"
+                  ? "npx "
+                  : activePkg === "pnpm"
+                    ? "pnpm dlx "
+                    : activePkg === "bun"
+                      ? "bunx "
+                      : "yarn dlx "}
+              </span>
               <span style={{ color: "#C792EA" }}>shadcn@latest </span>
               <span style={{ color: "#888" }}>add </span>
-              <span style={{ color: "#C3E88D" }}>https://kata-ui.vercel.app/r/glitch-text.json</span>
+              <span style={{ color: "#C3E88D" }}>
+                https://kata-ui.vercel.app/r/glitch-text.json
+              </span>
             </div>
           </div>
         </>
@@ -543,15 +628,16 @@ export default function GlitchTextDocs() {
               </span>
               <span
                 style={{
-                  color: line.includes("import") || line.includes("from")
-                    ? "#C792EA"
-                    : line.includes("export") || line.includes("function")
-                      ? "#82AAFF"
-                      : line.includes("<") || line.includes("/>")
-                        ? "#F07178"
-                        : line.includes("true") || line.includes("false")
-                          ? "#F78C6C"
-                          : "#C3CEE3",
+                  color:
+                    line.includes("import") || line.includes("from")
+                      ? "#C792EA"
+                      : line.includes("export") || line.includes("function")
+                        ? "#82AAFF"
+                        : line.includes("<") || line.includes("/>")
+                          ? "#F07178"
+                          : line.includes("true") || line.includes("false")
+                            ? "#F78C6C"
+                            : "#C3CEE3",
                   paddingLeft: 8,
                 }}
               >
@@ -622,13 +708,14 @@ export default function GlitchTextDocs() {
               </span>
               <span
                 style={{
-                  color: line.includes("<") || line.includes("/>")
-                    ? "#F07178"
-                    : line.includes("\"") || line.includes("'")
-                      ? "#C3E88D"
-                      : line.includes("{") || line.includes("}")
-                        ? "#89DDFF"
-                        : "#C3CEE3",
+                  color:
+                    line.includes("<") || line.includes("/>")
+                      ? "#F07178"
+                      : line.includes('"') || line.includes("'")
+                        ? "#C3E88D"
+                        : line.includes("{") || line.includes("}")
+                          ? "#89DDFF"
+                          : "#C3CEE3",
                   paddingLeft: 8,
                 }}
               >
@@ -665,18 +752,38 @@ export default function GlitchTextDocs() {
         >
           <thead>
             <tr style={{ background: "#111" }}>
-              <th style={{ padding: "10px 16px", textAlign: "left", color: "#888", fontWeight: 500 }}>Prop</th>
-              <th style={{ padding: "10px 16px", textAlign: "left", color: "#888", fontWeight: 500 }}>Type</th>
-              <th style={{ padding: "10px 16px", textAlign: "left", color: "#888", fontWeight: 500 }}>Default</th>
-              <th style={{ padding: "10px 16px", textAlign: "left", color: "#888", fontWeight: 500 }}>Description</th>
+              <th
+                style={{ padding: "10px 16px", textAlign: "left", color: "#888", fontWeight: 500 }}
+              >
+                Prop
+              </th>
+              <th
+                style={{ padding: "10px 16px", textAlign: "left", color: "#888", fontWeight: 500 }}
+              >
+                Type
+              </th>
+              <th
+                style={{ padding: "10px 16px", textAlign: "left", color: "#888", fontWeight: 500 }}
+              >
+                Default
+              </th>
+              <th
+                style={{ padding: "10px 16px", textAlign: "left", color: "#888", fontWeight: 500 }}
+              >
+                Description
+              </th>
             </tr>
           </thead>
           <tbody>
             {propsData.map(([prop, type, def, desc], i) => (
               <tr key={prop} style={{ borderTop: i > 0 ? "1px solid #222" : "none" }}>
-                <td style={{ padding: "10px 16px", color: "#ccc", fontFamily: "monospace" }}>{prop}</td>
+                <td style={{ padding: "10px 16px", color: "#ccc", fontFamily: "monospace" }}>
+                  {prop}
+                </td>
                 <td style={{ padding: "10px 16px", color: "#888" }}>{type}</td>
-                <td style={{ padding: "10px 16px", color: "#666", fontFamily: "monospace" }}>{def}</td>
+                <td style={{ padding: "10px 16px", color: "#666", fontFamily: "monospace" }}>
+                  {def}
+                </td>
                 <td style={{ padding: "10px 16px", color: "#888" }}>{desc}</td>
               </tr>
             ))}

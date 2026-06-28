@@ -42,7 +42,7 @@ export function DocsToc({ items }: DocsTocProps) {
       {
         rootMargin: "-80px 0px -60% 0px",
         threshold: 0,
-      }
+      },
     );
 
     headings.forEach((heading) => observer.observe(heading));

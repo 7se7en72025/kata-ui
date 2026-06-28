@@ -41,27 +41,22 @@ const navigation: NavGroup[] = [
   {
     title: "Layout",
     icon: "\u25A2",
-    items: [
-      { label: "Shrine Cards", href: "/docs/layout/shrine-cards" },
-    ],
+    items: [{ label: "Shrine Cards", href: "/docs/layout/shrine-cards" }],
   },
   {
     title: "Backgrounds",
     icon: "\u25CB",
-    items: [
-      { label: "Animated Rays", href: "#", comingSoon: true },
-    ],
+    items: [{ label: "Animated Rays", href: "#", comingSoon: true }],
   },
 ];
 
 export function DocsSidebar() {
   const pathname = usePathname();
   const [openGroups, setOpenGroups] = useState<Record<string, boolean>>(
-    Object.fromEntries(navigation.map((g) => [g.title, true]))
+    Object.fromEntries(navigation.map((g) => [g.title, true])),
   );
 
-  const toggle = (title: string) =>
-    setOpenGroups((prev) => ({ ...prev, [title]: !prev[title] }));
+  const toggle = (title: string) => setOpenGroups((prev) => ({ ...prev, [title]: !prev[title] }));
 
   return (
     <nav
@@ -87,7 +82,16 @@ export function DocsSidebar() {
             gap: 8,
           }}
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <polyline points="15 18 9 12 15 6" />
           </svg>
           Back to Home
@@ -145,8 +149,10 @@ export function DocsSidebar() {
                       fontFamily: "inherit",
                       color: item.comingSoon ? "#444" : active ? "#fff" : "#666",
                       textDecoration: "none",
-                      background: active && !item.comingSoon ? "rgba(255,255,255,0.06)" : "transparent",
-                      borderLeft: active && !item.comingSoon ? "2px solid #fff" : "2px solid transparent",
+                      background:
+                        active && !item.comingSoon ? "rgba(255,255,255,0.06)" : "transparent",
+                      borderLeft:
+                        active && !item.comingSoon ? "2px solid #fff" : "2px solid transparent",
                       transition: "all 0.1s ease",
                       pointerEvents: item.comingSoon ? "none" : "auto",
                     }}

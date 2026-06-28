@@ -31,7 +31,7 @@ export function LazySection({
           observer.disconnect();
         }
       },
-      { rootMargin: "400px", threshold: 0 }
+      { rootMargin: "400px", threshold: 0 },
     );
     observer.observe(el);
     return () => observer.disconnect();

@@ -79,15 +79,15 @@ kata-ui/
 
 ## Pages
 
-| Route | Description |
-|-------|-------------|
-| `/` | Homepage — Hero, ShrineCards showcase, SideFrame |
-| `/docs` | Docs home — Liquid Metal component page |
-| `/docs/installation/nextjs` | Next.js installation guide |
-| `/docs/installation/tailwind` | Tailwind CSS installation guide |
-| `/docs/installation/utilities` | Utilities installation guide |
-| `/docs/installation/cli` | CLI installation guide |
-| `/docs/layout/shrine-cards` | Shrine Cards — Installation, Usage, Preview |
+| Route                          | Description                                      |
+| ------------------------------ | ------------------------------------------------ |
+| `/`                            | Homepage — Hero, ShrineCards showcase, SideFrame |
+| `/docs`                        | Docs home — Liquid Metal component page          |
+| `/docs/installation/nextjs`    | Next.js installation guide                       |
+| `/docs/installation/tailwind`  | Tailwind CSS installation guide                  |
+| `/docs/installation/utilities` | Utilities installation guide                     |
+| `/docs/installation/cli`       | CLI installation guide                           |
+| `/docs/layout/shrine-cards`    | Shrine Cards — Installation, Usage, Preview      |
 
 ---
 
@@ -106,10 +106,12 @@ npm run registry:build  # Build shadcn registry
 ## Registry
 
 Components are registered via `shadcn build`. Registry files are in:
+
 - `public/r/*.json` — Built registry JSON files
 - `registry/ui/*.tsx` — Source component files for distribution
 
 Install via CLI:
+
 ```bash
 npx shadcn@latest add https://kata-ui.vercel.app/r/shrine-cards.json
 ```
@@ -118,20 +120,21 @@ npx shadcn@latest add https://kata-ui.vercel.app/r/shrine-cards.json
 
 ## Performance Optimizations Applied
 
-| Optimization | Impact |
-|---|---|
-| Removed `framer-motion` from buttons | -40KB bundle |
-| Replaced 3 `MutationObserver`s with CSS | Less JS execution |
-| `side-frame.tsx`: RAF throttling | Smoother scroll |
-| `shrine-cards.tsx`: `React.memo` | Fewer re-renders |
-| `shrine-cards.tsx`: `loading="lazy"` | Faster initial load |
-| `next.config.mjs`: Security headers | Better security |
-| `next.config.mjs`: Asset caching | Faster repeat visits |
-| `next.config.mjs`: AVIF/WebP images | Smaller images |
-| Dynamic imports on homepage | Code splitting |
-| Font `display: "swap"` | No FOIT |
+| Optimization                            | Impact               |
+| --------------------------------------- | -------------------- |
+| Removed `framer-motion` from buttons    | -40KB bundle         |
+| Replaced 3 `MutationObserver`s with CSS | Less JS execution    |
+| `side-frame.tsx`: RAF throttling        | Smoother scroll      |
+| `shrine-cards.tsx`: `React.memo`        | Fewer re-renders     |
+| `shrine-cards.tsx`: `loading="lazy"`    | Faster initial load  |
+| `next.config.mjs`: Security headers     | Better security      |
+| `next.config.mjs`: Asset caching        | Faster repeat visits |
+| `next.config.mjs`: AVIF/WebP images     | Smaller images       |
+| Dynamic imports on homepage             | Code splitting       |
+| Font `display: "swap"`                  | No FOIT              |
 
 **Bundle size (homepage):**
+
 - Page JS: 2.59 kB
 - First Load JS: 90 kB
 
@@ -149,12 +152,14 @@ npx shadcn@latest add https://kata-ui.vercel.app/r/shrine-cards.json
 ## SVG Assets
 
 ### Collapsed Cards (`shrinecard1-7.svg`)
+
 - Dimensions: 178×629
 - Embedded base64 images (circuit patterns, icons)
 - Black stroke at 0.25 opacity
 - Gaussian blur filter
 
 ### Expanded Card (`shrinecardexpanded.svg`)
+
 - Dimensions: 405×615
 - Purple stroke `#BC6DFF` at 3px
 - Dark gradient fill (0.01 opacity)

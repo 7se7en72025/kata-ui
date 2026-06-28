@@ -65,8 +65,8 @@ export function Hero() {
           maxWidth: 560,
         }}
       >
-        A component library built for developers who move fast.
-        Copy/paste into your project and ship.
+        A component library built for developers who move fast. Copy/paste into your project and
+        ship.
       </p>
 
       <div
@@ -77,9 +77,7 @@ export function Hero() {
           marginTop: 36,
         }}
       >
-        <GlowButton onClick={() => router.push("/docs")}>
-          Explore components
-        </GlowButton>
+        <GlowButton onClick={() => router.push("/docs")}>Explore components</GlowButton>
         <AnimatedButton
           onClick={() => window.open("https://github.com/7se7en72025/kata-ui", "_blank")}
         >

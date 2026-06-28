@@ -8,11 +8,7 @@ interface ResizablePanelsProps {
   defaultLeftWidth?: number;
 }
 
-export function ResizablePanels({
-  left,
-  children,
-  defaultLeftWidth = 260,
-}: ResizablePanelsProps) {
+export function ResizablePanels({ left, children, defaultLeftWidth = 260 }: ResizablePanelsProps) {
   const [leftWidth, setLeftWidth] = useState(defaultLeftWidth);
   const [dragging, setDragging] = useState<"left" | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -53,7 +49,10 @@ export function ResizablePanels({
       }}
     >
       {/* Left Panel */}
-      <div className="docs-sidebar-panel" style={{ width: leftWidth, flexShrink: 0, overflow: "auto", height: "100%" }}>
+      <div
+        className="docs-sidebar-panel"
+        style={{ width: leftWidth, flexShrink: 0, overflow: "auto", height: "100%" }}
+      >
         {left}
       </div>
 
@@ -84,9 +83,7 @@ export function ResizablePanels({
       </div>
 
       {/* Main Content */}
-      <div style={{ flex: 1, minWidth: 0, overflow: "auto", height: "100%" }}>
-        {children}
-      </div>
+      <div style={{ flex: 1, minWidth: 0, overflow: "auto", height: "100%" }}>{children}</div>
     </div>
   );
 }

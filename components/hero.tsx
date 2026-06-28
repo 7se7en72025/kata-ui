@@ -6,10 +6,9 @@ import { useEffect, useRef } from "react";
 import AnimatedButton from "./animated-button";
 import GlowButton from "./glow-button";
 
-const LiquidMetalBadge = dynamic(
-  () => import("./liquid-metal").then((m) => m.LiquidMetalBadge),
-  { ssr: false }
-);
+const LiquidMetalBadge = dynamic(() => import("./liquid-metal").then((m) => m.LiquidMetalBadge), {
+  ssr: false,
+});
 
 export function Hero() {
   const router = useRouter();
@@ -26,7 +25,7 @@ export function Hero() {
           observer.disconnect();
         }
       },
-      { rootMargin: "200px" }
+      { rootMargin: "200px" },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -91,8 +90,8 @@ export function Hero() {
           maxWidth: 560,
         }}
       >
-        Components built around motion, intention, and weight.
-        Not just what things look like, how they feel.
+        Components built around motion, intention, and weight. Not just what things look like, how
+        they feel.
       </p>
 
       <div
@@ -104,9 +103,7 @@ export function Hero() {
           marginTop: 36,
         }}
       >
-        <GlowButton onClick={() => router.push("/docs")}>
-          View components
-        </GlowButton>
+        <GlowButton onClick={() => router.push("/docs")}>View components</GlowButton>
         <AnimatedButton
           onClick={() => window.open("https://github.com/7se7en72025/kata-ui", "_blank")}
         >

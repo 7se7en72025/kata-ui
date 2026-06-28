@@ -46,10 +46,7 @@ export const LiquidMetal = memo(function LiquidMetal({
   }, [handleMouseMove]);
 
   return (
-    <div
-      className={cn("absolute inset-0 z-0 overflow-hidden", className)}
-      style={style}
-    >
+    <div className={cn("absolute inset-0 z-0 overflow-hidden", className)} style={style}>
       <LiquidMetalShader
         colorBack={colorBack}
         colorTint={colorTint}
@@ -77,71 +74,66 @@ export interface LiquidMetalBadgeProps {
   className?: string;
 }
 
-export const LiquidMetalBadge = forwardRef<
-  HTMLDivElement,
-  LiquidMetalBadgeProps
->(({ children, metalConfig, className, ...props }, ref) => {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+export const LiquidMetalBadge = forwardRef<HTMLDivElement, LiquidMetalBadgeProps>(
+  ({ children, metalConfig, className, ...props }, ref) => {
+    const [theme, setTheme] = useState<"dark" | "light">("dark");
 
-  useEffect(() => {
-    const updateTheme = () => {
-      const html = document.documentElement;
-      const currentTheme = html.getAttribute("data-theme") as "dark" | "light";
-      setTheme(currentTheme || "dark");
-    };
+    useEffect(() => {
+      const updateTheme = () => {
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute("data-theme") as "dark" | "light";
+        setTheme(currentTheme || "dark");
+      };
 
-    updateTheme();
+      updateTheme();
 
-    const observer = new MutationObserver(updateTheme);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
+      const observer = new MutationObserver(updateTheme);
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["data-theme"],
+      });
 
-    return () => observer.disconnect();
-  }, []);
+      return () => observer.disconnect();
+    }, []);
 
-  return (
-    <div
-      ref={ref}
-      className={cn("relative inline-block", className)}
-      style={{ zIndex: 10 }}
-    >
-      <div
-        className="relative rounded-full overflow-hidden"
-        style={{ padding: 3, background: theme === "dark" ? "#1a1a1a" : "#e0e0e0" }}
-      >
-        <LiquidMetal
-          colorBack={metalConfig?.colorBack ?? (theme === "dark" ? "#1a1a1a" : "#e8e8e8")}
-          colorTint={metalConfig?.colorTint ?? (theme === "dark" ? "#444" : "#fff")}
-          speed={metalConfig?.speed ?? 0.3}
-          repetition={metalConfig?.repetition ?? 3}
-          distortion={metalConfig?.distortion ?? 0.1}
-          scale={metalConfig?.scale ?? 1}
-          className="absolute inset-0 z-0 rounded-full"
-        />
-
+    return (
+      <div ref={ref} className={cn("relative inline-block", className)} style={{ zIndex: 10 }}>
         <div
-          className={cn(
-            "relative z-10 rounded-full flex items-center gap-2 px-4 py-2",
-            "transition-colors duration-200",
-            theme === "dark" ? "bg-[#0a0a0a]" : "bg-[#f5f5f5]"
-          )}
+          className="relative rounded-full overflow-hidden"
+          style={{ padding: 3, background: theme === "dark" ? "#1a1a1a" : "#e0e0e0" }}
         >
-          <span
-            className="text-sm font-medium"
-            style={{
-              fontFamily: "inherit",
-              color: theme === "dark" ? "#888" : "#666",
-            }}
+          <LiquidMetal
+            colorBack={metalConfig?.colorBack ?? (theme === "dark" ? "#1a1a1a" : "#e8e8e8")}
+            colorTint={metalConfig?.colorTint ?? (theme === "dark" ? "#444" : "#fff")}
+            speed={metalConfig?.speed ?? 0.3}
+            repetition={metalConfig?.repetition ?? 3}
+            distortion={metalConfig?.distortion ?? 0.1}
+            scale={metalConfig?.scale ?? 1}
+            className="absolute inset-0 z-0 rounded-full"
+          />
+
+          <div
+            className={cn(
+              "relative z-10 rounded-full flex items-center gap-2 px-4 py-2",
+              "transition-colors duration-200",
+              theme === "dark" ? "bg-[#0a0a0a]" : "bg-[#f5f5f5]",
+            )}
           >
-            {children}
-          </span>
+            <span
+              className="text-sm font-medium"
+              style={{
+                fontFamily: "inherit",
+                color: theme === "dark" ? "#888" : "#666",
+              }}
+            >
+              {children}
+            </span>
+          </div>
         </div>
       </div>
-    </div>
-  );
-});
+    );
+  },
+);
 
 LiquidMetalBadge.displayName = "LiquidMetalBadge";
 
