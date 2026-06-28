@@ -14,10 +14,10 @@ const demoCards = [
 ];
 
 const installCommands: Record<string, string> = {
-  npm: "npx shadcn@latest add https://kata-ui.vercel.app/r/shrine-cards.json",
-  pnpm: "pnpm dlx shadcn@latest add https://kata-ui.vercel.app/r/shrine-cards.json",
-  bun: "bunx shadcn@latest add https://kata-ui.vercel.app/r/shrine-cards.json",
-  yarn: "yarn dlx shadcn@latest add https://kata-ui.vercel.app/r/shrine-cards.json",
+  npm: "npx shadcn@latest add https://kata-ui-rho.vercel.app/r/shrine-cards.json",
+  pnpm: "pnpm dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/shrine-cards.json",
+  bun: "bunx shadcn@latest add https://kata-ui-rho.vercel.app/r/shrine-cards.json",
+  yarn: "yarn dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/shrine-cards.json",
 };
 
 const pkgManagers = [
@@ -520,7 +520,7 @@ export default function ShrineCardsPage() {
               <span style={{ color: "#C792EA" }}>shadcn@latest </span>
               <span style={{ color: "#888" }}>add </span>
               <span style={{ color: "#C3E88D" }}>
-                https://kata-ui.vercel.app/r/shrine-cards.json
+                https://kata-ui-rho.vercel.app/r/shrine-cards.json
               </span>
             </div>
           </div>

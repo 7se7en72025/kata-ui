@@ -4,10 +4,10 @@ import { useState } from "react";
 import { LiquidMetal } from "@/components/liquid-metal";
 
 const installCommands: Record<string, string> = {
-  npm: "npx shadcn@latest add https://kata-ui.vercel.app/r/liquid-metal.json",
-  pnpm: "pnpm dlx shadcn@latest add https://kata-ui.vercel.app/r/liquid-metal.json",
-  bun: "bunx shadcn@latest add https://kata-ui.vercel.app/r/liquid-metal.json",
-  yarn: "yarn dlx shadcn@latest add https://kata-ui.vercel.app/r/liquid-metal.json",
+  npm: "npx shadcn@latest add https://kata-ui-rho.vercel.app/r/liquid-metal.json",
+  pnpm: "pnpm dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/liquid-metal.json",
+  bun: "bunx shadcn@latest add https://kata-ui-rho.vercel.app/r/liquid-metal.json",
+  yarn: "yarn dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/liquid-metal.json",
 };
 
 const pkgManagers = [
@@ -533,7 +533,7 @@ export default function LiquidMetalDocs() {
               <span style={{ color: "#C792EA" }}>shadcn@latest </span>
               <span style={{ color: "#888" }}>add </span>
               <span style={{ color: "#C3E88D" }}>
-                https://kata-ui.vercel.app/r/liquid-metal.json
+                https://kata-ui-rho.vercel.app/r/liquid-metal.json
               </span>
             </div>
           </div>

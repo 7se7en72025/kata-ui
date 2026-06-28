@@ -6,7 +6,7 @@ import { CodeBlock } from "@/components/code-block";
 export default function DocsPage() {
   const [activeTab, setActiveTab] = useState<"preview" | "code">("preview");
 
-  const installCmd = "npx shadcn@latest add https://kata-ui.vercel.app/r/liquid-metal.json";
+  const installCmd = "npx shadcn@latest add https://kata-ui-rho.vercel.app/r/liquid-metal.json";
 
   return (
     <div>

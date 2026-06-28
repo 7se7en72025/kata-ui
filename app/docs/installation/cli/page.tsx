@@ -112,7 +112,7 @@ Do you want to use CSS variables for colors? yes`}
       </p>
 
       <CodeBlock
-        code="npx shadcn@latest add https://kata-ui.vercel.app/r/animated-rays.json"
+        code="npx shadcn@latest add https://kata-ui-rho.vercel.app/r/animated-rays.json"
         tabs={["npm", "pnpm", "yarn", "bun"]}
       />
 
@@ -182,7 +182,7 @@ Options:
       </p>
 
       <CodeBlock
-        code="npx shadcn@latest add https://kata-ui.vercel.app/r/animated-rays.json -c ./apps/web"
+        code="npx shadcn@latest add https://kata-ui-rho.vercel.app/r/animated-rays.json -c ./apps/web"
         tabs={["npm", "pnpm", "yarn", "bun"]}
       />
 
@@ -227,7 +227,7 @@ Options:
         filename="components.json"
         code={`{
   "registries": {
-    "@kataui": "https://kata-ui.vercel.app/r/{name}.json"
+    "@kataui": "https://kata-ui-rho.vercel.app/r/{name}.json"
   }
 }`}
       />

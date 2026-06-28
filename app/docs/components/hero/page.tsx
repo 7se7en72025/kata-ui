@@ -4,10 +4,10 @@ import { useState } from "react";
 import { Hero } from "@/components/hero";
 
 const installCommands: Record<string, string> = {
-  npm: "npx shadcn@latest add https://kata-ui.vercel.app/r/hero.json",
-  pnpm: "pnpm dlx shadcn@latest add https://kata-ui.vercel.app/r/hero.json",
-  bun: "bunx shadcn@latest add https://kata-ui.vercel.app/r/hero.json",
-  yarn: "yarn dlx shadcn@latest add https://kata-ui.vercel.app/r/hero.json",
+  npm: "npx shadcn@latest add https://kata-ui-rho.vercel.app/r/hero.json",
+  pnpm: "pnpm dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/hero.json",
+  bun: "bunx shadcn@latest add https://kata-ui-rho.vercel.app/r/hero.json",
+  yarn: "yarn dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/hero.json",
 };
 
 const pkgManagers = [
@@ -520,7 +520,7 @@ export default function HeroDocs() {
               </span>
               <span style={{ color: "#C792EA" }}>shadcn@latest </span>
               <span style={{ color: "#888" }}>add </span>
-              <span style={{ color: "#C3E88D" }}>https://kata-ui.vercel.app/r/hero.json</span>
+              <span style={{ color: "#C3E88D" }}>https://kata-ui-rho.vercel.app/r/hero.json</span>
             </div>
           </div>
         </>

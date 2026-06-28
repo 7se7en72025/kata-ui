@@ -1,7 +1,7 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "kata-ui",
-  "homepage": "https://kata-ui.vercel.app",
+  "homepage": "https://kata-ui-rho.vercel.app",
   "items": [
     {
       "name": "utils",

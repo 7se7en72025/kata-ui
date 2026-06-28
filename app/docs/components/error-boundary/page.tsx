@@ -4,10 +4,10 @@ import { useState } from "react";
 import { ErrorBoundary } from "@/components/error-boundary";
 
 const installCommands: Record<string, string> = {
-  npm: "npx shadcn@latest add https://kata-ui.vercel.app/r/error-boundary.json",
-  pnpm: "pnpm dlx shadcn@latest add https://kata-ui.vercel.app/r/error-boundary.json",
-  bun: "bunx shadcn@latest add https://kata-ui.vercel.app/r/error-boundary.json",
-  yarn: "yarn dlx shadcn@latest add https://kata-ui.vercel.app/r/error-boundary.json",
+  npm: "npx shadcn@latest add https://kata-ui-rho.vercel.app/r/error-boundary.json",
+  pnpm: "pnpm dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/error-boundary.json",
+  bun: "bunx shadcn@latest add https://kata-ui-rho.vercel.app/r/error-boundary.json",
+  yarn: "yarn dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/error-boundary.json",
 };
 
 const pkgManagers = [
@@ -281,7 +281,7 @@ export default function ErrorBoundaryDocs() {
         >
           <ErrorBoundary>
             <div style={{ padding: 32, textAlign: "center", color: "#fff" }}>
-              No errors — content renders normally
+              No errors â€” content renders normally
             </div>
           </ErrorBoundary>
         </div>
@@ -534,7 +534,7 @@ export default function ErrorBoundaryDocs() {
               <span style={{ color: "#C792EA" }}>shadcn@latest </span>
               <span style={{ color: "#888" }}>add </span>
               <span style={{ color: "#C3E88D" }}>
-                https://kata-ui.vercel.app/r/error-boundary.json
+                https://kata-ui-rho.vercel.app/r/error-boundary.json
               </span>
             </div>
           </div>

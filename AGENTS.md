@@ -1,4 +1,4 @@
-# AGENTS.md — Kata UI
+# AGENTS.md â€” Kata UI
 
 ## Project Overview
 
@@ -28,42 +28,42 @@ Kata UI is a motion-driven React component library built with:
 
 ```
 components/          # Main component source (Next.js app)
-├── hero.tsx
-├── navbar.tsx
-├── glitch-text.tsx
-├── glow-button.tsx
-└── ...
+â”œâ”€â”€ hero.tsx
+â”œâ”€â”€ navbar.tsx
+â”œâ”€â”€ glitch-text.tsx
+â”œâ”€â”€ glow-button.tsx
+â””â”€â”€ ...
 
 registry/ui/         # shadcn-compatible registry (installable via CLI)
-├── hero.tsx
-├── navbar.tsx
-├── glitch-text.tsx
-└── utils.ts
+â”œâ”€â”€ hero.tsx
+â”œâ”€â”€ navbar.tsx
+â”œâ”€â”€ glitch-text.tsx
+â””â”€â”€ utils.ts
 
 lib/                 # Utility functions
-├── utils.ts         # cn() helper (clsx + tailwind-merge)
-└── env.ts          # Zod env validation
+â”œâ”€â”€ utils.ts         # cn() helper (clsx + tailwind-merge)
+â””â”€â”€ env.ts          # Zod env validation
 
 __tests__/           # Unit tests (mirrors components/ structure)
-├── components/
-├── a11y/
-└── api/
+â”œâ”€â”€ components/
+â”œâ”€â”€ a11y/
+â””â”€â”€ api/
 
 e2e/                 # Playwright E2E tests
 ```
 
 ### Key Patterns
 
-1. **shadcn Registry** — Components in `registry/ui/` are installable via `npx shadcn@latest add <component>`
-2. **Utility Function** — All components use `cn()` from `lib/utils.ts` for class merging
-3. **"use client"** — All interactive components use `"use client"` directive
-4. **Theme Support** — Components use CSS variables and `data-theme` attribute
-5. **Testing** — Each component has a `*.test.tsx` file in `__tests__/components/`
+1. **shadcn Registry** â€” Components in `registry/ui/` are installable via `npx shadcn@latest add <component>`
+2. **Utility Function** â€” All components use `cn()` from `lib/utils.ts` for class merging
+3. **"use client"** â€” All interactive components use `"use client"` directive
+4. **Theme Support** â€” Components use CSS variables and `data-theme` attribute
+5. **Testing** â€” Each component has a `*.test.tsx` file in `__tests__/components/`
 
 ### Installing a New Component
 
 ```bash
-npx shadcn@latest add https://kata-ui.vercel.app/r/<component-name>
+npx shadcn@latest add https://kata-ui-rho.vercel.app/r/<component-name>
 ```
 
 ### Adding a New Component
@@ -77,11 +77,11 @@ npx shadcn@latest add https://kata-ui.vercel.app/r/<component-name>
 
 ## Code Style
 
-- **TypeScript** — Strict mode, no `any` types
-- **Tailwind** — Utility classes, no inline styles when possible
-- **ESLint** — `next/core-web-vitals` config
-- **Prettier** — Default config
-- **Conventional Commits** — `feat:`, `fix:`, `docs:`, etc.
+- **TypeScript** â€” Strict mode, no `any` types
+- **Tailwind** â€” Utility classes, no inline styles when possible
+- **ESLint** â€” `next/core-web-vitals` config
+- **Prettier** â€” Default config
+- **Conventional Commits** â€” `feat:`, `fix:`, `docs:`, etc.
 
 ## Testing
 

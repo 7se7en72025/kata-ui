@@ -6,7 +6,7 @@
 
 **Motion-driven React components that feel alive.**
 
-Form follows force. Not just what things look like — how they feel.
+Form follows force. Not just what things look like â€” how they feel.
 
 [![NPM Version](https://img.shields.io/npm/v/kata-ui.svg)](https://www.npmjs.com/package/kata-ui)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -44,7 +44,7 @@ Most component libraries focus on how things look. **Kata UI focuses on how thin
 
 ### Live Demo
 
-**[kata-ui.vercel.app](https://kata-ui.vercel.app)** — See all components in action with live code examples.
+**[kata-ui-rho.vercel.app](https://kata-ui-rho.vercel.app)** â€” See all components in action with live code examples.
 
 ---
 
@@ -53,7 +53,7 @@ Most component libraries focus on how things look. **Kata UI focuses on how thin
 ### Install via shadcn/ui CLI
 
 ```bash
-npx shadcn@latest add https://kata-ui.vercel.app/r/hero
+npx shadcn@latest add https://kata-ui-rho.vercel.app/r/hero
 ```
 
 ### Install via npm
@@ -77,7 +77,7 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ## Components
 
-All 20+ components are installable via the [shadcn/ui registry](https://kata-ui.vercel.app). Each component is copy-paste ready, accessible, and motion-driven.
+All 20+ components are installable via the [shadcn/ui registry](https://kata-ui-rho.vercel.app). Each component is copy-paste ready, accessible, and motion-driven.
 
 ### Hero & Landing
 
@@ -152,20 +152,20 @@ All 20+ components are installable via the [shadcn/ui registry](https://kata-ui.
 
 ## Testing
 
-- **45 unit tests** — Vitest + React Testing Library
-- **Accessibility** — axe-core WCAG compliance on every PR
-- **E2E tests** — Playwright across Chromium, Firefox, WebKit
-- **Performance** — Lighthouse CI audits
-- **Coverage** — 50% threshold enforced
+- **45 unit tests** â€” Vitest + React Testing Library
+- **Accessibility** â€” axe-core WCAG compliance on every PR
+- **E2E tests** â€” Playwright across Chromium, Firefox, WebKit
+- **Performance** â€” Lighthouse CI audits
+- **Coverage** â€” 50% threshold enforced
 
 ## CI/CD
 
-- **CI** — Lint + typecheck, test matrix (Ubuntu/Windows x Node 18/20), build, CodeQL security scanning
-- **CD** — Auto-deploy staging on push, production on tag
-- **Preview** — PR preview deployments on every pull request
-- **Docker** — Multi-arch build + Trivy vulnerability scanning
-- **Nightly** — Scheduled builds for dependency health
-- **npm** — Auto-publish on version tag
+- **CI** â€” Lint + typecheck, test matrix (Ubuntu/Windows x Node 18/20), build, CodeQL security scanning
+- **CD** â€” Auto-deploy staging on push, production on tag
+- **Preview** â€” PR preview deployments on every pull request
+- **Docker** â€” Multi-arch build + Trivy vulnerability scanning
+- **Nightly** â€” Scheduled builds for dependency health
+- **npm** â€” Auto-publish on version tag
 
 ---
 
@@ -190,9 +190,9 @@ git push origin feature/amazing-feature
 
 ## Community
 
-- **GitHub** — [github.com/7se7en72025/kata-ui](https://github.com/7se7en72025/kata-ui)
-- **Issues** — [Report bugs](https://github.com/7se7en72025/kata-ui/issues)
-- **Discussions** — [Join the conversation](https://github.com/7se7en72025/kata-ui/discussions)
+- **GitHub** â€” [github.com/7se7en72025/kata-ui](https://github.com/7se7en72025/kata-ui)
+- **Issues** â€” [Report bugs](https://github.com/7se7en72025/kata-ui/issues)
+- **Discussions** â€” [Join the conversation](https://github.com/7se7en72025/kata-ui/discussions)
 
 ## Code of Conduct
 
@@ -204,7 +204,7 @@ Report vulnerabilities via [SECURITY.md](SECURITY.md).
 
 ## License
 
-[MIT](LICENSE) — Free for personal and commercial use.
+[MIT](LICENSE) â€” Free for personal and commercial use.
 
 ---
 
@@ -216,7 +216,7 @@ Report vulnerabilities via [SECURITY.md](SECURITY.md).
 
 ### Why Vercel OSS?
 
-Kata UI fills a gap in the React ecosystem: **motion-driven, accessible components that feel alive**. Most libraries focus on how things look. Kata UI focuses on how things **feel** — physics-based animations, intention-driven interactions, and weight.
+Kata UI fills a gap in the React ecosystem: **motion-driven, accessible components that feel alive**. Most libraries focus on how things look. Kata UI focuses on how things **feel** â€” physics-based animations, intention-driven interactions, and weight.
 
 **What makes us different:**
 
@@ -226,6 +226,6 @@ Kata UI fills a gap in the React ecosystem: **motion-driven, accessible componen
 - 45+ unit tests, E2E across 3 browsers, Lighthouse CI
 - Deployed on Vercel with preview deployments for every PR
 
-[Read our full application →](PITCH.md)
+[Read our full application â†’](PITCH.md)
 
 </div>

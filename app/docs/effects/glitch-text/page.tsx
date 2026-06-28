@@ -4,10 +4,10 @@ import { useState } from "react";
 import { GlitchText } from "@/components/ui/glitch-text";
 
 const installCommands: Record<string, string> = {
-  npm: "npx shadcn@latest add https://kata-ui.vercel.app/r/glitch-text.json",
-  pnpm: "pnpm dlx shadcn@latest add https://kata-ui.vercel.app/r/glitch-text.json",
-  bun: "bunx shadcn@latest add https://kata-ui.vercel.app/r/glitch-text.json",
-  yarn: "yarn dlx shadcn@latest add https://kata-ui.vercel.app/r/glitch-text.json",
+  npm: "npx shadcn@latest add https://kata-ui-rho.vercel.app/r/glitch-text.json",
+  pnpm: "pnpm dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/glitch-text.json",
+  bun: "bunx shadcn@latest add https://kata-ui-rho.vercel.app/r/glitch-text.json",
+  yarn: "yarn dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/glitch-text.json",
 };
 
 const pkgManagers = [
@@ -545,7 +545,7 @@ export default function GlitchTextDocs() {
               <span style={{ color: "#C792EA" }}>shadcn@latest </span>
               <span style={{ color: "#888" }}>add </span>
               <span style={{ color: "#C3E88D" }}>
-                https://kata-ui.vercel.app/r/glitch-text.json
+                https://kata-ui-rho.vercel.app/r/glitch-text.json
               </span>
             </div>
           </div>

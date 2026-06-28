@@ -4,10 +4,10 @@ import { useState } from "react";
 import { Navbar } from "@/components/navbar";
 
 const installCommands: Record<string, string> = {
-  npm: "npx shadcn@latest add https://kata-ui.vercel.app/r/navbar.json",
-  pnpm: "pnpm dlx shadcn@latest add https://kata-ui.vercel.app/r/navbar.json",
-  bun: "bunx shadcn@latest add https://kata-ui.vercel.app/r/navbar.json",
-  yarn: "yarn dlx shadcn@latest add https://kata-ui.vercel.app/r/navbar.json",
+  npm: "npx shadcn@latest add https://kata-ui-rho.vercel.app/r/navbar.json",
+  pnpm: "pnpm dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/navbar.json",
+  bun: "bunx shadcn@latest add https://kata-ui-rho.vercel.app/r/navbar.json",
+  yarn: "yarn dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/navbar.json",
 };
 
 const pkgManagers = [
@@ -524,7 +524,7 @@ export default function NavbarDocs() {
               </span>
               <span style={{ color: "#C792EA" }}>shadcn@latest </span>
               <span style={{ color: "#888" }}>add </span>
-              <span style={{ color: "#C3E88D" }}>https://kata-ui.vercel.app/r/navbar.json</span>
+              <span style={{ color: "#C3E88D" }}>https://kata-ui-rho.vercel.app/r/navbar.json</span>
             </div>
           </div>
         </>
@@ -685,7 +685,7 @@ export default function NavbarDocs() {
                   fontFamily: "inherit",
                 }}
               >
-                No props — this component is self-contained.
+                No props â€” this component is self-contained.
               </td>
             </tr>
           </tbody>

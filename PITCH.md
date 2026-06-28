@@ -1,4 +1,4 @@
-# Vercel OSS Application — Kata UI
+# Vercel OSS Application â€” Kata UI
 
 ## Project Pitch
 
@@ -6,7 +6,7 @@
 
 **Kata UI fills a gap in the React component ecosystem: motion-driven, accessible components that feel alive.**
 
-Most component libraries focus on how things look. Kata UI focuses on how things **feel**. Every component is built around physics-based animations, intention-driven interactions, and weight — the sense that UI elements have mass and momentum.
+Most component libraries focus on how things look. Kata UI focuses on how things **feel**. Every component is built around physics-based animations, intention-driven interactions, and weight â€” the sense that UI elements have mass and momentum.
 
 ---
 
@@ -14,11 +14,11 @@ Most component libraries focus on how things look. Kata UI focuses on how things
 
 React developers building modern landing pages and marketing sites face a painful tradeoff:
 
-1. **Use a component library** (shadcn/ui, Radix) — excellent for forms and data, but static and lifeless
-2. **Build custom animations** — requires deep expertise in Framer Motion, GSAP, or WebGL
-3. **Use template sites** — locked into someone else's design, not customizable
+1. **Use a component library** (shadcn/ui, Radix) â€” excellent for forms and data, but static and lifeless
+2. **Build custom animations** â€” requires deep expertise in Framer Motion, GSAP, or WebGL
+3. **Use template sites** â€” locked into someone else's design, not customizable
 
-**There's no middle ground.** Kata UI is that middle ground — copy-paste components with built-in motion that work out of the box.
+**There's no middle ground.** Kata UI is that middle ground â€” copy-paste components with built-in motion that work out of the box.
 
 ---
 
@@ -53,11 +53,11 @@ React developers building modern landing pages and marketing sites face a painfu
 - **45 unit tests** with Vitest + React Testing Library
 - **Accessibility testing** with axe-core on every PR (WCAG compliance)
 - **E2E tests** across Chromium, Firefox, and WebKit
-- **TypeScript strict mode** — zero `any` types
-- **Tree-shakable** — import only what you need
-- **CI/CD** — GitHub Actions with test matrix (Ubuntu/Windows x Node 18/20), CodeQL security scanning, Lighthouse performance audits
-- **Docker** — Multi-arch build with Trivy vulnerability scanning
-- **Nightly builds** — Scheduled dependency health checks
+- **TypeScript strict mode** â€” zero `any` types
+- **Tree-shakable** â€” import only what you need
+- **CI/CD** â€” GitHub Actions with test matrix (Ubuntu/Windows x Node 18/20), CodeQL security scanning, Lighthouse performance audits
+- **Docker** â€” Multi-arch build with Trivy vulnerability scanning
+- **Nightly builds** â€” Scheduled dependency health checks
 
 ---
 
@@ -87,10 +87,10 @@ The React ecosystem is moving toward motion. React 19, Next.js 14+, and the rise
 
 The $3,600 in platform credits would be used for:
 
-1. **Hosting** — Keep the documentation site fast and reliable as traffic grows
-2. **Preview deployments** — Every PR gets a live preview for faster iteration and community review
-3. **Analytics** — Track which components are most used to prioritize development
-4. **Speed Insights** — Ensure the site stays performant as the component library grows
+1. **Hosting** â€” Keep the documentation site fast and reliable as traffic grows
+2. **Preview deployments** â€” Every PR gets a live preview for faster iteration and community review
+3. **Analytics** â€” Track which components are most used to prioritize development
+4. **Speed Insights** â€” Ensure the site stays performant as the component library grows
 
 ---
 
@@ -104,22 +104,22 @@ This is exactly what shadcn/ui did for forms. **Kata UI does it for motion.**
 
 ## Application Checklist
 
-- [x] Open source (MIT license) — [LICENSE](LICENSE)
-- [x] Hosted on Vercel — [kata-ui.vercel.app](https://kata-ui.vercel.app)
-- [x] Code of Conduct — [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
-- [x] Active development — 45+ tests, CI/CD pipeline, regular commits
+- [x] Open source (MIT license) â€” [LICENSE](LICENSE)
+- [x] Hosted on Vercel â€” [kata-ui-rho.vercel.app](https://kata-ui-rho.vercel.app)
+- [x] Code of Conduct â€” [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
+- [x] Active development â€” 45+ tests, CI/CD pipeline, regular commits
 - [x] Live documentation site with interactive demos
-- [x] shadcn registry — CLI installable via `npx shadcn@latest add <component>`
-- [x] Comprehensive testing — unit, integration, E2E, accessibility
-- [x] CI/CD pipeline — GitHub Actions with test matrix + security scanning
-- [x] TypeScript strict mode — zero `any` types
-- [x] Accessibility testing — axe-core on every PR
-- [x] Security policy — [SECURITY.md](SECURITY.md)
-- [x] Contributing guide — [CONTRIBUTING.md](CONTRIBUTING.md)
+- [x] shadcn registry â€” CLI installable via `npx shadcn@latest add <component>`
+- [x] Comprehensive testing â€” unit, integration, E2E, accessibility
+- [x] CI/CD pipeline â€” GitHub Actions with test matrix + security scanning
+- [x] TypeScript strict mode â€” zero `any` types
+- [x] Accessibility testing â€” axe-core on every PR
+- [x] Security policy â€” [SECURITY.md](SECURITY.md)
+- [x] Contributing guide â€” [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ---
 
 _Applied: August 2026_
 _GitHub: https://github.com/7se7en72025/kata-ui_
-_Demo: https://kata-ui.vercel.app_
+_Demo: https://kata-ui-rho.vercel.app_
 _npm: https://www.npmjs.com/package/kata-ui_

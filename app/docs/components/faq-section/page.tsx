@@ -4,10 +4,10 @@ import { useState } from "react";
 import { FaqSection } from "@/components/faq-section";
 
 const installCommands: Record<string, string> = {
-  npm: "npx shadcn@latest add https://kata-ui.vercel.app/r/faq-section.json",
-  pnpm: "pnpm dlx shadcn@latest add https://kata-ui.vercel.app/r/faq-section.json",
-  bun: "bunx shadcn@latest add https://kata-ui.vercel.app/r/faq-section.json",
-  yarn: "yarn dlx shadcn@latest add https://kata-ui.vercel.app/r/faq-section.json",
+  npm: "npx shadcn@latest add https://kata-ui-rho.vercel.app/r/faq-section.json",
+  pnpm: "pnpm dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/faq-section.json",
+  bun: "bunx shadcn@latest add https://kata-ui-rho.vercel.app/r/faq-section.json",
+  yarn: "yarn dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/faq-section.json",
 };
 
 const pkgManagers = [
@@ -523,7 +523,7 @@ export default function FaqSectionDocs() {
               <span style={{ color: "#C792EA" }}>shadcn@latest </span>
               <span style={{ color: "#888" }}>add </span>
               <span style={{ color: "#C3E88D" }}>
-                https://kata-ui.vercel.app/r/faq-section.json
+                https://kata-ui-rho.vercel.app/r/faq-section.json
               </span>
             </div>
           </div>

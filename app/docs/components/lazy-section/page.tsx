@@ -4,10 +4,10 @@ import { useState } from "react";
 import { LazySection } from "@/components/lazy-section";
 
 const installCommands: Record<string, string> = {
-  npm: "npx shadcn@latest add https://kata-ui.vercel.app/r/lazy-section.json",
-  pnpm: "pnpm dlx shadcn@latest add https://kata-ui.vercel.app/r/lazy-section.json",
-  bun: "bunx shadcn@latest add https://kata-ui.vercel.app/r/lazy-section.json",
-  yarn: "yarn dlx shadcn@latest add https://kata-ui.vercel.app/r/lazy-section.json",
+  npm: "npx shadcn@latest add https://kata-ui-rho.vercel.app/r/lazy-section.json",
+  pnpm: "pnpm dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/lazy-section.json",
+  bun: "bunx shadcn@latest add https://kata-ui-rho.vercel.app/r/lazy-section.json",
+  yarn: "yarn dlx shadcn@latest add https://kata-ui-rho.vercel.app/r/lazy-section.json",
 };
 
 const pkgManagers = [
@@ -535,7 +535,7 @@ export default function LazySectionDocs() {
               <span style={{ color: "#C792EA" }}>shadcn@latest </span>
               <span style={{ color: "#888" }}>add </span>
               <span style={{ color: "#C3E88D" }}>
-                https://kata-ui.vercel.app/r/lazy-section.json
+                https://kata-ui-rho.vercel.app/r/lazy-section.json
               </span>
             </div>
           </div>

@@ -30,7 +30,7 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Kata UI — Component Library",
+    default: "Kata UI â€” Component Library",
     template: "%s | Kata UI",
   },
   description:
@@ -41,14 +41,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://kata-ui.vercel.app",
-    title: "Kata UI — Component Library",
+    url: "https://kata-ui-rho.vercel.app",
+    title: "Kata UI â€” Component Library",
     description: "Beautiful, accessible React components built with motion, intention, and weight.",
     siteName: "Kata UI",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kata UI — Component Library",
+    title: "Kata UI â€” Component Library",
     description: "Beautiful, accessible React components built with motion, intention, and weight.",
   },
   robots: {
