@@ -66,7 +66,7 @@ chore: update README
 
 ## Code Style
 
-- Use TypeScript
+- Use TypeScript strict mode
 - Follow the existing code patterns
 - Run `npm run format` before committing
 - Pre-commit hooks will auto-lint staged files
