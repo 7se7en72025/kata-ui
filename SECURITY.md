@@ -32,7 +32,7 @@ When using Kata UI in your project:
 
 - Always use the latest version
 - Keep dependencies updated (`npm update`)
-- Run `npm audit` regularly
+- Run `npm audit` regularly for known vulnerabilities
 - Use environment variables for sensitive data
 - Never commit secrets to version control
 
